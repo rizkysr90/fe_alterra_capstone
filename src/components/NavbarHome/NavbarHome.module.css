@@ -48,3 +48,20 @@ nav {
     top: 12px;
     bottom: 12px;
 }
+
+.buttonContainer button {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 105px;
+    height: 48px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+    padding: 0px 16px;
+}
