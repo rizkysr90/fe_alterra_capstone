@@ -1,10 +1,11 @@
 import Logo from '../../components/Logo/logo';
 import Card from "../../components/Card/Card"
+import NavbarHome from '../../components/NavbarHome/NavbarHome';
 
 const Home = () => {
   return (
     <>
-        <h1>Home</h1>
+        <NavbarHome />
         <Logo />
         <Card />
     </>
