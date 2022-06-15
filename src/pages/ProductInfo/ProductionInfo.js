@@ -66,7 +66,7 @@ export default class Productioninfo extends Component {
                         <option className={style.ctr} value="" disabled selected hidden>Pilih Kategori</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
-                    </select><br />
+                    </select>
                 </div>
             </div>
             
