@@ -1,7 +1,10 @@
+import NavbarProfil from "../../components/NavbarProfil/NavbarProfil";
+
 const ProfileInfo = () => {
   return (
     <>
-        <h1>Info Profil</h1>
+      <NavbarProfil />
+      <h1>Info Profil</h1>
     </>
   )
 }
