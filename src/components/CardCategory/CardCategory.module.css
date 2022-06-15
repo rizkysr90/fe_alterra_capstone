@@ -1,0 +1,67 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  width: 268px;
+  height: 248px;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+  color: #000000;
+}
+
+.titleCard {
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.cardContent {
+  height: 40px;
+  display: inline-flex;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.cardContent:last-child {
+  border-bottom: none;
+}
+
+.cardContent p {
+  text-align: left;
+  margin-left: 8px;
+  margin-right: 8px;
+  width: 156px;
+}
+
+.iconArrow {
+  margin-bottom: 16px;
+}
+
+.iconArrow {
+  stroke: #d0d0d0;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
+
+.iconBox,
+.iconHeart,
+.iconDollar {
+  stroke: #8a8a8a;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
