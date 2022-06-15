@@ -41,7 +41,7 @@ export default class Productioninfo extends Component {
     return (
       <>
         <div className={style.arrow}>
-            <img src="/arrow-left.svg" alt="icon arrow left" />
+            <img src="/icons/arrow-left.svg" alt="icon arrow left" />
         </div>
 
         <form className={style.product}>
@@ -80,7 +80,7 @@ export default class Productioninfo extends Component {
             <div className={style.image}>
                 <label className={style.fig}>Foto Produk</label>
                 <div className={style.set}>
-                    <img className={style.hel} src="/plus.svg" alt="icon plus" />
+                    <img className={style.hel} src="/icons/plus.svg" alt="icon plus" />
                 </div> 
             </div>
         </form>
