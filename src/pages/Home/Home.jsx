@@ -1,3 +1,5 @@
+import BtnPrimary from "../../components/Button/BtnPrimary";
+import BtnSecondary from '../../components/Button/BtnSecondary';
 import Card from "../../components/Card/Card";
 import NavbarHome from '../../components/NavbarHome/NavbarHome';
 import style from './Home.module.css';
@@ -19,22 +21,25 @@ const Home = () => {
               src="images/png_gift_88837.png" 
               alt="gift"
               className={style.giftImage}/>
-            <img
-              src="images/background_hero.png"
-              alt="background"
-              className={style.backgroundImage}/>
+            <div className={style.backgroundImageContainer}>
+              <img
+                src="images/background_hero.png"
+                alt="background"
+                className={style.backgroundImage}/>
+              <div className={style.background}></div>
+            </div>
           </div>
           <div className={style.rightBox}></div>
         </div>
         <div className={style.categoryContainer}>
           <h2>Telusuri Kategori</h2>
           <div className={style.categoryButtonContainer}>
-            <button>Semua</button>
-            <button>Hobi</button>
-            <button>Kendaraan</button>
-            <button>Baju</button>
-            <button>Elektronik</button>
-            <button>Kesehatan</button>
+            <BtnPrimary><img src="/icons/fi_search_white.svg" alt="search" />Semua</BtnPrimary>
+            <BtnSecondary><img src="/icons/fi_search_black.svg" alt="search" />Hobi</BtnSecondary>
+            <BtnSecondary><img src="/icons/fi_search_black.svg" alt="search" />Kendaraan</BtnSecondary>
+            <BtnSecondary><img src="/icons/fi_search_black.svg" alt="search" />Baju</BtnSecondary>
+            <BtnSecondary><img src="/icons/fi_search_black.svg" alt="search" />Elektronik</BtnSecondary>
+            <BtnSecondary><img src="/icons/fi_search_black.svg" alt="search" />Kesehatan</BtnSecondary>
           </div>
         </div>
         <div className={style.cardContainer}>
