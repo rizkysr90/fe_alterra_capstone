@@ -1,5 +1,4 @@
 import style from "./Register.module.css";
-import ButtonRegister from "../../components/Button/BtnPrimary";
 import { Link } from "react-router-dom";
 
 const Register = () => {
