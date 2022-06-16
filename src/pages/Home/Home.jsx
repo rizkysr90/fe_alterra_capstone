@@ -62,6 +62,11 @@ const Home = () => {
           <Card />
           <Card />
         </div>
+        <div className={style.buttonJualContainer}>
+          <button className={style.buttonJual}>
+            <img src="icons/fi_plus_white.svg" alt="plus" />Jual
+          </button>
+        </div>
       </div>
     </>
   )
