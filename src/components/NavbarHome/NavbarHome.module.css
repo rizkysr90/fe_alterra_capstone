@@ -63,4 +63,10 @@ nav {
   border-radius: 12px;
   color: #ffffff;
   padding: 0px 16px;
+
+  cursor: pointer;
+}
+
+.buttonLoginContainer {
+  text-decoration: none;
 }
