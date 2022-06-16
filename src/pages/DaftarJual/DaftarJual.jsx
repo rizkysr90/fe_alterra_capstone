@@ -1,7 +1,5 @@
 import Navbar from "../../components/NavbarNotHome/NavbarNotHome";
 import style from "./DaftarJual.module.css";
-import BtnEdit from "../../components/Button/BtnSecondary";
-import BtnEditStyle from "../../components/Button/BtnSecondary.module.css";
 import CategoryMenu from "../../components/CardCategory/CardCategory";
 import CardCategoryStyle from "../../components/CardCategory/CardCategory.module.css";
 import CardMedium from "../../components/Card/CardMedium";
@@ -13,8 +11,7 @@ const DaftarJual = () => {
     document.getElementsByClassName(CardCategoryStyle.card)[0].style.marginTop = "24px";
     document.getElementsByClassName(CardCategoryStyle.pText)[0].style.cssText = "color: #7126B5; font-weight: 500";
     document.getElementsByClassName(CardCategoryStyle.iconBox)[0].style.stroke = "#7126B5";
-    document.getElementsByClassName(CardCategoryStyle.iconArrow)[0].style.stroke = "#7126B5";
-    document.getElementsByClassName(BtnEditStyle.btnSecondary)[0].style.cssText = "width: 47px; height: 26px; padding: 0; border-radius: 8px; font-weight: 500";
+    document.getElementsByClassName(CardCategoryStyle.iconArrow)[0].style.stroke = "#7126B5";;
   }, []);
   return (
     <>
@@ -30,7 +27,7 @@ const DaftarJual = () => {
             <p>Kota</p>
           </div>
           <div className={style.profileContent}>
-            <BtnEdit>Edit</BtnEdit>
+            <button className={style.btnEdit}>Edit</button>
           </div>
         </div>
         <div className={style.boxMain}>

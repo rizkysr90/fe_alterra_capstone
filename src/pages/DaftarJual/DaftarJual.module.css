@@ -40,6 +40,17 @@
   margin: 0;
 }
 
+.container .boxProfile .profileContent .btnEdit {
+  width: 47px;
+  height: 26px;
+  padding: 0;
+  border-radius: 8px;
+  font-weight: 500;
+  background: #ffffff;
+  border: 1px solid #7126b5;
+  border-radius: 8px;
+}
+
 .container .boxProfile .profileContent p {
   margin-top: 4px;
 }
@@ -82,7 +93,11 @@
 .container .boxMain .mainContent .inputBox .inputImage {
   color: transparent;
 }
-.container .boxMain .mainContent .inputBox .inputImage::-webkit-file-upload-button {
+.container
+  .boxMain
+  .mainContent
+  .inputBox
+  .inputImage::-webkit-file-upload-button {
   visibility: hidden;
   position: absolute;
 }
