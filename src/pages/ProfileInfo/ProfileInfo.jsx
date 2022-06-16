@@ -1,7 +1,15 @@
+import NavbarProfil from "../../components/NavbarProfil/NavbarProfil";
+import ProfilInfo from "./ProfilInfo";
+import style from './ProfileInfo.module.css';
+
 const ProfileInfo = () => {
   return (
     <>
-      <h1>Info Profil</h1>
+      <NavbarProfil />
+      <ProfilInfo />
+      <div className={style.trel}>
+        <button className={style.botun}>Simpan</button>
+      </div>
     </>
   )
 }
