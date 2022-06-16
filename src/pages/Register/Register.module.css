@@ -100,10 +100,15 @@
     margin-bottom: 16px;
   }
   
-  .contentTwo form button {
-    margin-top: 8px;
+  .contentTwo .btnRegister {
     width: 452px;
     height: 48px;
+    align-items: center;
+    padding: 8px 24px;
+    background: #7126B5;
+    border: 1px solid #7126b5;
+    border-radius: 16px;
+    margin-top: 8px;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;

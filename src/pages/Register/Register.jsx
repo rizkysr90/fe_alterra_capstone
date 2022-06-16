@@ -45,7 +45,7 @@ const Register = () => {
                 alt="Icon Password"
               /> */}
             </div>
-            <ButtonRegister>Daftar</ButtonRegister>
+            <button className={style.btnRegister}>Daftar</button>
             <p>
               Sudah punya akun?{" "}
               <Link className={style.link} to={"/login"}>
