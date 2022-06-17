@@ -1,171 +1,105 @@
-.arrow {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    top: 124px;
-    left: 336px;
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 968px;
+  margin: auto;
 }
 
-.product {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 16px;
-    width: 568px;
-    height: 496px;
-    margin-top: 170px;
-    margin-left: 436px;
+.container .content:first-child {
+  margin-left: 100px;
+  margin-top: 40px;
 }
 
-.name {
-    gap: 4px;
-    height: 70px;
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
+.container .content:last-child {
+  margin-left: 76px;
+  margin-top: 40px;
 }
 
-.fig {
-    height: 18px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
+.container .content .inputForm {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
 }
 
-.ame {
-    display: flex;
-    flex-direction: row;
+.container .content .inputForm:first-child {
     align-items: center;
-    gap: 16px;
 }
 
-.up {
-    padding: 12px 16px;
-    box-sizing: border-box;
-    border: 1px solid #D0D0D0 !important;
-    border-radius: 16px;
-    width: 568px;
-    height: 48px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+.container .content .inputForm .inputPhoto {
+  width: 96px;
+  height: 96px;
+  background: #e2d4f0;
+  border: 1px solid #e2d4f0;
+  border-radius: 12px;
+  margin-bottom: 8px;
 }
 
-.up:focus-visible {
-    outline: none;
+.container .content .inputForm .inputPhoto .inputImage {
+  color: transparent;
+  width: 96px;
+  height: 70px;
+  margin-top: -90px;
+  position: absolute;
 }
 
-.price {
-    gap: 4px;
-    height: 70px;
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
+.container
+  .content
+  .inputForm
+  .inputPhoto
+  .inputImage::-webkit-file-upload-button {
+  visibility: hidden;
+  position: absolute;
 }
 
-.kategori {
-    gap: 4px;
-    height: 102px;
-    flex: none;
-    order: 2;
-    align-self: stretch;
-    flex-grow: 0;
+.container .content .inputForm .inputIcon {
+  position: relative;
+  padding: 36px;
 }
 
-.deskripsi {
-    gap: 4px;
-    height: 102px;
-    flex: none;
-    order: 3;
-    align-self: stretch;
-    flex-grow: 0;
+.container .content .inputForm label {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
 }
 
-.jam {
-    padding: 12px 16px;
-    box-sizing: border-box;
-    border: 1px solid #D0D0D0 !important;
-    border-radius: 16px;
-    height: 48px;
-    color: #8A8A8A !important;
-    cursor: pointer;
+.container .content .inputForm .inputBox {
+  width: 568px;
+  height: 48px;
+  margin-top: 4px;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 16px;
+  color: #8a8a8a;
+  padding: 12px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 }
 
-.jam:nth-child(1) {
-    width: 568px;
+.container .content .inputForm .inputAddress {
+  height: 80px;
+  width: 568px;
+  margin-top: 4px;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 16px;
+  color: #8a8a8a;
+  padding: 12px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  resize: none;
 }
 
-.jam:focus-visible {
-    outline: none;
-}
-
-.ctr {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    padding: 12px 16px;
-}
-
-.end {
-    box-sizing: border-box;
-    border: 1px solid #D0D0D0 !important;
-    border-radius: 16px;
-    width: 568px;
-    height: 80px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-}
-
-.end:focus-visible {
-    outline: none;
-}
-
-.trel {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    padding: 0px;
-    gap: 16px;
-    width: 568px;
-    height: 48px;
-    margin-top: -100px;
-    margin-left: 436px;
-}
-
-.botun {
-    width: 568px;
-    height: 48px;
-    align-items: center;
-    padding: 12px 24px;
-    background: #7126B5;
-    border: 1px solid #7126b5;
-    border-radius: 16px;
-    color: #ffffff;
-}
-
-.camera {
-    position: absolute;
-    top: 124px;
-    left: 672px;
-}
-
-.den {
-    background: #e2d4f0;
-    box-sizing: border-box;
-    border: 1px solid #e2d4f0;
-    border-radius: 12px;
-    width: 96px;
-    height: 96px;
-}
-
-.war {
-    padding: 36px;
+.container .content .btnSave {
+  width: 568px;
+  height: 48px;
+  background: #7126b5;
+  border-radius: 16px;
+  border: 1px solid #7126b5;
+  margin-top: 8px;
+  margin-bottom: 274px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
 }

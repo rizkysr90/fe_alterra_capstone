@@ -1,17 +1,17 @@
-import style from './NavbarProfil.module.css';
+import style from './NavbarTitle.module.css';
 import Logo from '../Logo/logo';
 
-const NavbarProfil = () => {
+const NavbarTitle = () => {
   return (
     <>
         <nav>
             <div className={style.leftNavbar}>
                 <Logo />
-                <h1 className={style.com}>Lengkapi Info Akun</h1>
+                <p id="navTitle"></p>
             </div>
         </nav>
     </>
   )
 }
 
-export default NavbarProfil;
+export default NavbarTitle;

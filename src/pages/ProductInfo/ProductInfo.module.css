@@ -87,6 +87,10 @@
 
 .container .content .inputForm .inputPhoto .inputImage {
   color: transparent;
+  width: 96px;
+  height: 70px;
+  margin-top: -90px;
+  position: absolute;
 }
 
 .container
