@@ -8,7 +8,18 @@
     }
   
     .contentTwo .formRegister {
+      width: 376px;
       left: 0;
+      padding: 16px 24px;
+      margin: auto;
+    }
+
+    .contentTwo .formRegister input {
+      width: 328px;
+    }
+
+    .contentTwo .formRegister .btnRegister {
+      width: 328px;
     }
   }
   
