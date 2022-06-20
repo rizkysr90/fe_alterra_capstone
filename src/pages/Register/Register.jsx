@@ -16,11 +16,11 @@ const Register = () => {
         <div className={style.contentTwo}>
           <form className={style.formRegister}>
             <h1 className={style.title}>Daftar</h1>
-            <label htmlFor="aname">Nama</label>
+            <label htmlFor="name">Nama</label>
             <input
               className={style.inputForm}
               type="text"
-              name="aname"
+              name="name"
               placeholder="Nama Lengkap"
             />
             <label htmlFor="email">Email</label>
