@@ -1,11 +1,11 @@
 import style from "./InfoPenawar.module.css";
-import NavbarProfil from "../../components/NavbarPenawar/NavbarPenawar";
+import Navbar from "../../components/NavbarTitle/NavbarTitle";
 
 const InfoPenawar = () => {
   return (
     <>
       <div className={style.infoPenawarPageContainer}>
-        <NavbarProfil />
+        <Navbar title="Info Penawar" />
         <div className={style.penawarPageContainer}>
           <img src="icons/fi_arrow-left.svg" alt="left arrow" className={style.leftArrow} />
           <div className={style.infoPenawarContainer}>
