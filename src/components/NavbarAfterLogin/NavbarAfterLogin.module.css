@@ -20,7 +20,6 @@ nav {
 .inputContainer input {
     width: 444px;
     height: 48px;
-    
     background: #EEEEEE;
     border-radius: 16px;
     border: none;
@@ -54,7 +53,6 @@ nav {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
     width: 120px;
     height: 24px;
 }
