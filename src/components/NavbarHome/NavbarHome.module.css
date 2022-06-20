@@ -1,67 +1,72 @@
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    width: 100%;
-    height: 84px;
+  width: 100%;
+  height: 84px;
 
-    background: #FFFFFF;
+  background: #ffffff;
 
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-    padding: 0px 136px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  padding: 0px 136px;
 }
 
 .leftNavbar {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .inputContainer input {
-    width: 444px;
-    height: 48px;
-    
-    background: #EEEEEE;
-    border-radius: 16px;
-    border: none;
-    padding: 12px 24px;
-    margin-left: 24px;
+  width: 444px;
+  height: 48px;
+
+  background: #eeeeee;
+  border-radius: 16px;
+  border: none;
+  padding: 12px 24px;
+  margin-left: 24px;
 }
 
 .inputContainer input::placeholder {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 
-    color: #8A8A8A;
+  color: #8a8a8a;
 }
 
 .inputContainer {
-    position: relative;
+  position: relative;
 }
 
 .inputContainer img {
-    position: absolute;
-    right: 24px;
-    top: 12px;
-    bottom: 12px;
+  position: absolute;
+  right: 24px;
+  top: 12px;
+  bottom: 12px;
 }
 
-.buttonContainer button {
-    display: inline-flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 105px;
-    height: 48px;
+.btnMasuk {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 105px;
+  height: 48px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  background: #7126B5;
+  border: 1px solid #7126B5;
+  border-radius: 12px;
+  color: #ffffff;
+  padding: 0px 16px;
 
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+  cursor: pointer;
+}
 
-    color: #FFFFFF;
-    padding: 0px 16px;
+.buttonLoginContainer {
+  text-decoration: none;
 }

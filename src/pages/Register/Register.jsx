@@ -1,5 +1,4 @@
 import style from "./Register.module.css";
-import ButtonRegister from "../../components/Button/BtnPrimary";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -45,7 +44,7 @@ const Register = () => {
                 alt="Icon Password"
               /> */}
             </div>
-            <ButtonRegister>Daftar</ButtonRegister>
+            <button className={style.btnRegister}>Daftar</button>
             <p>
               Sudah punya akun?{" "}
               <Link className={style.link} to={"/login"}>

@@ -1,5 +1,3 @@
-import BtnPrimary from "../../components/Button/BtnPrimary";
-import BtnSecondary from '../../components/Button/BtnSecondary';
 import Card from "../../components/Card/Card";
 import NavbarHome from '../../components/NavbarHome/NavbarHome';
 import style from './Home.module.css';
@@ -34,12 +32,12 @@ const Home = () => {
         <div className={style.categoryContainer}>
           <h2>Telusuri Kategori</h2>
           <div className={style.categoryButtonContainer}>
-            <BtnPrimary><img src="/icons/fi_search_white.svg" alt="search" />Semua</BtnPrimary>
-            <BtnSecondary><img src="/icons/fi_search_black.svg" alt="search" />Hobi</BtnSecondary>
-            <BtnSecondary><img src="/icons/fi_search_black.svg" alt="search" />Kendaraan</BtnSecondary>
-            <BtnSecondary><img src="/icons/fi_search_black.svg" alt="search" />Baju</BtnSecondary>
-            <BtnSecondary><img src="/icons/fi_search_black.svg" alt="search" />Elektronik</BtnSecondary>
-            <BtnSecondary><img src="/icons/fi_search_black.svg" alt="search" />Kesehatan</BtnSecondary>
+            <button className={style.btnCategory}><img src="/icons/fi_search_white.svg" alt="search" />Semua</button>
+            <button className={style.btnCategory}><img src="/icons/fi_search_black.svg" alt="search" />Hobi</button>
+            <button className={style.btnCategory}><img src="/icons/fi_search_black.svg" alt="search" />Kendaraan</button>
+            <button className={style.btnCategory}><img src="/icons/fi_search_black.svg" alt="search" />Baju</button>
+            <button className={style.btnCategory}><img src="/icons/fi_search_black.svg" alt="search" />Elektronik</button>
+            <button className={style.btnCategory}><img src="/icons/fi_search_black.svg" alt="search" />Kesehatan</button>
           </div>
         </div>
         <div className={style.cardContainer}>
@@ -63,6 +61,11 @@ const Home = () => {
           <Card />
           <Card />
           <Card />
+        </div>
+        <div className={style.buttonJualContainer}>
+          <button className={style.buttonJual}>
+            <img src="icons/fi_plus_white.svg" alt="plus" />Jual
+          </button>
         </div>
       </div>
     </>

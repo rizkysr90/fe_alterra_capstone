@@ -1,7 +1,7 @@
-import style from './NavbarNotHome.module.css';
+import style from './NavbarAfterLogin.module.css';
 import Logo from '../Logo/logo';
 
-const NavbarNotHome = () => {
+const NavbarAfterLogin = () => {
   return (
     <>
         <nav>
@@ -22,4 +22,4 @@ const NavbarNotHome = () => {
   )
 }
 
-export default NavbarNotHome;
+export default NavbarAfterLogin;
