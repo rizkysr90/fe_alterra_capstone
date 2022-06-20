@@ -163,10 +163,6 @@
   position: relative;
 }
 
-.backgroundImageContainer img {
-  margin-top: 6px;
-}
-
 .background {
   position: absolute;
   background: linear-gradient(90deg, #ffe9ca 0%, rgba(255, 233, 202, 0) 100%);
@@ -175,7 +171,6 @@
   top: 0;
   height: 288px;
   width: 100%;
-  margin-top: 6px;
 }
 
 .buttonJualContainer {
