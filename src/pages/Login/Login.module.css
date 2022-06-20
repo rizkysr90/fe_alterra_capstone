@@ -2,6 +2,16 @@
   font-family: "Poppins";
 }
 
+@media only screen and (max-width: 600px) {
+  .contentOne {
+    display: none;
+  }
+
+  .contentTwo .formLogin {
+    left: 0;
+  }
+}
+
 .formLogin p {
   font-size: 14px;
   line-height: 20px;
