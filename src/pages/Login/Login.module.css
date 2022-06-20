@@ -8,7 +8,19 @@
   }
 
   .contentTwo .formLogin {
+    width: 376px;
     left: 0;
+    top: 100px;
+    padding: 16px 24px;
+    margin: auto;
+  }
+
+  .contentTwo .formLogin input {
+    width: 328px;
+  }
+
+  .contentTwo .formLogin .btnLogin {
+    width: 328px;
   }
 }
 
@@ -45,7 +57,7 @@
   font-weight: 700;
   font-size: 40px;
   line-height: 36px;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 154px;
   height: 72px;
   left: 80px;
@@ -115,7 +127,7 @@
   height: 48px;
   align-items: center;
   padding: 8px 24px;
-  background: #7126B5;
+  background: #7126b5;
   border: 1px solid #7126b5;
   border-radius: 16px;
   margin-top: 8px;

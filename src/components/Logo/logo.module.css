@@ -3,3 +3,11 @@
   height: 34px;
   background-color: #4B1979;
 }
+
+.logo .logoTitle {
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-top: 10px;
+}
