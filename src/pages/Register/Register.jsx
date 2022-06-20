@@ -15,6 +15,11 @@ const Register = () => {
         </div>
         <div className={style.contentTwo}>
           <form className={style.formRegister}>
+            <img
+              className={style.iconForm}
+              src="/icons/fi_arrow-left.svg"
+              alt="Icon Back"
+            />
             <h1 className={style.title}>Daftar</h1>
             <label htmlFor="aname">Nama</label>
             <input
