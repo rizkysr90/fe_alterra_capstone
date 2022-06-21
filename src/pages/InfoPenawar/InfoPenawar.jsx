@@ -5,7 +5,11 @@ const InfoPenawar = () => {
   return (
     <>
       <div className={style.infoPenawarPageContainer}>
-        <Navbar title="Info Penawar" />
+        <Navbar title="Info Penawar" className={style.navbar} />
+        <div className={style.navbarMobile}>
+          <img src="icons/fi_arrow-left.svg" alt="left arrow" />
+          <h3>Info Penawar</h3>  
+        </div>
         <div className={style.penawarPageContainer}>
           <img src="icons/fi_arrow-left.svg" alt="left arrow" className={style.leftArrow} />
           <div className={style.infoPenawarContainer}>
