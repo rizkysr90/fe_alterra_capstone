@@ -36,8 +36,6 @@ nav {
 nav .leftNavbar {
   display: flex;
   align-items: center;
-  position: absolute;
-
 }
 
 nav .navTitle {

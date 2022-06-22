@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 .sidenav {
   height: 100%;
   width: 0;
@@ -100,7 +99,7 @@
   }
 }
 
->>>>>>> f83f731a98cef430253662a5d6b84877b9ff1517
+
 .container h1 {
   font-weight: 400;
   font-size: 14px;
@@ -115,13 +114,13 @@
 }
 
 .container {
-<<<<<<< HEAD
+
   width: 968px;
   margin: auto;
 }
 
 .container .titlePage {
-=======
+
   width: 986px;
   margin: auto;
   display: flex;
@@ -139,7 +138,7 @@
 }
 
 .container .titleBox .titlePage {
->>>>>>> f83f731a98cef430253662a5d6b84877b9ff1517
+
   font-weight: 700;
   font-size: 20px;
   line-height: 30px;
@@ -151,11 +150,10 @@
   display: inline-flex;
   height: 80px;
   align-items: center;
-<<<<<<< HEAD
-=======
+
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   border-radius: 16px;
->>>>>>> f83f731a98cef430253662a5d6b84877b9ff1517
+
 }
 
 .container .boxProfile .profileContent {
@@ -189,8 +187,7 @@
   margin-bottom: 0;
 }
 
-<<<<<<< HEAD
-=======
+
 .container .boxCategory {
   display: inline-flex;
   margin-top: 24px;
@@ -221,21 +218,21 @@
   color: #ffffff;
 }
 
->>>>>>> f83f731a98cef430253662a5d6b84877b9ff1517
+
 .container .boxMain {
   display: inline-flex;
 }
 
 .container .boxMain .mainContent:nth-child(2) {
-<<<<<<< HEAD
+
   display: inline-flex;
   margin-left: 24px;
-=======
+
   display: flex;
   align-items: flex-start;
   margin-left: 24px;
   margin-bottom: 26px;
->>>>>>> f83f731a98cef430253662a5d6b84877b9ff1517
+
   flex-wrap: wrap;
 }
 
@@ -250,10 +247,9 @@
   line-height: 18px;
   text-align: center;
   color: #8a8a8a;
-<<<<<<< HEAD
-=======
+
   margin-right: 24px;
->>>>>>> f83f731a98cef430253662a5d6b84877b9ff1517
+
 }
 
 .container .boxMain .mainContent .inputBox .inputIcon {

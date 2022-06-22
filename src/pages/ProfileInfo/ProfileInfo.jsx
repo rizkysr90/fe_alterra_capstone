@@ -6,7 +6,7 @@ const ProfileInfo = () => {
 
   return (
     <>
-      <Navbar title="Lengkapi Info Akun"/>
+      <Navbar title="Lengkapi Info Akun"/> 
       <div className={style.container}>
         <div className={style.content}>
           <img src="/icons/arrow-left.svg" alt="Icon Back" />
