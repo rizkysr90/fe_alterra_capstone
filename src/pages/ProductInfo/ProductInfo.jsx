@@ -1,21 +1,14 @@
-import Navbar from "../../components/NavbarHome/NavbarHome";
-import NavbarCSS from "../../components/NavbarHome/NavbarHome.module.css";
+import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import style from "./ProductInfo.module.css";
-import { useEffect } from "react";
+
 
 const ProductInfo = () => {
-  useEffect(() => {
-    document.getElementsByClassName(NavbarCSS.inputContainer)[0].style.display =
-      "none";
-    document.getElementsByClassName(NavbarCSS.btnMasuk)[0].style.display =
-      "none";
-  }, []);
   return (
     <>
-      <Navbar />
+      <Navbar title="Lengkapi Detail Produk" />
       <div className={style.container}>
         <div className={style.content}>
-          <img src="/icons/arrow-left.svg" alt="Icon Back" />
+          <img src="/icons/arrow-left.svg" alt="Icon Back" className={style.leftarrow} />
         </div>
         <div className={style.content}>
           <form>

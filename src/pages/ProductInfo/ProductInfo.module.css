@@ -1,3 +1,35 @@
+@media screen and (max-width: 600px) {
+  .content:first-child {
+    position: absolute;
+    top: -10px;
+    left: -120px;
+  }
+
+  .inputForm:first-child {
+    margin-top: 66px;
+  }
+  
+  .inputForm {
+    margin-left: -46px;
+  }
+
+  .content:last-child .inputForm .inputBox {
+    width: 328px !important;
+  }
+
+  .content:last-child .inputForm .inputDesc {
+    width: 328px !important;
+  }
+
+  .btn {
+    margin-left: -46px;
+  }
+
+  .btn .btnForm {
+    width: 156px !important;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: row;

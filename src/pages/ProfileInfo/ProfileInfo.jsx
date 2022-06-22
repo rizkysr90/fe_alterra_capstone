@@ -8,7 +8,7 @@ const ProfileInfo = () => {
     <>
       <Navbar title="Lengkapi Info Akun"/> 
       <div className={style.container}>
-        <div className={style.content}>
+        <div className={style.content}> 
           <img src="/icons/arrow-left.svg" alt="Icon Back" />
         </div>
         <div className={style.content}>

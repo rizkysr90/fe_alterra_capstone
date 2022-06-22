@@ -2,6 +2,35 @@
     font-family: "Poppins";
   }
   
+  @media only screen and (max-width: 600px) {
+    .contentOne {
+      display: none;
+    }
+  
+    .contentTwo .formRegister {
+      width: 376px;
+      left: 0;
+      top: 50px;
+      padding: 16px 24px;
+      margin: auto;
+    }
+
+    .contentTwo .formRegister .iconForm {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 38px;
+      display: block;
+    }
+
+    .contentTwo .formRegister input {
+      width: 328px;
+    }
+
+    .contentTwo .formRegister .btnRegister {
+      width: 328px;
+    }
+  }
+
   .formRegister p {
     font-size: 14px;
     line-height: 20px;
