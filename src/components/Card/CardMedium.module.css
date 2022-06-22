@@ -1,7 +1,22 @@
+
+@media only screen and (max-width: 600px) {
+  .cardContainer {
+    width: 156px !important;
+    height: 206px !important;
+  }
+
+  .cardContainer img {
+    width: 140px !important;
+    height: 100px !important;
+  }
+}
+
+
 .cardContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
 
   width: 206.67px;
   height: 198px;
@@ -11,6 +26,15 @@
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   margin: 24px;
+
+  width: 206.67px;
+  height: 198px;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  margin-right: 24px;
+  margin-top: 24px;
+
 }
 
 .cardContainer img {
