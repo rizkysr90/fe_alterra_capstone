@@ -1,11 +1,14 @@
+import axios from 'axios';
+
 export const RegisterEmail = (email, password) => {
     return (dispatch) => {
         dispatch({ type: "SET_DATA_REGISTER", payload: { email, password } });
     };
 };
 
-export const LoginEmail = (email, password) => {
-    return (dispatch) => {
+export const LoginEmail = () => {
+    return async (dispatch) => {
+        const { email, password } = await axios.post('https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/login') 
         dispatch({ type: "SET_DATA_LOGIN", payload: { email, password } });
     };
 };
