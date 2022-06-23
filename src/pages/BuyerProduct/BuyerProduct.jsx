@@ -2,6 +2,8 @@ import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./BuyerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
 
+
+
 const BuyerProduct = () => {
   return (
     <>

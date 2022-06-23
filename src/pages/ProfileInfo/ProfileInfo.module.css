@@ -7,7 +7,7 @@
 
   .content:last-child { 
     position: absolute;
-    left: -70px;
+    left: -65px;
   }
 
   .inputPhoto {
@@ -26,6 +26,17 @@
     margin-top: 106px;
   }
 
+  .content:last-child .inputForm .inputBox {
+    width: 328px !important;
+  }
+
+  .content:last-child .inputForm .inputAddress {
+    width: 328px !important;
+  }
+
+  .btnSave {
+    width: 328px !important;
+  }
 }
 
 .container {
