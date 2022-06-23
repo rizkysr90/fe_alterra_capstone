@@ -1,3 +1,51 @@
+@media screen and (max-width: 600px) {
+    .use {
+        width: 360px !important;
+        height: 300px !important;
+        left: 0px !important;
+        top: 0px !important;
+    }
+
+    .card {
+        top: 400px !important;
+        left: 16px !important;
+        width: 328px !important;
+        height: 98px !important;
+    }
+
+    .tri {
+        margin-top: -4px !important;
+    }
+
+    .pro {
+        margin-top: -12px !important;
+    }
+
+    .cardPenjual {
+        margin-top: 520px !important;
+        margin-left: 16px !important;
+        width: 328px !important;
+    }
+
+    .cardContainer {
+        top: 623px !important;
+        left: 16px !important;
+        width: 328px !important;
+        height: 560px !important;
+    }
+
+    .ips {
+        width: 296px !important;
+        height: 530px !important;
+    }
+
+    .sob {
+        bottom: 28px !important; 
+        position: fixed !important;
+        z-index: 99; 
+    }
+}
+
 .cardContainer {
     position: absolute;
     width: 600px;
