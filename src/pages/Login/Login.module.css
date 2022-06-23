@@ -8,7 +8,6 @@
   }
 
   .contentTwo .formLogin {
-    left: 0;
     width: 376px;
     left: 0;
     top: 50px;
@@ -29,7 +28,6 @@
 
   .contentTwo .formLogin .btnLogin {
     width: 328px;
-
   }
 }
 
@@ -143,11 +141,7 @@
   height: 48px;
   align-items: center;
   padding: 8px 24px;
-
-  background: #7126B5;
-
-  
-
+  background: #7126b5;
   border: 1px solid #7126b5;
   border-radius: 16px;
   margin-top: 8px;

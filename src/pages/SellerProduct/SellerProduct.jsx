@@ -2,6 +2,8 @@ import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./SellerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
 
+
+
 const SellerProduct = () => {
   return (
     <>
@@ -37,7 +39,7 @@ const SellerProduct = () => {
           />
         </Carousel.Item>
       </Carousel>
-      
+
       <div className={style.card}>
         <h5 className={style.tha}>Jam Tangan Casio</h5>
         <p className={style.tri}>Aksesoris</p>

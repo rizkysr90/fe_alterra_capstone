@@ -1,14 +1,13 @@
 import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import style from "./ProductInfo.module.css";
 
-
 const ProductInfo = () => {
   return (
     <>
-      <Navbar title="Lengkapi Detail Produk" />
+      <Navbar title="Lengkapi Detail Produk"/>
       <div className={style.container}>
         <div className={style.content}>
-          <img src="/icons/arrow-left.svg" alt="Icon Back" className={style.leftarrow} />
+          <img src="/icons/arrow-left.svg" alt="Icon Back" />
         </div>
         <div className={style.content}>
           <form>
