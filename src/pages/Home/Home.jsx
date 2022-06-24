@@ -29,6 +29,17 @@ const Home = () => {
           </div>
           <div className={style.rightBox}></div>
         </div>
+        <div className={style.heroContainerMobile}>
+          <div className={style.heroDescMobile}>
+            <h1>Bulan Ramadhan Banyak diskon!</h1>
+            <h5>Diskon Hingga</h5>
+            <h3>60%</h3> 
+          </div>
+          <img
+            src="images/png_gift_88837.png"
+            alt="gift mobile"
+            className={style.giftImageMobile}/>  
+        </div>
         <div className={style.categoryContainer}>
           <h2>Telusuri Kategori</h2>
           <div className={style.categoryButtonContainer}>
