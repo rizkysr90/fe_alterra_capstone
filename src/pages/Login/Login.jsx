@@ -15,6 +15,11 @@ const Login = () => {
         </div>
         <div className={style.contentTwo}>
           <form className={style.formLogin}>
+            <img
+              className={style.iconForm}
+              src="/icons/fi_arrow-left.svg"
+              alt="Icon Back"
+            />
             <h1 className={style.title}>Masuk</h1>
             <label htmlFor="email">Email</label>
             <input

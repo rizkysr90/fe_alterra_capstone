@@ -1,16 +1,14 @@
 import Navbar from "../../components/NavbarTitle/NavbarTitle";
 // import NavbarCSS from "../../components/NavbarTitle/NavbarTitle.module.css";
 import style from "./ProfileInfo.module.css";
-// import { useState } from "react";
-// import ReactDOM from 'react-dom';
 
 const ProfileInfo = () => {
 
   return (
     <>
-      <Navbar title="Lengkapi Info Akun" />
+      <Navbar title="Lengkapi Info Akun"/>
       <div className={style.container}>
-        <div className={style.content}>
+        <div className={style.content}> 
           <img src="/icons/arrow-left.svg" alt="Icon Back" />
         </div>
         <div className={style.content}>

@@ -1,5 +1,22 @@
+@media only screen and (max-width: 600px) {
+  .logo {
+    display: none !important;
+  }
+  .logo .logoTitle {
+    display: none !important;
+  }
+}
+
 .logo {
   width: 100px;
   height: 34px;
   background-color: #4B1979;
+}
+
+.logo .logoTitle {
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 10px;
+  margin-top: 10px;
 }

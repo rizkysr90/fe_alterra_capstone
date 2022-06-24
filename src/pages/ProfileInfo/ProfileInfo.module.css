@@ -1,3 +1,44 @@
+@media only screen and (max-width: 600px) {
+  .content:first-child {
+    position: absolute;
+    top: -10px;
+    left: -120px;
+  }
+
+  .content:last-child { 
+    position: absolute;
+    left: -65px;
+  }
+
+  .inputPhoto {
+    position: absolute;
+    top: -10px;
+    left: 132px;
+    width: 96px;
+    height: 96px;
+    background: #e2d4f0;
+    border: 1px solid #e2d4f0;
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+
+  .inputForm:first-child {
+    margin-top: 106px;
+  }
+
+  .content:last-child .inputForm .inputBox {
+    width: 328px !important;
+  }
+
+  .content:last-child .inputForm .inputAddress {
+    width: 328px !important;
+  }
+
+  .btnSave {
+    width: 328px !important;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -103,3 +144,5 @@
   line-height: 20px;
   color: #ffffff;
 }
+
+

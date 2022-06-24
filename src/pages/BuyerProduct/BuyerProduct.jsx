@@ -1,11 +1,13 @@
-import NavbarNotHome from "../../components/NavbarNotHome/NavbarNotHome";
+import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./BuyerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
+
+
 
 const BuyerProduct = () => {
   return (
     <>
-      <NavbarNotHome />
+      <Navbar />
 
       <Carousel className={style.use}>
         <Carousel.Item>

@@ -1,4 +1,4 @@
-import Navbar from "../../components/NavbarNotHome/NavbarNotHome";
+import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./DaftarJual.module.css";
 import CategoryMenu from "../../components/CardCategory/CardCategory";
 import CardCategoryStyle from "../../components/CardCategory/CardCategory.module.css";
