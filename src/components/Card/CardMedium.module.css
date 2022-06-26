@@ -2,6 +2,7 @@
   .cardContainer {
     width: 156px !important;
     height: 206px !important;
+    margin-right: 16px !important;
   }
 
   .cardContainer img {
