@@ -3,7 +3,7 @@ import style from "./DaftarJual.module.css";
 import CategoryMenu from "../../components/CardCategory/CardCategory";
 import CardCategoryStyle from "../../components/CardCategory/CardCategory.module.css";
 import CardMedium from "../../components/Card/CardMedium";
-import Sidebar from "../../components/Sidebar/index.jsx";
+import Sidebar from "../../components/Sidebar/";
 import { useEffect } from "react";
 
 const DaftarJual = () => {
