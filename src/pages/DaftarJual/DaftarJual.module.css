@@ -1,3 +1,102 @@
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    display: none;
+  }
+
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav p {
+    font-size: 18px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 328px !important;
+  }
+
+  .container .titleBox .menuIcon {
+    display: block !important;
+    cursor: pointer !important;
+  }
+
+  .container .boxProfile .profileContent:nth-child(2) {
+    width: 200px !important;
+    margin: 0;
+  }
+
+  .container .boxCategory {
+    display: block !important;
+    display: inline-flex !important;
+    overflow: scroll !important;
+    width: 100% !important;
+  }
+
+  .container .boxCategory::-webkit-scrollbar {
+    display: none;
+  }
+
+  .container .boxMain {
+    width: 328px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container .boxMain .mainContent:nth-child(1) {
+    display: none;
+  }
+
+  .mainContent:nth-child(2) {
+    margin: 0 !important;
+  }
+
+  .container .boxMain .mainContent .inputBox {
+    width: 156px !important;
+    height: 206px !important;
+    margin-right: 16px !important;
+  }
+
+  .container .boxMain .mainContent .inputBox .inputIcon {
+    margin-left: 66px !important;
+    margin-right: 66px !important;
+  }
+}
+
 .container h1 {
   font-weight: 400;
   font-size: 14px;
@@ -12,11 +111,23 @@
 }
 
 .container {
-  width: 968px;
+  width: 986px;
   margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.container .titlePage {
+.container .titleBox {
+  display: inline-flex;
+}
+
+.container .titleBox .menuIcon {
+  margin-top: 16px;
+  margin-right: 40px;
+  display: none;
+}
+
+.container .titleBox .titlePage {
   font-weight: 700;
   font-size: 20px;
   line-height: 30px;
@@ -28,6 +139,8 @@
   display: inline-flex;
   height: 80px;
   align-items: center;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
 }
 
 .container .boxProfile .profileContent {
@@ -61,13 +174,45 @@
   margin-bottom: 0;
 }
 
+.container .boxCategory {
+  display: inline-flex;
+  margin-top: 24px;
+  display: none;
+}
+
+.container .boxCategory .btnCategory {
+  display: flex;
+  align-items: center;
+  background: #e2d4f0;
+  border: 1px solid #e2d4f0;
+  border-radius: 12px;
+  margin-left: 16px;
+  padding: 14px 24px;
+  color: #3c3c3c;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.container .boxCategory .btnCategory img {
+  margin-right: 8px;
+}
+
+.container .boxCategory .btnCategory:nth-child(1) {
+  margin-left: 0;
+  background: #7126b5;
+  color: #ffffff;
+}
+
 .container .boxMain {
   display: inline-flex;
 }
 
 .container .boxMain .mainContent:nth-child(2) {
-  display: inline-flex;
+  display: flex;
+  align-items: flex-start;
   margin-left: 24px;
+  margin-bottom: 26px;
   flex-wrap: wrap;
 }
 
@@ -82,6 +227,7 @@
   line-height: 18px;
   text-align: center;
   color: #8a8a8a;
+  margin-right: 24px;
 }
 
 .container .boxMain .mainContent .inputBox .inputIcon {

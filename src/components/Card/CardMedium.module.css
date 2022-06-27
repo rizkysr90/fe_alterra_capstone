@@ -1,3 +1,13 @@
+@media screen and (max-width: 600px) {
+  .cardContainer {
+    width: 156px !important;
+  }
+
+  .cardContainer img {
+    width: 140px !important;
+  }
+}
+
 .cardContainer {
   display: flex;
   flex-direction: column;
@@ -10,7 +20,7 @@
 
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  margin: 24px;
+  margin: 12px;
 }
 
 .cardContainer img {
