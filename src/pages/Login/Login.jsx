@@ -26,6 +26,8 @@ const Login = () => {
     //eslint-disable-next-line
   }, []);
 
+  console.log(dataLogin);
+
   return (
     <>
       <div className={style.container}>

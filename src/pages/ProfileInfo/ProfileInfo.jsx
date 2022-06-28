@@ -1,8 +1,34 @@
 import Navbar from "../../components/NavbarTitle/NavbarTitle";
 // import NavbarCSS from "../../components/NavbarTitle/NavbarTitle.module.css";
 import style from "./ProfileInfo.module.css";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
 
 const ProfileInfo = () => {
+  const { dataLogin } = useSelector((state) => state.auth);
+
+  const [dataUser, setDataUser] = useState({});
+
+  const getUserDetail = async () => {
+    const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`, {
+      headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` }
+    });
+    setDataUser(data.data);
+  };
+
+  const getCityDetail = async () => {
+    const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/cities`, {
+      headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` }
+    });
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getUserDetail();
+    getCityDetail();
+  }, []);
 
   return (
     <>
@@ -34,6 +60,8 @@ const ProfileInfo = () => {
                 type="text"
                 name="namaProfil"
                 placeholder="Nama"
+                value={dataUser.name}
+                onChange={(e) => setDataUser({...dataUser, name:e.target.value})}
               />
             </div>
             <div className={style.inputForm}>
