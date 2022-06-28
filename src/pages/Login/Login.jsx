@@ -15,12 +15,12 @@ const Login = () => {
     e.preventDefault()
     dispatch(LoginEmail(email, password));
     setTimeout(() => {
-      navigate('/login');
+      navigate('/profile');
     }, 1500);
   }
 
   useEffect(() => {
-    if (dataLogin?.email === dataLogin && dataLogin?.password === dataLogin) navigate('/login');
+    if (dataLogin?.email === dataLogin && dataLogin?.password === dataLogin) navigate('/profile');
     if (dataLogin?.email !== dataLogin && dataLogin?.password !== dataLogin && dataLogin !== null) navigate('/register');
     console.log(dataLogin);
     //eslint-disable-next-line
