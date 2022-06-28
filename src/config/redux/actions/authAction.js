@@ -8,7 +8,7 @@ export const RegisterEmail = (email, password) => {
 
 export const LoginEmail = () => {
     return async (dispatch) => {
-        const { email, password } = await axios.post('https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/login') 
-        dispatch({ type: "SET_DATA_LOGIN", payload: { email, password } });
-    };
-};
+        const { data } = await axios.post('https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/login')
+        dispatch({ type: 'SET_DATA_LOGIN', payload: data })
+    }
+}
