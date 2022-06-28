@@ -1,14 +1,23 @@
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./SellerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
-
-
+import { watchsAction } from "../../config/redux/actions/watchAction";
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from "react";
 
 const SellerProduct = () => {
+  const dispatch = useDispatch();
+
+  const {watchs} = useSelector((state) => state.watchReducer);
+  console.log(watchs);
+
+  useEffect(() => {
+    dispatch(watchsAction())
+  }, [dispatch])
+
   return (
     <>
       <Navbar />
-
       <Carousel className={style.use}>
         <Carousel.Item>
           <img
@@ -40,13 +49,16 @@ const SellerProduct = () => {
         </Carousel.Item>
       </Carousel> 
 
-      <div className={style.card}>
-        <h5 className={style.tha}>Jam Tangan Casio</h5>
+      
+      <div className={style.card}  >
+        <h5 className={style.tha}>Jam Tangan Casio  </h5>
         <p className={style.tri}>Aksesoris</p>
         <h5 className={style.pro}>Rp 250.000</h5>
         <button className={style.sob}>Terbitkan</button>
         <button className={style.man}>Edit</button>
       </div>
+      
+      
 
       <div className={style.cardPenjual}>
         <div className={style.par}>

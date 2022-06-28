@@ -9,5 +9,5 @@ export const watchsAction = () => {
             type: "SET_WATCHS",
             payload: data
         })
-    }
+    } 
 }

@@ -12,7 +12,7 @@ const watchReducer = (state = initialState, action) => {
             default: {
                 return state;
             }
-    }
+    } 
 }
 
 export default watchReducer
