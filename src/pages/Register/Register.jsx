@@ -8,15 +8,13 @@ const Register = () => {
   const { dataRegister } = useSelector((state) => state.auth);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [name, setName] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleRegisterEmail = (e) => {
     e.preventDefault()
-    dispatch(RegisterEmail(email, password));
-    setTimeout(() => {
-      navigate('/profile');
-    }, 1500);
+    dispatch(RegisterEmail(email, password, name));
     alert("Register Success");
     navigate("/login");
   };
@@ -53,6 +51,8 @@ const Register = () => {
               type="text"
               name="aname"
               placeholder="Nama Lengkap"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
             <label htmlFor="email">Email</label>
             <input
