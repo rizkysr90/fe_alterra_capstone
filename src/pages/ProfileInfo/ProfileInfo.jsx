@@ -28,6 +28,7 @@ const ProfileInfo = () => {
   useEffect(() => {
     getUserDetail();
     getCityDetail();
+    //eslint-disable-next-line
   }, []);
 
   return (
