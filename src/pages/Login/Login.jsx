@@ -15,13 +15,14 @@ const Login = () => {
     e.preventDefault()
     dispatch(LoginEmail(email, password));
     setTimeout(() => {
-      navigate('/profile');
+      navigate('/login');
     }, 1500);
   }
 
   useEffect(() => {
-    if (dataLogin?.email === dataLogin) navigate('/profile');
-    if (dataLogin?.email !== dataLogin && dataLogin !== null) navigate('/register');
+    if (dataLogin?.email === dataLogin && dataLogin?.password === dataLogin) navigate('/login');
+    if (dataLogin?.email !== dataLogin && dataLogin?.password !== dataLogin && dataLogin !== null) navigate('/register');
+    console.log(dataLogin);
     //eslint-disable-next-line
   }, []);
 
@@ -37,7 +38,7 @@ const Login = () => {
           </div>
         </div>
         <div className={style.contentTwo}>
-          <form className={style.formLogin}>
+          <form method="post" className={style.formLogin}>
             <img
               className={style.iconForm}
               src="/icons/fi_arrow-left.svg"
