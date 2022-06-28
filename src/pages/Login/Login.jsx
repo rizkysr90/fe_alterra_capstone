@@ -11,16 +11,18 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleLoginEmail = () => {
+  const handleLoginEmail = (e) => {
+    e.preventDefault()
     dispatch(LoginEmail(email, password));
     setTimeout(() => {
-      navigate('/profile');
+      navigate('/login');
     }, 1500);
   }
 
   useEffect(() => {
-    if (dataLogin?.email === dataLogin) navigate('/profile');
-    if (dataLogin?.email !== dataLogin && dataLogin !== null) navigate('/register');
+    if (dataLogin?.email === dataLogin && dataLogin?.password === dataLogin) navigate('/login');
+    if (dataLogin?.email !== dataLogin && dataLogin?.password !== dataLogin && dataLogin !== null) navigate('/register');
+    console.log(dataLogin);
     //eslint-disable-next-line
   }, []);
 
@@ -36,7 +38,7 @@ const Login = () => {
           </div>
         </div>
         <div className={style.contentTwo}>
-          <form className={style.formLogin}>
+          <form method="post" className={style.formLogin}>
             <img
               className={style.iconForm}
               src="/icons/fi_arrow-left.svg"
@@ -68,7 +70,7 @@ const Login = () => {
                 alt="Icon Password"
               /> */}
             </div>
-            <button className={style.btnLogin} onClick={handleLoginEmail}>Masuk</button>
+            <button className={style.btnLogin} onClick={(e) => handleLoginEmail(e)}>Masuk</button>
             <p>
               Belum punya akun?{" "}
               <Link className={style.link} to={"/register"}>
