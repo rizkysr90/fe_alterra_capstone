@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { RegisterEmail } from "../../config/redux/actions/authAction";
 
+
 const Register = () => {
   const { dataRegister } = useSelector((state) => state.auth);
   const [email, setEmail] = useState();
