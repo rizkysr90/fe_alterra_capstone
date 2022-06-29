@@ -1,20 +1,8 @@
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./SellerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
-import { watchsAction } from "../../config/redux/actions/watchAction";
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from "react";
 
 const SellerProduct = () => {
-  const dispatch = useDispatch();
-
-  const {watchs} = useSelector((state) => state.watchReducer);
-  console.log(watchs);
-
-  useEffect(() => {
-    dispatch(watchsAction())
-  }, [dispatch])
-
   return (
     <>
       <Navbar />
