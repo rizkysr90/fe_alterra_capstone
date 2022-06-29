@@ -1,9 +1,9 @@
 @media only screen and (max-width: 600px) {
   .logo {
-    display: none !important;
+    display: none;
   }
   .logo .logoTitle {
-    display: none !important;
+    display: none;
   }
 }
 
