@@ -9,7 +9,7 @@ const SellerProduct = () => {
       <Carousel className={style.use}>
         <Carousel.Item>
           <img
-            className=""
+            className="" 
             src="/images/watch.png"
             alt="First slide"
           />
