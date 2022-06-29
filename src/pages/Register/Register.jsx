@@ -1,7 +1,32 @@
 import style from "./Register.module.css";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { RegisterEmail } from "../../config/redux/actions/authAction";
+
 
 const Register = () => {
+  const { dataRegister } = useSelector((state) => state.auth);
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [name, setName] = useState();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleRegisterEmail = (e) => {
+    e.preventDefault()
+    dispatch(RegisterEmail(email, password, name));
+    alert("Register Success");
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    if (dataRegister?.email === dataRegister && dataRegister?.password === dataRegister) navigate('/login');
+    if (dataRegister?.email !== dataRegister && dataRegister?.password !== dataRegister && dataRegister !== null) navigate('/register');
+    console.log(dataRegister);
+    //eslint-disable-next-line
+  }, []);
+
   return (
     <>
       <div className={style.container}>
@@ -27,6 +52,8 @@ const Register = () => {
               type="text"
               name="aname"
               placeholder="Nama Lengkap"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
             <label htmlFor="email">Email</label>
             <input
@@ -34,6 +61,8 @@ const Register = () => {
               type="email"
               name="email"
               placeholder="Contoh: johndee@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <label htmlFor="password">Password</label>
             <div className={style.inputGroup}>
@@ -42,6 +71,8 @@ const Register = () => {
                 type="password"
                 name="password"
                 placeholder="Masukkan password"
+                value={password}
+              onChange={(e) => setPassword(e.target.value)}
               />
               {/* <img
                 className={style.iconInput}
@@ -49,7 +80,7 @@ const Register = () => {
                 alt="Icon Password"
               /> */}
             </div>
-            <button className={style.btnRegister}>Daftar</button>
+            <button className={style.btnRegister} onClick={(e) => handleRegisterEmail(e)}>Daftar</button>
             <p>
               Sudah punya akun?{" "}
               <Link className={style.link} to={"/login"}>
