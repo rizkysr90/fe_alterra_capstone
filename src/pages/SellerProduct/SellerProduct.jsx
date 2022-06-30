@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { sellerAction } from "../../config/redux/actions/sellerAction";
 
-
 const SellerProduct = () => {
   const { dataProductSeller } = useSelector((state) => state.sellerReducer);
   console.log(dataProductSeller)
@@ -36,7 +35,7 @@ const SellerProduct = () => {
       <Carousel className={style.use}>
         <Carousel.Item>
           <img
-            className=""
+            className="" 
             src="/images/watch.png"
             alt="First slide"
           />
