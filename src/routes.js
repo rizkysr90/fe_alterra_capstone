@@ -19,7 +19,7 @@ const RouteApp = () => {
                 <Route path='/profile' element={<ProfileInfo />} />
                 <Route path='/product-info' element={<ProductInfo />} />
                 <Route path='/seller-product' element={<SellerProduct />} />
-                <Route path='/buyer-product' element={<BuyerProduct />} />
+                <Route path='/buyer-product/:idProductBuyer' element={<BuyerProduct />} />
                 <Route path='/daftar-jual' element={<DaftarJual />} />
                 <Route path='/info-penawar' element={<InfoPenawar />} />
             </Routes>

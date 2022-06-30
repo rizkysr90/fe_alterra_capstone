@@ -9,7 +9,7 @@ const NavbarAfterLogin = () => {
                 <Logo />
                 <div className={style.inputContainer}>
                     <input type="search" placeholder="Cari di sini ..." />
-                    <img src="icons/fi_search.svg" alt="search" />
+                    <img src="/icons/fi_search.svg" alt="search" />
                 </div>
             </div>
             <div className={style.rightNavbar}>

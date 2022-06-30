@@ -1,10 +1,26 @@
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./BuyerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
-
-
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BuyerProduct = () => {
+  const { idProductBuyer } = useParams();
+  const { dataProductBuyer } = useSelector((globalStore) => globalStore.buyerReducer);
+  const rupiah = (number) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR"
+    }).format(number);
+  }
+  let i = -1;
+  for(let j = 0; j < dataProductBuyer.length; j++) {
+    //eslint-disable-next-line
+    if(dataProductBuyer[j].id == idProductBuyer) {
+      i = j;
+    }
+  }
+
   return (
     <>
       <Navbar />
@@ -13,37 +29,23 @@ const BuyerProduct = () => {
         <Carousel.Item>
           <img
             className=""
-            src="/images/watch.png"
+            src={dataProductBuyer[i].Product_images[0].url_image}
             alt="First slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
             className=""
-            src="/images/watch.png"
+            src={dataProductBuyer[i].Product_images[1].url_image}
             alt="Second slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block"
-            src="/images/watch.png"
-            alt="Third slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block"
-            src="/images/watch.png"
-            alt="Four slide"
           />
         </Carousel.Item>
       </Carousel>
       
       <div className={style.card}>
-        <h5 className={style.tha}>Jam Tangan Casio</h5>
-        <p className={style.tri}>Aksesoris</p>
-        <h5 className={style.pro}>Rp 250.000</h5>
+        <h5 className={style.tha}>{dataProductBuyer[i].name}</h5>
+        <p className={style.tri}>{dataProductBuyer[i].Category.name}</p>
+        <h5 className={style.pro}>{`${rupiah(dataProductBuyer[i].price)}`}</h5>
         <button className={style.sob}>Saya tertarik dan ingin nego</button>
       </div>
 
@@ -51,17 +53,16 @@ const BuyerProduct = () => {
         <div className={style.par}>
           <img src="/images/profilPenjual.png" alt="Foto Penjual" />
           <div className={style.tup}>
-            <h5 className={style.dea}>Nama Penjual</h5>
+            <h5 className={style.dea}>{dataProductBuyer[i].User.name}</h5>
             <p className={style.sun}>Kota</p>
           </div>
         </div>
       </div>
 
       <div className={style.cardContainer}>
-        <h5 className={style.kri}>Deskripsi</h5>
-        <div className={style.ips}>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <h5 className={style.titleCard}>Deskripsi</h5>
+        <div className={style.descCard}>
+          <p>{dataProductBuyer[i].description}</p>
         </div>
       </div>
     </>
