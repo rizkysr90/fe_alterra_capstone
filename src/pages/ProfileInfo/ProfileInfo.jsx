@@ -5,11 +5,16 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
+import AsyncSelect from "react-select/async";
+
 
 const ProfileInfo = () => {
   const { dataLogin } = useSelector((state) => state.auth);
 
   const [dataUser, setDataUser] = useState({});
+  const [city, setCity] = useState({});
+  const [inputValue, setValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState(null);
 
   const getUserDetail = async () => {
     const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`, {
@@ -19,15 +24,32 @@ const ProfileInfo = () => {
   };
 
   const getCityDetail = async () => {
-    const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/cities`, {
+    const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/cities/search?name=${inputValue}`, {
       headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` }
     });
-    console.log(data);
-  }
+    let newArray = [];
+    data.data.forEach(element => {
+      let obj = {
+        value: element.id,
+        label: element.name
+      };
+      newArray.push(obj);
+    });
+    setCity(newArray);
+    console.log(inputValue);
+    return(city);
+  };
+
+  const handleInputChange = (value) => {
+    setValue(value);
+  };
+
+  const handleChange = (value) => {
+    setSelectedValue(value);
+  };
 
   useEffect(() => {
     getUserDetail();
-    getCityDetail();
     //eslint-disable-next-line
   }, []);
 
@@ -67,13 +89,16 @@ const ProfileInfo = () => {
             </div>
             <div className={style.inputForm}>
               <label htmlFor="namaKota">Kota*</label>
-              <select defaultValue="0" className={style.inputBox}>
-                <option value="0" disabled>
-                  Pilih Kota
-                </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
+              <AsyncSelect
+                defaultOptions  
+                className={style.inputBox}
+                getOptionLabel={(e) => e.name}
+                getOptionValue={(e) => e.id}
+                loadOptions={getCityDetail}
+                onInputChange={handleInputChange}
+                onChange={handleChange}
+                value={selectedValue}
+              />
             </div>
             <div className={style.inputForm}>
               <label htmlFor="namaAlamat">Alamat*</label>
