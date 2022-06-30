@@ -27,7 +27,7 @@ const CardMedium = () => {
     <>
       {dataProductSeller?.map((products) => (
         <div key={products.id} className={style.cardContainer}>
-          <img src={products.Category.image} alt="card" />
+          <img src={products.Product_images[0].url_image} alt="card" />
           <div className={style.cardDesc}>
             <h5>{`${products.name.slice(0, 15)}...`}</h5>
             <p>{products.Category.name}</p>
