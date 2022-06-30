@@ -8,8 +8,6 @@ import { useEffect } from "react";
 
 const DaftarJual = () => {
   useEffect(() => {
-    document.getElementsByClassName(CardCategoryStyle.card)[0].style.marginTop =
-      "24px";
     document.getElementsByClassName(CardCategoryStyle.pText)[0].style.cssText =
       "color: #7126B5; font-weight: 500";
     document.getElementsByClassName(CardCategoryStyle.iconBox)[0].style.stroke =
@@ -68,9 +66,6 @@ const DaftarJual = () => {
                 alt="Box Tambah Gambar"
               />
             </label>
-            <CardMedium />
-            <CardMedium />
-            <CardMedium />
             <CardMedium />
           </div>
         </div>
