@@ -27,17 +27,9 @@ const ProfileInfo = () => {
     const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/cities/search?name=${inputValue}`, {
       headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` }
     });
-    let newArray = [];
-    data.data.forEach(element => {
-      let obj = {
-        value: element.id,
-        label: element.name
-      };
-      newArray.push(obj);
-    });
-    setCity(newArray);
-    console.log(inputValue);
-    return(city);
+    //eslint-disable-next-line
+    setCity((prevValue) => data.data);
+    return(data.data);
   };
 
   const handleInputChange = (value) => {
