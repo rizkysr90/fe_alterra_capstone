@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const RegisterEmail = (email, password, name) => {
-    let register = { email, password, name}
+    let register = {email, password, name}
     return (dispatch) => {
         axios.post('https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/register', register)
         .then((result) => {

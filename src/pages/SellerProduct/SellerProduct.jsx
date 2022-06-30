@@ -1,11 +1,38 @@
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./SellerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { sellerAction } from "../../config/redux/actions/sellerAction";
+
 
 const SellerProduct = () => {
+  const { dataProductSeller } = useSelector((state) => state.sellerReducer);
+  console.log(dataProductSeller)
+
+  const dispatch = useDispatch()
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJVY2hpaGEgSXRhY2hpIiwiaWF0IjoxNjU2NTc2MTAwLCJleHAiOjE2NTY2NjI1MDB9.RUVUhz1zZfeF-EcAvIaL4ZLiEQjToDa_WXGAYFnoI60"
+
+  
+
+  // const getSellerProduct = async () => {
+  //   const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts?page=1`, {
+  //     headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJVY2hpaGEgSXRhY2hpIiwiaWF0IjoxNjU2NTc0MDk4LCJleHAiOjE2NTY2NjA0OTh9.ZqNAghNmX5F6q9lYGVeWo9WpiG3uOly92FTu6iLfBdQ` }
+  //   })
+  //   console.log(data);
+  // };
+
+  useEffect(() => {
+    // getSellerProduct()
+    dispatch(sellerAction(token))
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <>
       <Navbar />
+      {dataProductSeller.map((seller) =>
+       <div key={seller.id}>
       <Carousel className={style.use}>
         <Carousel.Item>
           <img
@@ -38,22 +65,23 @@ const SellerProduct = () => {
       </Carousel> 
 
       
-      <div className={style.card}  >
-        <h5 className={style.tha}>Jam Tangan Casio  </h5>
-        <p className={style.tri}>Aksesoris</p>
-        <h5 className={style.pro}>Rp 250.000</h5>
-        <button className={style.sob}>Terbitkan</button>
-        <button className={style.man}>Edit</button>
+
+      <div className={style.card} >
+            <h5 className={style.tha}>{seller.name}</h5>
+            <p className={style.tri}>{seller.Category.name}</p>
+            <h5 className={style.pro}>Rp {seller.price}</h5>
+            <button className={style.sob}>Terbitkan</button>
+            <button className={style.man}>Edit</button>
       </div>
       
-      
+       
 
       <div className={style.cardPenjual}>
         <div className={style.par}>
           <img src="/images/profilPenjual.png" alt="Foto Penjual" />
           <div className={style.tup}>
-            <h5 className={style.dea}>Nama Penjual</h5>
-            <p className={style.sun}>Kota</p>
+            <h5 className={style.dea}>{seller.User.name}</h5>
+            <p className={style.sun}>{seller.User.address}</p>
           </div>
         </div>
       </div>
@@ -61,10 +89,11 @@ const SellerProduct = () => {
       <div className={style.cardContainer}>
         <h5 className={style.kri}>Deskripsi</h5>
         <div className={style.ips}>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>{seller.description}</p>
         </div>
       </div>
+      </div>
+      )}
     </>
   )
 }
