@@ -36,7 +36,7 @@ const Card = () => {
           <img src={products.Category.image} alt="card" />
           <div className={style.cardDesc}>
             <h5>{`${(products.name).slice(0, 15)}...`}</h5>
-            <p>Aksesoris</p>
+            <p>{products.Category.name}</p>
             <h5>{`${rupiah(products.price)}`}</h5>
           </div>
         </div>

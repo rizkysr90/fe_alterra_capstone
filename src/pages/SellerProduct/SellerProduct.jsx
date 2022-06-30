@@ -30,7 +30,7 @@ const SellerProduct = () => {
   return (
     <>
       <Navbar />
-      {dataProductSeller.map((seller) =>
+      {dataProductSeller?.map((seller) =>
        <div key={seller.id}>
       <Carousel className={style.use}>
         <Carousel.Item>
