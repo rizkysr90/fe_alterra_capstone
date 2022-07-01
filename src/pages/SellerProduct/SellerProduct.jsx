@@ -1,18 +1,36 @@
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./SellerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { sellerAction } from "../../config/redux/actions/sellerAction";
+import { useParams } from "react-router-dom";
+// import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+// import { sellerAction } from "../../config/redux/actions/sellerAction";
 
 const SellerProduct = () => {
+  const { idProductSeller } = useParams();
   const { dataProductSeller } = useSelector((state) => state.sellerReducer);
   console.log(dataProductSeller)
 
-  const dispatch = useDispatch()
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJVY2hpaGEgSXRhY2hpIiwiaWF0IjoxNjU2NTc2MTAwLCJleHAiOjE2NTY2NjI1MDB9.RUVUhz1zZfeF-EcAvIaL4ZLiEQjToDa_WXGAYFnoI60"
+  let i = -1;
+  for(let j = 0; j < dataProductSeller.length; j++) {
+    //eslint-disable-next-line
+    if(dataProductSeller[j].id == idProductSeller) {
+      i = j;
+    }
+  }
 
-  
+  const rupiah = (number) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR"
+    }).format(number);
+  }
+
+  // const { dataLogin } = useSelector((state) => state.auth);
+
+  // const dispatch = useDispatch()
+
+  // const token = `${dataLogin.dataLogin.token}`
 
   // const getSellerProduct = async () => {
   //   const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts?page=1`, {
@@ -21,66 +39,49 @@ const SellerProduct = () => {
   //   console.log(data);
   // };
 
-  useEffect(() => {
-    // getSellerProduct()
-    dispatch(sellerAction(token))
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   // getSellerProduct()
+  //   dispatch(sellerAction(token))
+  //   // eslint-disable-next-line
+  // }, []);
 
   return (
     <>
       <Navbar />
-      {dataProductSeller?.map((seller) =>
-       <div key={seller.id}>
+      
       <Carousel className={style.use}>
         <Carousel.Item>
           <img
             className="" 
-            src="/images/watch.png"
+            src={dataProductSeller[i].Product_images[0].url_image}
             alt="First slide"
           />
-        </Carousel.Item>
+        </Carousel.Item> 
         <Carousel.Item>
           <img
             className=""
-            src="/images/watch.png"
+            src={dataProductSeller[i].Product_images[1].url_image}
             alt="Second slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block"
-            src="/images/watch.png"
-            alt="Third slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block"
-            src="/images/watch.png"
-            alt="Four slide"
           />
         </Carousel.Item>
       </Carousel> 
 
-      
-
-      <div className={style.card} >
-            <h5 className={style.tha}>{seller.name}</h5>
-            <p className={style.tri}>{seller.Category.name}</p>
-            <h5 className={style.pro}>Rp {seller.price}</h5>
-            <button className={style.sob}>Terbitkan</button>
-            <button className={style.man}>Edit</button>
+      <div className={style.card}>
+        <h5 className={style.tha}>{dataProductSeller[i].name}</h5>
+        <p className={style.tri}>{dataProductSeller[i].Category.name}</p>
+        <h5 className={style.pro}>{`${rupiah(dataProductSeller[i].price)}`}</h5>
+        <button className={style.sob}>Terbitkan</button>
+        <button className={style.man}>Edit</button>
       </div>
       
        
 
       <div className={style.cardPenjual}>
         <div className={style.par}>
-          <img src="/images/profilPenjual.png" alt="Foto Penjual" />
+          <img src={dataProductSeller[i].User.profile_picture} alt="Foto Penjual" />
           <div className={style.tup}>
-            <h5 className={style.dea}>{seller.User.name}</h5>
-            <p className={style.sun}>{seller.User.address}</p>
+            <h5 className={style.dea}>{dataProductSeller[i].User.name}</h5>
+            <p className={style.sun}>{dataProductSeller[i].User.address}</p>
           </div>
         </div>
       </div>
@@ -88,11 +89,9 @@ const SellerProduct = () => {
       <div className={style.cardContainer}>
         <h5 className={style.kri}>Deskripsi</h5>
         <div className={style.ips}>
-          <p>{seller.description}</p>
+          <p>{dataProductSeller[i].description}</p>
         </div>
       </div>
-      </div>
-      )}
     </>
   )
 }
