@@ -1,14 +1,32 @@
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100% !important;
+  }
   .content:first-child {
+    display: inline-flex;
     position: absolute !important;
     top: -25px !important;
-    left: -120px !important; 
+    left: -120px !important;
+  }
+
+  .content .titleRes {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    margin-left: 56px;
+    margin-top: 2px;
+    display: block !important;
+  }
+
+  .content:last-child {
+    margin-top: 70px !important;
+    margin-left: 70px !important;
   }
 
   .inputForm:first-child {
     margin-top: -6px;
   }
-  
+
   .inputForm {
     margin-left: -46px;
   }
@@ -30,7 +48,6 @@
   }
 }
 
-
 .container {
   display: flex;
   flex-direction: row;
@@ -46,6 +63,10 @@
 .container .content:last-child {
   margin-left: 76px;
   margin-top: 40px;
+}
+
+.container .titleRes {
+  display: none;
 }
 
 .container .content .inputForm {
@@ -136,7 +157,7 @@
 }
 
 .container .content .btn {
-    margin-bottom: 258px;
+  margin-bottom: 258px;
 }
 
 .container .content .btn .btnForm {
