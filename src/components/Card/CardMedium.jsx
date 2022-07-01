@@ -8,8 +8,8 @@ const CardMedium = () => {
   console.log(dataProductSeller);
 
   const dispatch = useDispatch();
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJVY2hpaGEgSXRhY2hpIiwiaWF0IjoxNjU2NTc2MTAwLCJleHAiOjE2NTY2NjI1MDB9.RUVUhz1zZfeF-EcAvIaL4ZLiEQjToDa_WXGAYFnoI60";
+  const { dataLogin } = useSelector((state) => state.auth);
+  const token = `${dataLogin.dataLogin.token}`
 
   const rupiah = (number) => {
     return new Intl.NumberFormat("id-ID", {

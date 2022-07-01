@@ -4,7 +4,7 @@ const initialState = {
 
 const sellerReducer = (state = initialState, action) => {
     switch(action.type){
-        case "SET_DATAPRODUCT_SELLER":
+        case "SET_PRODUCT_SELLER":
             return {
                 ...state,
                 dataProductSeller: action.payload
