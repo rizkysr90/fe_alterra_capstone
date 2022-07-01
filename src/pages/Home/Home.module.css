@@ -1,278 +1,272 @@
 .homeContainer {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
 .heroContainer {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	width: 100%;
-	margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 32px;
 }
 
 .leftBox {
-	width: 230px;
-	height: 224px;
-
-	background: #b6d4a8;
-	border-radius: 20px;
-	border-bottom-left-radius: 0px;
-	border-top-left-radius: 0px;
+  width: 230px;
+  height: 224px;
+  background: #b6d4a8;
+  border-radius: 20px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
 }
 
 .rightBox {
-	width: 230px;
-	height: 224px;
-
-	background: #e2d4f0;
-	border-radius: 20px;
-	border-top-right-radius: 0px;
-	border-bottom-right-radius: 0px;
+  width: 230px;
+  height: 224px;
+  background: #e2d4f0;
+  border-radius: 20px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 .middleBox {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-wrap: nowrap;
-
-	position: relative;
-
-	width: 968px;
-	height: 288px;
-
-	background: #ffe9ca;
-	border-radius: 20px;
-
-	margin: 0px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  position: relative;
+  width: 968px;
+  height: 288px;
+  background: #ffe9ca;
+  border-radius: 20px;
+  margin: 0px 16px;
 }
 
 .giftImage {
-	position: absolute;
-	z-index: 3;
-	right: 357px;
+  position: absolute;
+  z-index: 3;
+  right: 357px;
 }
 
 .heroDesc {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-
-	width: 323px;
-	height: 188px;
-	margin-left: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 323px;
+  height: 188px;
+  margin-left: 80px;
 }
 
 .heroDesc h1 {
-	font-style: normal;
-	font-weight: 700;
-	font-size: 36px;
-	line-height: 54px;
-
-	color: #151515;
-	margin: 0;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 54px;
+  color: #151515;
+  margin: 0;
 }
 
 .heroDesc h5 {
-	font-style: normal;
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 20px;
-
-	color: #151515;
-	margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #151515;
+  margin: 0;
 }
 
 .heroDesc h3 {
-	font-style: normal;
-	font-weight: 500;
-	font-size: 32px;
-	line-height: 36px;
-
-	color: #fa2c5a;
-	margin: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 36px;
+  color: #fa2c5a;
+  margin: 0;
 }
 
 .categoryContainer {
-	display: flex;
-	flex-direction: column;
-
-	width: 80%;
-	height: 88px;
-	margin: 24px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 88px;
+  margin: 24px 0px;
 }
 
 .categoryContainer h2 {
-	font-style: normal;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 24px;
-
-	color: #000000;
-	margin: 16px 0px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+  margin: 16px 0px;
 }
 
 .cardContainer {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: flex-start;
-
-	width: 80%;
-
-	margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 80%;
+  margin-top: 32px;
 }
 
 .categoryButtonContainer {
-	display: inline-flex;
-	align-items: center;
+  display: inline-flex;
+  align-items: center;
 }
 
 .categoryButtonContainer .btnCategory {
-	display: flex;
-	align-items: center;
-
-	background: #e2d4f0;
-	border: 1px solid #e2d4f0;
-	border-radius: 12px;
-	margin-left: 16px;
-	padding: 14px 24px;
-	color: #3c3c3c;
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 20px;
+  display: flex;
+  align-items: center;
+  background: #e2d4f0;
+  border: 1px solid #e2d4f0;
+  border-radius: 12px;
+  margin-left: 16px;
+  padding: 14px 24px;
+  color: #3c3c3c;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .btnCategory:nth-child(1) {
-	margin-left: 0;
-	background: #7126b5;
-	color: #ffffff;
+  margin-left: 0;
+  background: #7126b5;
+  color: #ffffff;
 }
 
 .categoryButtonContainer .btnCategory img {
-	margin-right: 8px;
-	display: inline-flex;
+  margin-right: 8px;
+  display: inline-flex;
 }
 
 .backgroundImageContainer {
-	position: relative;
+  position: relative;
 }
 
 .background {
-	position: absolute;
-	background: linear-gradient(90deg, #ffe9ca 0%, rgba(255, 233, 202, 0) 100%);
-	z-index: 2;
-	left: 0;
-	top: 0;
-	height: 288px;
-	width: 100%;
+  position: absolute;
+  background: linear-gradient(90deg, #ffe9ca 0%, rgba(255, 233, 202, 0) 100%);
+  z-index: 2;
+  left: 0;
+  top: 0;
+  height: 288px;
+  width: 100%;
 }
 
 .buttonJualContainer {
-	position: absolute;
-	bottom: 28px;
-	left: auto;
-	right: auto;
-	position: sticky;
+  position: absolute;
+  bottom: 28px;
+  left: auto;
+  right: auto;
+  position: sticky;
 }
 
 .buttonJualContainer .buttonJual {
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-
-	width: 115px;
-	height: 52px;
-
-	background: #7126b5;
-
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-	border-radius: 12px;
-	border: none;
-
-	font-family: "Poppins";
-	font-style: normal;
-	font-weight: 500;
-	font-size: 14px;
-	line-height: 20px;
-
-	color: #ffffff;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 115px;
+  height: 52px;
+  background: #7126b5;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  border: none;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
 }
 
 .heroContainerMobile {
-	display: none;
+  display: none;
 }
 
 @media only screen and (max-width: 600px) {
-	.homeContainer nav {
-		display: none;
-	}
+  .homeContainer nav {
+    display: none;
+  }
 
-	.heroContainer {
-		display: none;
-	}
+  .heroContainer {
+    display: none;
+  }
 
-	.heroContainerMobile {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+  .heroContainerMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 32px 16px;
+    background: linear-gradient(
+      180deg,
+      #ffe9c9 59.55%,
+      rgba(255, 233, 202, 0) 100%
+    );
+  }
 
-		width: 100%;
+  .heroContainerMobile .heroDescMobile h1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    width: 180px;
+    height: 60px;
+    color: #151515;
+  }
 
-		padding: 32px 16px;
+  .heroContainerMobile .heroDescMobile h5 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
 
-		background: linear-gradient(
-			180deg,
-			#ffe9c9 59.55%,
-			rgba(255, 233, 202, 0) 100%
-		);
-	}
+    color: #151515;
+  }
 
-	.heroContainerMobile .heroDescMobile h1 {
-		font-style: normal;
-		font-weight: 700;
-		font-size: 20px;
-		line-height: 30px;
+  .heroContainerMobile .heroDescMobile h3 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
 
-		width: 180px;
-		height: 60px;
+    color: #fa2c5a;
+  }
 
-		color: #151515;
-	}
+  .heroContainerMobile .heroDescMobile .giftImageMobile {
+    width: 127px;
+    height: 123px;
+  }
 
-	.heroContainerMobile .heroDescMobile h5 {
-		font-style: normal;
-		font-weight: 400;
-		font-size: 10px;
-		line-height: 14px;
+  .categoryContainer {
+    margin: 0;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 
-		color: #151515;
-	}
+  .categoryContainer h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #151515;
+    margin-top: 0;
+  }
 
-	.heroContainerMobile .heroDescMobile h3 {
-		font-weight: 500;
-		font-size: 18px;
-		line-height: 26px;
+  .categoryButtonContainer {
+    overflow: scroll;
+    height: 70px;
+  }
 
-		color: #fa2c5a;
-	}
+  .categoryButtonContainer::-webkit-scrollbar {
+    display: none;
+  }
 
-	.heroContainerMobile .heroDescMobile .giftImageMobile {
-		width: 127px;
-		height: 123px;
-	}
-
-	.categoryContainer h2 {
-		font-style: normal;
-		font-weight: 500;
-		font-size: 14px;
-		line-height: 20px;
-
-		color: #151515;
-	}
+  .cardContainer {
+    width: 100%;
+    padding-left: 16px;
+  }
 }
