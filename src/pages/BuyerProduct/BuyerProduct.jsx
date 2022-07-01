@@ -51,10 +51,10 @@ const BuyerProduct = () => {
 
       <div className={style.cardPenjual}>
         <div className={style.par}>
-          <img src="/images/profilPenjual.png" alt="Foto Penjual" />
+          <img src={dataProductBuyer[i].User.profile_picture} alt="Foto Penjual" />
           <div className={style.tup}>
             <h5 className={style.dea}>{dataProductBuyer[i].User.name}</h5>
-            <p className={style.sun}>Kota</p>
+            <p className={style.sun}>{dataProductBuyer[i].User.address}</p>
           </div>
         </div>
       </div>

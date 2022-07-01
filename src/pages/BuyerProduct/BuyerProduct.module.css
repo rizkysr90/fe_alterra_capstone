@@ -6,8 +6,14 @@
         top: 0px !important;
     }
 
+    .use img {
+        width: 360px !important;
+        height: 300px !important;
+        border-radius: inherit !important;
+    }
+
     .card {
-        top: 400px !important;
+        top: 265px !important;
         left: 16px !important;
         width: 328px !important;
         height: 98px !important;
@@ -22,13 +28,13 @@
     }
 
     .cardPenjual {
-        margin-top: 520px !important;
+        margin-top: 380px !important;
         margin-left: 16px !important;
         width: 328px !important;
     }
 
     .cardContainer {
-        top: 623px !important;
+        top: 478px !important;
         left: 16px !important;
         width: 328px !important;
         height: 560px !important;
@@ -176,6 +182,12 @@
     height: 48px;
 }
 
+.par img {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+}
+
 .tup {
     display: flex;
     flex-direction: column;
@@ -218,4 +230,10 @@
     height: 436px;
     top: 124px;
     left: 236px;
+}
+
+.use img {
+    width: 600px;
+    height: 436px;
+    border-radius: 16px;
 }
