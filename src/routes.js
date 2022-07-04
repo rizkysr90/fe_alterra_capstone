@@ -8,7 +8,6 @@ import SellerProduct from './pages/SellerProduct/SellerProduct';
 import BuyerProduct from './pages/BuyerProduct/BuyerProduct';
 import DaftarJual from './pages/DaftarJual/DaftarJual';
 import InfoPenawar from './pages/InfoPenawar/InfoPenawar';
-import Category from './components/Category/Category';
 import SearchResult from './pages/SearchResult/SearchResult';
 
 const RouteApp = () => {
