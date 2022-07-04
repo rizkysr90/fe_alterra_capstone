@@ -1,0 +1,74 @@
+// import CardMedium from "../Card/CardMedium";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { buyerAction } from "../../config/redux/actions/buyerAction";
+import style from "./Category.module.css";
+
+const Category = () => {
+  const { dataProductBuyer } = useSelector(
+    (globalStore) => globalStore.buyerReducer
+  );
+  console.log(dataProductBuyer);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(buyerAction());
+    //eslint-disable-next-line
+  }, []);
+
+  const rupiah = (number) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(number);
+  };
+  return (
+    <>
+      <div className={style.categoryContainer}>
+        <h2>Telusuri Kategori</h2>
+        <div className={style.categoryButtonContainer}>
+          <button className={style.btnCategory}>
+            <img src="/icons/fi_search_white.svg" alt="search" />
+            Semua
+          </button>
+          <button className={style.btnCategory}>
+            <img src="/icons/fi_search_black.svg" alt="search" />
+            Hobi
+          </button>
+          <button onClick={() => dataProductBuyer.Category.name.filter('kendaraan')} className={style.btnCategory}>
+            <img src="/icons/fi_search_black.svg" alt="search" />
+            Kendaraan
+          </button>
+          <button className={style.btnCategory}>
+            <img src="/icons/fi_search_black.svg" alt="search" />
+            Baju
+          </button>
+          <button className={style.btnCategory}>
+            <img src="/icons/fi_search_black.svg" alt="search" />
+            Elektronik
+          </button>
+          <button className={style.btnCategory}>
+            <img src="/icons/fi_search_black.svg" alt="search" />
+            Kesehatan
+          </button>
+        </div>
+      </div>
+      {dataProductBuyer?.map((products) => (
+        <div key={products.id} className={style.cardContainer}>
+          <Link to={`/buyer-product/${products.id}`}>
+            <img src={products.Product_images[0].url_image} alt="card" />
+          </Link>
+          <div className={style.cardDesc}>
+            <h5>{`${products.name.slice(0, 15)}...`}</h5>
+            <p>{products.Category.name}</p>
+            <h5>{`${rupiah(products.price)}`}</h5>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+};
+
+export default Category;

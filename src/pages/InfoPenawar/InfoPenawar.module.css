@@ -1,182 +1,158 @@
-.infoPenawarPageContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@media only screen and (max-width: 600px) {
+  .container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .container .content {
+    width: 328px !important;
+    margin: auto !important;
+  }
+
+  .container .content hr {
+    display: none !important;
+  }
+
+  .container .content:first-child {
+    margin-top: 14px !important;
+    margin-bottom: 30px !important;
+    display: inline-flex !important;
+  }
+
+  .container .content .titleRes {
+    display: block !important;
+  }
+
+  .container .content .cardPenawar {
+    width: 328px !important;
+  }
+
+  .container .content .cardProduct {
+    width: 328px !important;
+  }
+
+  .container .content .cardProduct .cardContent:nth-child(2) {
+    width: 195px !important;
+  }
+
+  .container .content .btnContainer {
+    display: inline-flex !important;
+    margin-left: 0 !important;
+  }
+
+  .container .content .btnContainer .btn:first-child {
+    margin-left: 0 !important;
+  }
 }
 
-.penawarPageContainer {
-    display: flex;
-    align-items: flex-start;
-
-    margin-top: 40px;
+.container {
+  width: 986px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
 }
 
-.leftArrow {
-    margin-right: 76px;
+.container h1 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
 }
 
-.infoPenawarContainer {
-    display: flex;
-    flex-direction: column;
+.container p {
+  color: #8a8a8a;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
 }
 
-.cardPenawar {
-    display: flex;
-    align-items: center;
-    padding: 16px;
-
-    width: 568px;
-    height: 80px;
-
-    background: #FFFFFF;
-
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 16px;    
+.container .content:first-child {
+  margin-left: 150px;
+  margin-top: 40px;
 }
 
-.cardPenawar img {
-    width: 48px;
-    height: 48px;    
+.container .content .titleRes {
+    margin: auto;
+    display: none;
 }
 
-.detailProfil {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    width: 472px;
-    height: 38px;
-    margin-left: 16px;
+.container .content:last-child {
+  margin-left: 76px;
+  margin-top: 40px;
 }
 
-.detailProfil h2 {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    margin: 0px;
+.container .content .cardPenawar {
+  display: inline-flex;
+  padding: 16px;
+  width: 568px;
+  height: 80px;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
 }
 
-.detailProfil p {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 14px;
-
-    color: #8A8A8A;
-    margin: 0px;
+.container .content .cardPenawar .cardContent:last-child {
+  margin-left: 16px;
 }
 
-.infoPenawarContainer h3 {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-
-    color: #000000;
-    margin-top: 24px;    
+.container .content .cardPenawar .cardContent .imgProfile {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
 }
 
-.itemCard {
-    display: flex;
-    flex-direction: column;
-
-    width: 568px;
-    height: 155px;
-    
-    border-bottom: 1px solid #E5E5E5;
+.container .content .cardPenawar .cardContent h1 {
+  margin-bottom: 4px;
+  margin-top: 4px;
 }
 
-.topCard img {
-    width: 48px;
-    height: 48px;
+.container .content .titleContent {
+  margin-top: 24px;
 }
 
-.topCard {
-    display: flex;
+.container .content .cardProduct {
+  display: inline-flex;
 }
 
-.topCard p {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 14px;
-
-    color: #8A8A8A;
-
-    margin: 0px 0px 2px 0px;
+.container .content .cardProduct p {
+  margin-bottom: 4px;
 }
 
-.itemDesc {
-    display: flex;
-    justify-content: space-between;
-
-    width: 100%;
-    margin-left: 16px;
+.container .content .cardProduct h2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
 }
 
-.itemDetail {
-    display: flex;
-    flex-direction: column;
+.container .content .cardProduct .cardContent:nth-child(2) {
+  width: 435px;
+  margin-left: 16px;
 }
 
-.itemDetail h5 {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-
-    color: #000000;
-
-    margin: 2px 0px;
+.container .content .cardProduct .cardContent .imgProfile {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
 }
 
-.bottomCard {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    width: 100%;
-    margin-top: 14px;
+.container .content .btnContainer {
+  margin-top: 16px;
+  margin-left: 220px;
 }
 
-.bottomCard .buttonTolak {
-    width: 158px;
-    height: 36px;
-
-    background: #FFFFFF;
-
-    border: 1px solid #7126B5;
-    border-radius: 16px;
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
- 
-    color: #151515;
-    margin-right: 16px;
+.container .content .btnContainer .btn {
+  margin-left: 16px;
+  width: 158px;
+  height: 36px;
+  background: #7126b5;
+  border: 1px solid #7126b5;
+  border-radius: 16px;
+  color: #ffffff;
 }
 
-.bottomCard .buttonTerima {
-    width: 158px;
-    height: 36px;
-
-    background: #7126B5;
-    border-radius: 16px;
-    border: none;
-
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-
-    color: #FFFFFF;
+.container .content .btnContainer .btn:first-child {
+  color: #3a1313;
+  font-weight: 500;
+  background: #ffffff;
 }
