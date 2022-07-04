@@ -24,7 +24,6 @@ const RouteApp = () => {
                 <Route path='/buyer-product/:idProductBuyer' element={<BuyerProduct />} />
                 <Route path='/daftar-jual' element={<DaftarJual />} />
                 <Route path='/info-penawar' element={<InfoPenawar />} />
-                <Route path='/category' element={<Category />} />
                 <Route path='/search/:searchResult' element={<SearchResult />} />
             </Routes>
         </BrowserRouter>

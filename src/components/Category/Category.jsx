@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { buyerAction } from "../../config/redux/actions/buyerAction";
 import style from "./Category.module.css";
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 const Category = () => {
   const [category, setCategory] = useState([]);
@@ -18,12 +18,16 @@ const Category = () => {
   const dispatch = useDispatch();
 
   const getCategory = async () => {
-    const { data } = await axios.get("https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/categories?page=1");
+    const { data } = await axios.get(
+      "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/categories?page=1"
+    );
     setCategory(data.data);
   };
 
   const getProductByCategory = async (idCategory) => {
-    const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products?page=1&row=12&category=${idCategory}`);
+    const { data } = await axios.get(
+      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products?page=1&row=12&category=${idCategory}`
+    );
     setProduct(data.data);
     console.log(data.data);
   };
@@ -44,36 +48,39 @@ const Category = () => {
 
   return (
     <>
-      <div className={style.categoryContainer}>
+      <div className={style.container}>
         <h2>Telusuri Kategori</h2>
-        <div className={style.categoryButtonContainer}>
+        <div className={style.btnContainer}>
           <button className={style.btnCategory}>
             <img src="/icons/fi_search_white.svg" alt="search" />
             Semua
           </button>
           {category?.map((category) => (
-            <button 
+            <button
               className={style.btnCategory}
               key={category.id}
-              onClick={() => getProductByCategory(category.id)}>
+              onClick={() => getProductByCategory(category.id)}
+            >
               <img src="/icons/fi_search_white.svg" alt="search" />
               {category.name}
             </button>
           ))}
         </div>
-      </div>
-      {product?.map((products) => (
-        <div key={products.id} className={style.cardContainer}>
-          <Link to={`/buyer-product/${products.id}`}>
-            <img src={products.Product_images[0].url_image} alt="card" />
-          </Link>
-          <div className={style.cardDesc}>
-            <h5>{`${products.name.slice(0, 15)}...`}</h5>
-            <p>{products.Category.name}</p>
-            <h5>{`${rupiah(products.price)}`}</h5>
-          </div>
+        <div className={style.cardContainer}>
+          {product?.map((products) => (
+            <div key={products.id} className={style.boxCard}>
+              <Link to={`/buyer-product/${products.id}`}>
+                <img src={products.Product_images[0].url_image} alt="card" />
+              </Link>
+              <div className={style.cardDesc}>
+                <h5>{`${products.name.slice(0, 15)}...`}</h5>
+                <p>{products.Category.name}</p>
+                <h5>{`${rupiah(products.price)}`}</h5>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </>
   );
 };
