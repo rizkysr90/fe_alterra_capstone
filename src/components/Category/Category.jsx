@@ -4,17 +4,34 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { buyerAction } from "../../config/redux/actions/buyerAction";
 import style from "./Category.module.css";
+import { useState } from "react";
+import axios from 'axios';
 
 const Category = () => {
+  const [category, setCategory] = useState([]);
+  const [product, setProduct] = useState([]);
+
   const { dataProductBuyer } = useSelector(
     (globalStore) => globalStore.buyerReducer
   );
-  console.log(dataProductBuyer);
 
   const dispatch = useDispatch();
 
+  const getCategory = async () => {
+    const { data } = await axios.get("https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/categories?page=1");
+    setCategory(data.data);
+  };
+
+  const getProductByCategory = async (idCategory) => {
+    const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products?page=1&row=12&category=${idCategory}`);
+    setProduct(data.data);
+    console.log(data.data);
+  };
+
   useEffect(() => {
     dispatch(buyerAction());
+    getCategory();
+    setProduct(dataProductBuyer);
     //eslint-disable-next-line
   }, []);
 
@@ -24,6 +41,7 @@ const Category = () => {
       currency: "IDR",
     }).format(number);
   };
+
   return (
     <>
       <div className={style.categoryContainer}>
@@ -33,29 +51,18 @@ const Category = () => {
             <img src="/icons/fi_search_white.svg" alt="search" />
             Semua
           </button>
-          <button className={style.btnCategory}>
-            <img src="/icons/fi_search_black.svg" alt="search" />
-            Hobi
-          </button>
-          <button onClick={() => dataProductBuyer.Category.name.filter('kendaraan')} className={style.btnCategory}>
-            <img src="/icons/fi_search_black.svg" alt="search" />
-            Kendaraan
-          </button>
-          <button className={style.btnCategory}>
-            <img src="/icons/fi_search_black.svg" alt="search" />
-            Baju
-          </button>
-          <button className={style.btnCategory}>
-            <img src="/icons/fi_search_black.svg" alt="search" />
-            Elektronik
-          </button>
-          <button className={style.btnCategory}>
-            <img src="/icons/fi_search_black.svg" alt="search" />
-            Kesehatan
-          </button>
+          {category?.map((category) => (
+            <button 
+              className={style.btnCategory}
+              key={category.id}
+              onClick={() => getProductByCategory(category.id)}>
+              <img src="/icons/fi_search_white.svg" alt="search" />
+              {category.name}
+            </button>
+          ))}
         </div>
       </div>
-      {dataProductBuyer?.map((products) => (
+      {product?.map((products) => (
         <div key={products.id} className={style.cardContainer}>
           <Link to={`/buyer-product/${products.id}`}>
             <img src={products.Product_images[0].url_image} alt="card" />

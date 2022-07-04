@@ -1,6 +1,6 @@
-import Card from "../../components/Card/Card";
 import NavbarHome from "../../components/NavbarHome/NavbarHome";
 import style from "./Home.module.css";
+import Category from "../../components/Category/Category";
 // import { useSelector } from "react-redux";
 
 const Home = () => {
@@ -45,38 +45,7 @@ const Home = () => {
             className={style.giftImageMobile}
           />
         </div>
-        <div className={style.categoryContainer}>
-          <h2>Telusuri Kategori</h2>
-          <div className={style.categoryButtonContainer}>
-            <button className={style.btnCategory}>
-              <img src="/icons/fi_search_white.svg" alt="search" />
-              Semua
-            </button>
-            <button className={style.btnCategory}>
-              <img src="/icons/fi_search_black.svg" alt="search" />
-              Hobi
-            </button>
-            <button className={style.btnCategory}>
-              <img src="/icons/fi_search_black.svg" alt="search" />
-              Kendaraan
-            </button>
-            <button className={style.btnCategory}>
-              <img src="/icons/fi_search_black.svg" alt="search" />
-              Baju
-            </button>
-            <button className={style.btnCategory}>
-              <img src="/icons/fi_search_black.svg" alt="search" />
-              Elektronik
-            </button>
-            <button className={style.btnCategory}>
-              <img src="/icons/fi_search_black.svg" alt="search" />
-              Kesehatan
-            </button>
-          </div>
-        </div>
-        <div className={style.cardContainer}>
-          <Card />
-        </div>
+        <Category />
         <div className={style.buttonJualContainer}>
           <button className={style.buttonJual}>
             <img src="icons/fi_plus_white.svg" alt="plus" />
