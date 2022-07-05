@@ -38,6 +38,10 @@ nav {
   color: #8a8a8a;
 }
 
+.inputContainer input::-webkit-search-cancel-button {
+  display: none;
+}
+
 .inputContainer {
   position: relative;
 }
