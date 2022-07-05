@@ -4,7 +4,6 @@ import Category from "../../components/Category/Category";
 // import { useSelector } from "react-redux";
 
 const Home = () => {
-
   return (
     <>
       <div className={style.homeContainer}>
@@ -45,13 +44,13 @@ const Home = () => {
             className={style.giftImageMobile}
           />
         </div>
-        <Category />
-        <div className={style.buttonJualContainer}>
-          <button className={style.buttonJual}>
-            <img src="icons/fi_plus_white.svg" alt="plus" />
-            Jual
-          </button>
-        </div>
+      </div>
+      <Category />
+      <div className={style.buttonJualContainer}>
+        <button className={style.buttonJual}>
+          <img src="icons/fi_plus_white.svg" alt="plus" />
+          Jual
+        </button>
       </div>
     </>
   );
