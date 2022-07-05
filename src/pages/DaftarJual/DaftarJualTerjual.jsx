@@ -8,7 +8,7 @@ import { sellerAction } from "../../config/redux/actions/sellerAction";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const DaftarJual = () => {
+const DaftarJualTerjual = () => {
   const { dataProductSeller } = useSelector(
     (globalStore) => globalStore.sellerReducer
   );
@@ -27,13 +27,14 @@ const DaftarJual = () => {
 
   useEffect(() => {
     dispatch(sellerAction(token));
-    document.getElementsByClassName(CardCategoryStyle.pText)[0].style.cssText =
+    document.getElementsByClassName(CardCategoryStyle.pText)[2].style.cssText =
       "color: #7126B5; font-weight: 500";
-    document.getElementsByClassName(CardCategoryStyle.iconBox)[0].style.stroke =
-      "#7126B5";
+    document.getElementsByClassName(
+      CardCategoryStyle.iconDollar
+    )[0].style.stroke = "#7126B5";
     document.getElementsByClassName(
       CardCategoryStyle.iconArrow
-    )[0].style.stroke = "#7126B5";
+    )[2].style.stroke = "#7126B5";
     //eslint-disable-next-line
   }, []);
 
@@ -133,4 +134,4 @@ const DaftarJual = () => {
   );
 };
 
-export default DaftarJual;
+export default DaftarJualTerjual;
