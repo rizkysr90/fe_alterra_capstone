@@ -24,7 +24,7 @@
 }
 
 .container {
-  width:1168px;
+  width: 80%;
   padding-left: 82px;
   margin: auto;
   margin-top: 24px;
@@ -85,7 +85,7 @@
   height: 198px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  margin: 8px;
+  margin: 8px 16px 8px 0px;
 }
 
 .boxCard img {
