@@ -17,6 +17,13 @@ const Category = () => {
 
   const dispatch = useDispatch();
 
+  const getAllProduct = async () => {
+    const { data } = await axios.get(
+      "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products?page=1&row=12"
+    );
+    setProduct(data.data);
+  };
+
   const getCategory = async () => {
     const { data } = await axios.get(
       "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/categories?page=1"
@@ -51,9 +58,11 @@ const Category = () => {
       <div className={style.container}>
         <h2>Telusuri Kategori</h2>
         <div className={style.btnContainer}>
-          <button className={style.btnCategory}>
+          <button
+            onClick={() => getAllProduct()}
+            className={style.btnCategory}>
             <img src="/icons/fi_search_white.svg" alt="search" />
-            Semua
+            semua
           </button>
           {category?.map((category) => (
             <button
