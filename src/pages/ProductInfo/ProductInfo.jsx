@@ -1,7 +1,22 @@
 import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import style from "./ProductInfo.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { productAction } from '../../config/redux/actions/productAction';
 
 const ProductInfo = () => {
+  const { dataProduct } = useSelector((globalStore) => globalStore.productReducer);
+  console.log(dataProduct);
+
+  const dispatch = useDispatch();
+  const { dataLogin } = useSelector((state) => state.auth);
+  const token = `${dataLogin.dataLogin.token}`
+
+  useEffect(() => {
+    dispatch(productAction(token));
+    // eslint-disable-next-line
+  }, []);
+  
   return (
     <>
       <Navbar title="Lengkapi Detail Produk"/>

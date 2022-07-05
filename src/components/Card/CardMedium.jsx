@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { sellerAction } from "../../config/redux/actions/sellerAction";
 import { useEffect } from "react";
 
+
 const CardMedium = () => {
   const { dataProductSeller } = useSelector((globalStore) => globalStore.sellerReducer);
   console.log(dataProductSeller);
