@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidenav = ({sidenav}) => {
@@ -7,10 +7,16 @@ const Sidenav = ({sidenav}) => {
 
     return (
         <div className={sidenav?"sidenav sidenav--open":"sidenav"}>
-            <p><b>Second Hand</b></p>
+            <Link to={"/"}>
+                <p><b>Second Hand</b></p>
+            </Link>
             <li>Notifikasi</li>
-            <li>Daftar Jual</li>
-            <li>Akun Saya</li>
+            <Link to={"/daftar-jual"}>
+                <li>Daftar Jual</li>
+            </Link>
+            <Link to={"/profile"}>
+                <li>Akun Saya</li>
+            </Link>
         </div>
     )
 }
