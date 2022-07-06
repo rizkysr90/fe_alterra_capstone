@@ -1,7 +1,53 @@
 import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import style from "./ProductInfo.module.css";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import Select from "react-select";
 
 const ProductInfo = () => {
+  const { dataLogin } = useSelector((state) => state.auth);
+  
+  const [product, setProduct] = useState({
+    name: '',
+    price: '',
+    description: '',
+    isActive: '',
+    status: '',
+    id_user: '',
+    id_category: '',
+  });
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    const formdata = new FormData()
+    formdata.append("name", product.name)
+    formdata.append("price", product.price)
+    formdata.append("description", product.description)
+    formdata.append("isActive", product.isActive)
+    formdata.append("status", product.status)
+    formdata.append("id_user", product.id_user)
+    formdata.append("id_category", product.id_category)
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
+        data: formdata,
+        headers: {
+					Authorization: `Bearer ${dataLogin.dataLogin.token}`,
+					"Content-Type": "multipart/form-data",
+				},
+      });
+      console.log(data)
+    } catch(err) {
+      console.log(err)
+    };
+  }
+
+  useEffect(() => {
+    // eslint-disable-next-line
+  }, []);
+  
   return (
     <>
       <Navbar title="Lengkapi Detail Produk"/>
@@ -19,6 +65,8 @@ const ProductInfo = () => {
                 type="text"
                 name="produk"
                 placeholder="Nama Produk"
+                value={product.name}
+                onChange={(e) => setProduct({ ...product, name: e.target.value })}
               />
             </div>
             <div className={style.inputForm}>
@@ -28,17 +76,17 @@ const ProductInfo = () => {
                 type="text"
                 name="produk"
                 placeholder="Rp 0,00"
+                value={product.price}
+                onChange={(e) => setProduct({ ...product, price: e.target.value })}
               />
             </div>
             <div className={style.inputForm}>
               <label htmlFor="kategori">Kategori</label>
-              <select defaultValue="0" className={style.inputBox}>
-                <option value="0" disabled>
-                  Pilih Kategori
-                </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-              </select>
+              <div className={style.row}>
+                <Select 
+                  className={style.colLeft}
+                />
+              </div>
             </div>
             <div className={style.inputForm}>
               <label htmlFor="deskripsi">Deskripsi</label>
@@ -47,6 +95,8 @@ const ProductInfo = () => {
                 type="text"
                 name="deskripsi"
                 placeholder="Contoh: Jalan Ikan Hiu 33"
+                value={product.description}
+                onChange={(e) => setProduct({ ...product, description: e.target.value })}
               />
             </div>
             <div className={style.inputForm}>
@@ -66,7 +116,7 @@ const ProductInfo = () => {
             </div>
             <div className={style.btn}>
               <button className={style.btnForm}>Preview</button>
-              <button className={style.btnForm}>Terbitkan</button>
+              <button className={style.btnForm} onClick={(e) => handleSubmit(e)}>Terbitkan</button>
             </div>
           </form>
         </div>
