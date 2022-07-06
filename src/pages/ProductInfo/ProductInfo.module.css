@@ -1,3 +1,9 @@
+.row {
+  display:flex;
+}
+.colLeft {
+  flex: 1 0 60%;
+}
 @media only screen and (max-width: 600px) {
   .container {
     width: 100% !important;

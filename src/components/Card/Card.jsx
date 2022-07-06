@@ -8,7 +8,6 @@ const Card = () => {
   const { dataProductBuyer } = useSelector(
     (globalStore) => globalStore.buyerReducer
   );
-  console.log(dataProductBuyer);
 
   const dispatch = useDispatch();
 

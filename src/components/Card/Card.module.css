@@ -16,8 +16,8 @@
 .cardContainer img {
     width: 137.14px;
     height: 100px;
-
     margin: 8px;
+    border-radius: 4px;
 }
 
 .cardDesc {

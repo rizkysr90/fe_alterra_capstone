@@ -7,15 +7,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { sellerAction } from "../../config/redux/actions/sellerAction";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { useState } from "react";
 
-const DaftarJual = () => {
-  const [userDetail, setUserDetail] = useState({})
-
+const DaftarJualTerjual = () => {
   const { dataProductSeller } = useSelector(
     (globalStore) => globalStore.sellerReducer
   );
+  console.log(dataProductSeller);
 
   const dispatch = useDispatch();
   const { dataLogin } = useSelector((state) => state.auth);
@@ -28,28 +25,16 @@ const DaftarJual = () => {
     }).format(number);
   };
 
-  const getUserDetail = async () => {
-    const { data } = await axios.get(
-			`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
-			{
-				headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
-			}
-		);
-    setUserDetail(data.data);
-  };
-
-  console.log(userDetail);
-
   useEffect(() => {
-    getUserDetail();
     dispatch(sellerAction(token));
-    document.getElementsByClassName(CardCategoryStyle.pText)[0].style.cssText =
+    document.getElementsByClassName(CardCategoryStyle.pText)[2].style.cssText =
       "color: #7126B5; font-weight: 500";
-    document.getElementsByClassName(CardCategoryStyle.iconBox)[0].style.stroke =
-      "#7126B5";
+    document.getElementsByClassName(
+      CardCategoryStyle.iconDollar
+    )[0].style.stroke = "#7126B5";
     document.getElementsByClassName(
       CardCategoryStyle.iconArrow
-    )[0].style.stroke = "#7126B5";
+    )[2].style.stroke = "#7126B5";
     //eslint-disable-next-line
   }, []);
 
@@ -61,11 +46,11 @@ const DaftarJual = () => {
         <h1 className={style.titlePage}>Daftar Jual Saya</h1>
         <div className={style.boxProfile}>
           <div className={style.profileContent}>
-            <img src={userDetail?.profile_picture} alt="Foto Profil" />
+            <img src="/images/profilPenjual.png" alt="Foto Profil" />
           </div>
           <div className={style.profileContent}>
-            <h1 className={style.nameProfile}>{userDetail?.name}</h1>
-            <p>{userDetail.City?.name}</p>
+            <h1 className={style.nameProfile}>Nama Penjual</h1>
+            <p>Kota</p>
           </div>
           <div className={style.profileContent}>
             <button className={style.btnEdit}>Edit</button>
@@ -149,4 +134,4 @@ const DaftarJual = () => {
   );
 };
 
-export default DaftarJual;
+export default DaftarJualTerjual;
