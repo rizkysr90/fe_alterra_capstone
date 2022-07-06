@@ -132,7 +132,7 @@ const DaftarJualDiminati = () => {
             </label>
             {dataOrderSeller?.map((products) => (
               <div key={products.id} className={style.cardContainer}>
-                <Link to={`/info-penawar/${products.Product.id}`}>
+                <Link to={`/info-penawar/${products.id}`}>
                   <img src={products.Product.Product_images[0].url_image} alt="card" />
                 </Link>
                 <div className={style.cardDesc}>
