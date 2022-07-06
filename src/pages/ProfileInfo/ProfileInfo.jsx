@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import Select from "react-select";
+import { Link } from "react-router-dom";
 
 const ProfileInfo = () => {
 	const { dataLogin } = useSelector((state) => state.auth);
@@ -91,7 +92,6 @@ const ProfileInfo = () => {
 	};
 	useEffect(() => {
 		getUserDetail();
-
 		//eslint-disable-next-line
 	}, []);
 	return (
@@ -99,7 +99,9 @@ const ProfileInfo = () => {
 			<Navbar title="Lengkapi Info Akun" />
 			<div className={style.container}>
 				<div className={style.content}>
-					<img src="/icons/arrow-left.svg" alt="Icon Back" />
+					<Link to={"/"}>
+						<img src="/icons/arrow-left.svg" alt="Icon Back" />
+					</Link>
 				</div>
 				<div className={style.content}>
 					<form>

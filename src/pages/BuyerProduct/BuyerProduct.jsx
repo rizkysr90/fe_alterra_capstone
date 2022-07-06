@@ -1,10 +1,12 @@
-import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
+import NavbarHome from "../../components/NavbarHome/NavbarHome";
 import style from "./BuyerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 
 const BuyerProduct = () => {
+  const { dataLogin } = useSelector((state) => state.auth);
   const { idProductBuyer } = useParams();
   const { dataProductBuyer } = useSelector((globalStore) => globalStore.buyerReducer);
   const rupiah = (number) => {
@@ -12,19 +14,20 @@ const BuyerProduct = () => {
       style: "currency",
       currency: "IDR"
     }).format(number);
-  }
+  };
+
   let i = -1;
+
   for(let j = 0; j < dataProductBuyer.length; j++) {
     //eslint-disable-next-line
     if(dataProductBuyer[j].id == idProductBuyer) {
       i = j;
     }
-  }
+  };
 
   return (
     <>
-      <Navbar />
-
+      {dataLogin?.dataLogin.token ? <NavbarAfterLogin /> : <NavbarHome />}
       <Carousel className={style.use}>
         <Carousel.Item>
           <img

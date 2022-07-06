@@ -1,6 +1,6 @@
 @media screen and (max-width: 600px) {
   nav {
-    display: flex !important;
+    display: flex;
     flex-direction: row !important;
     align-items: center !important;
     width: 360px !important;

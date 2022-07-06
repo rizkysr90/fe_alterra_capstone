@@ -1,79 +1,94 @@
 .row {
-  display:flex;
+	display: flex;
 }
+
 .colLeft {
-  flex: 1 0 60%;
+	flex: 1 0 60%;
 }
+
+.colLeft div {
+	border-radius: 16px 0px 0px 16px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+}
+
 .colRight {
-  display:flex;
-  align-items:center;
-  padding: 0 15px;
-  color:#fff;
-  cursor:pointer;
-  background-color: #7126b5;
+	display: flex;
+	align-items: center;
+	padding: 0 15px;
+	color: #fff;
+	cursor: pointer;
+	background-color: #7126b5;
+
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 20px;
+	border-radius: 0px 16px 16px 0px;
 }
+
 @media only screen and (max-width: 600px) {
-  .content:first-child {
-	position: absolute;
-	top: -10px;
-	left: -120px;
-  }
+	.content:first-child {
+		position: absolute;
+		top: -10px;
+		left: -120px;
+	}
 
-  .content:last-child {
-	position: absolute;
-	left: -65px;
-  }
+	.content:last-child {
+		position: absolute;
+		left: -65px;
+	}
 
-  .inputPhoto {
-	position: absolute;
-	top: -10px;
-	left: 132px;
-	width: 96px;
-	height: 96px;
-	background: #e2d4f0;
-	border: 1px solid #e2d4f0;
-	border-radius: 12px;
-	margin-bottom: 8px;
-  }
- 
-  .inputForm:first-child {
-	margin-top: 106px;
-  }
+	.inputPhoto {
+		position: absolute;
+		top: -10px;
+		left: 132px;
+		width: 96px;
+		height: 96px;
+		background: #e2d4f0;
+		border: 1px solid #e2d4f0;
+		border-radius: 12px;
+		margin-bottom: 8px;
+	}
 
-  .content:last-child .inputForm .inputBox {
-	width: 328px !important;
-  }
+	.inputForm:first-child {
+		margin-top: 106px;
+	}
 
-  .content:last-child .inputForm .inputAddress {
-	width: 328px !important;
-  }
+	.content:last-child .inputForm .inputBox {
+		width: 328px !important;
+	}
 
-  .btnSave {
-	width: 328px !important;
-  }
+	.content:last-child .inputForm .inputAddress {
+		width: 328px !important;
+	}
+
+	.btnSave {
+		width: 328px !important;
+	}
 }
 
 .container {
-  display: flex;
-  flex-direction: row;
-  width: 968px;
-  margin: auto;
+	display: flex;
+	flex-direction: row;
+	width: 968px;
+	margin: auto;
 }
 
 .container .content:first-child {
-  margin-left: 150px;
-  margin-top: 40px;
+	margin-left: 150px;
+	margin-top: 40px;
 }
 
 .container .content:last-child {
-  margin-left: 76px;
-  margin-top: 40px;
+	margin-left: 76px;
+	margin-top: 40px;
 }
 
 .container .content .inputForm {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 16px;
 }
 
 .container .content .inputForm:first-child {
@@ -81,80 +96,80 @@
 }
 
 .container .content .inputForm .inputPhoto {
-  width: 96px;
-  height: 96px;
-  background: #e2d4f0;
-  border: 1px solid #e2d4f0;
-  border-radius: 12px;
-  margin-bottom: 8px;
+	width: 96px;
+	height: 96px;
+	background: #e2d4f0;
+	border: 1px solid #e2d4f0;
+	border-radius: 12px;
+	margin-bottom: 8px;
 }
 
 .container .content .inputForm .inputPhoto .inputImage {
-  color: transparent;
-  width: 96px;
-  height: 70px;
-  margin-top: -90px;
-  position: absolute;
+	color: transparent;
+	width: 96px;
+	height: 70px;
+	margin-top: -90px;
+	position: absolute;
 }
 
 .container
-  .content
-  .inputForm
-  .inputPhoto
-  .inputImage::-webkit-file-upload-button {
-  visibility: hidden;
-  position: absolute;
+	.content
+	.inputForm
+	.inputPhoto
+	.inputImage::-webkit-file-upload-button {
+	visibility: hidden;
+	position: absolute;
 }
 
 .container .content .inputForm .inputIcon {
-  position: relative;
-  padding: 36px;
+	position: relative;
+	padding: 36px;
 }
 
 .container .content .inputForm label {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 18px;
 }
 
 .container .content .inputForm .inputBox {
-  width: 568px;
-  height: 48px;
-  margin-top: 4px;
-  background: #ffffff;
-  border: 1px solid #d0d0d0;
-  border-radius: 16px;
-  color: #8a8a8a;
-  padding: 12px 16px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+	width: 568px;
+	height: 48px;
+	margin-top: 4px;
+	background: #ffffff;
+	border: 1px solid #d0d0d0;
+	border-radius: 16px;
+	color: #8a8a8a;
+	padding: 12px 16px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
 }
 
 .container .content .inputForm .inputAddress {
-  height: 80px;
-  width: 568px;
-  margin-top: 4px;
-  background: #ffffff;
-  border: 1px solid #d0d0d0;
-  border-radius: 16px;
-  color: #8a8a8a;
-  padding: 12px 16px;
-  font-weight: 400;
-  font-size: 14px;
-  resize: none;
+	height: 80px;
+	width: 568px;
+	margin-top: 4px;
+	background: #ffffff;
+	border: 1px solid #d0d0d0;
+	border-radius: 16px;
+	color: #8a8a8a;
+	padding: 12px 16px;
+	font-weight: 400;
+	font-size: 14px;
+	resize: none;
 }
 
 .container .content .btnSave {
-  width: 568px;
-  height: 48px;
-  background: #7126b5;
-  border-radius: 16px;
-  border: 1px solid #7126b5;
-  margin-top: 8px;
-  margin-bottom: 274px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
-  color: #ffffff;
+	width: 568px;
+	height: 48px;
+	background: #7126b5;
+	border-radius: 16px;
+	border: 1px solid #7126b5;
+	margin-top: 8px;
+	margin-bottom: 274px;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 20px;
+	color: #ffffff;
 }
