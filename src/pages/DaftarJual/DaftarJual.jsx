@@ -5,10 +5,9 @@ import CardCategoryStyle from "../../components/CardCategory/CardCategory.module
 import Sidebar from "../../components/Sidebar/";
 import { useSelector, useDispatch } from "react-redux";
 import { sellerAction } from "../../config/redux/actions/sellerAction";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
 
 const DaftarJual = () => {
   const [userDetail, setUserDetail] = useState({})

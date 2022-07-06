@@ -1,4 +1,8 @@
 @media only screen and (max-width: 600px) {
+  nav {
+    display: none !important;
+  }
+
   .container {
     display: flex !important;
     flex-direction: column !important;
@@ -130,7 +134,7 @@
   margin-left: 16px;
 }
 
-.container .content .cardProduct .cardContent .imgProfile {
+.container .content .cardProduct .cardContent .imgProduct {
   width: 48px;
   height: 48px;
   border-radius: 12px;
