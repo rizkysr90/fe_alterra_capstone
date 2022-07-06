@@ -2,9 +2,7 @@ import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./SellerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
-// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import { sellerAction } from "../../config/redux/actions/sellerAction";
 
 const SellerProduct = () => {
   const { idProductSeller } = useParams();
@@ -26,29 +24,9 @@ const SellerProduct = () => {
     }).format(number);
   }
 
-  // const { dataLogin } = useSelector((state) => state.auth);
-
-  // const dispatch = useDispatch()
-
-  // const token = `${dataLogin.dataLogin.token}`
-
-  // const getSellerProduct = async () => {
-  //   const { data } = await axios.get(`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts?page=1`, {
-  //     headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJVY2hpaGEgSXRhY2hpIiwiaWF0IjoxNjU2NTc0MDk4LCJleHAiOjE2NTY2NjA0OTh9.ZqNAghNmX5F6q9lYGVeWo9WpiG3uOly92FTu6iLfBdQ` }
-  //   })
-  //   console.log(data);
-  // };
-
-  // useEffect(() => {
-  //   // getSellerProduct()
-  //   dispatch(sellerAction(token))
-  //   // eslint-disable-next-line
-  // }, []);
-
   return (
     <>
       <Navbar />
-      
       <Carousel className={style.use}>
         <Carousel.Item>
           <img

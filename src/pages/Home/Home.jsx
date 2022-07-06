@@ -53,7 +53,7 @@ const Home = () => {
 			</div>
 			<Category />
 			<div className={style.buttonJualContainer}>
-				<Link to={"/product-info"}>
+				<Link to={"/product-info"} style={{ textDecoration: "none" }}>
 					<button className={style.buttonJual}>
 						<img src="icons/fi_plus_white.svg" alt="plus" />
 						Jual

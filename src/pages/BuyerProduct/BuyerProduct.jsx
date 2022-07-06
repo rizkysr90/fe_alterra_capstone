@@ -32,15 +32,29 @@ const BuyerProduct = () => {
         <Carousel.Item>
           <img
             className=""
-            src={dataProductBuyer[i].Product_images[0].url_image}
+            src={dataProductBuyer[i].Product_images[0]?.url_image}
             alt="First slide"
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
             className=""
-            src={dataProductBuyer[i].Product_images[1].url_image}
+            src={dataProductBuyer[i].Product_images[1]?.url_image}
             alt="Second slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className=""
+            src={dataProductBuyer[i].Product_images[2]?.url_image}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className=""
+            src={dataProductBuyer[i].Product_images[3]?.url_image}
+            alt="Fourth slide"
           />
         </Carousel.Item>
       </Carousel>
