@@ -102,19 +102,6 @@ const DaftarJualTerjual = () => {
             <CategoryMenu />
           </div>
           <div className={style.mainContent}>
-            <label className={style.inputBox} htmlFor="inputImage">
-              <img
-                className={style.inputIcon}
-                src="/icons/fi_plus.svg"
-                alt="Icon Plus"
-              />
-              Tambah Produk
-              <input
-                className={style.inputImage}
-                type="file"
-                alt="Box Tambah Gambar"
-              />
-            </label>
             {dataProductSeller?.map((products) => (
               <div key={products.id} className={style.cardContainer}>
                 <Link to={`/seller-product/${products.id}`}>

@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const DaftarJualDiminati = () => {
-  const [userDetail, setUserDetail] = useState({})
+  const [userDetail, setUserDetail] = useState({});
   const { dataOrderSeller } = useSelector(
     (globalStore) => globalStore.sellerReducer
   );
@@ -29,11 +29,11 @@ const DaftarJualDiminati = () => {
 
   const getUserDetail = async () => {
     const { data } = await axios.get(
-			`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
-			{
-				headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
-			}
-		);
+      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
+      {
+        headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
+      }
+    );
     setUserDetail(data.data);
   };
 
@@ -117,23 +117,13 @@ const DaftarJualDiminati = () => {
             <CategoryMenu />
           </div>
           <div className={style.mainContent}>
-            <label className={style.inputBox} htmlFor="inputImage">
-              <img
-                className={style.inputIcon}
-                src="/icons/fi_plus.svg"
-                alt="Icon Plus"
-              />
-              Tambah Produk
-              <input
-                className={style.inputImage}
-                type="file"
-                alt="Box Tambah Gambar"
-              />
-            </label>
             {dataOrderSeller?.map((products) => (
               <div key={products.id} className={style.cardContainer}>
                 <Link to={`/info-penawar/${products.id}`}>
-                  <img src={products.Product.Product_images[0].url_image} alt="card" />
+                  <img
+                    src={products.Product.Product_images[0].url_image}
+                    alt="card"
+                  />
                 </Link>
                 <div className={style.cardDesc}>
                   <h5>{`${products.Product.name.slice(0, 15)}...`}</h5>

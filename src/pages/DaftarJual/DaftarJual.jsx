@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const DaftarJual = () => {
-  const [userDetail, setUserDetail] = useState({})
+  const [userDetail, setUserDetail] = useState({});
 
   const { dataProductSeller } = useSelector(
     (globalStore) => globalStore.sellerReducer
@@ -29,11 +29,11 @@ const DaftarJual = () => {
 
   const getUserDetail = async () => {
     const { data } = await axios.get(
-			`https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
-			{
-				headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
-			}
-		);
+      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
+      {
+        headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
+      }
+    );
     setUserDetail(data.data);
   };
 
@@ -116,19 +116,16 @@ const DaftarJual = () => {
             <CategoryMenu />
           </div>
           <div className={style.mainContent}>
-            <label className={style.inputBox} htmlFor="inputImage">
-              <img
-                className={style.inputIcon}
-                src="/icons/fi_plus.svg"
-                alt="Icon Plus"
-              />
-              Tambah Produk
-              <input
-                className={style.inputImage}
-                type="file"
-                alt="Box Tambah Gambar"
-              />
-            </label>
+            <Link to={`/product-info`} style={{ textDecoration: "none" }}>
+              <div className={style.inputBox} htmlFor="inputImage">
+                <img
+                  className={style.inputIcon}
+                  src="/icons/fi_plus.svg"
+                  alt="Icon Plus"
+                />
+                Tambah Produk
+              </div>
+            </Link>
             {dataProductSeller?.map((products) => (
               <div key={products.id} className={style.cardContainer}>
                 <Link to={`/seller-product/${products.id}`}>
