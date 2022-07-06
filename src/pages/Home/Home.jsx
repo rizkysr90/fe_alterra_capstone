@@ -1,13 +1,16 @@
 import NavbarHome from "../../components/NavbarHome/NavbarHome";
 import style from "./Home.module.css";
 import Category from "../../components/Category/Category";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 
 const Home = () => {
+  const { dataLogin } = useSelector((state) => state.auth);
+
   return (
     <>
       <div className={style.homeContainer}>
-        <NavbarHome />
+        {dataLogin?.dataLogin.token ? <NavbarAfterLogin /> : <NavbarHome />}
         <div className={style.heroContainer}>
           <div className={style.leftBox}></div>
           <div className={style.middleBox}>
