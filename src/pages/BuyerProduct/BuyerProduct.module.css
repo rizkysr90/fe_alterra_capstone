@@ -1,18 +1,18 @@
 @media screen and (max-width: 600px) {
-  .use {
+  .carouselContainer {
     width: 360px !important;
     height: 300px !important;
     left: 0px !important;
     top: 0px !important;
   }
 
-  .use img {
+  .carouselContainer img {
     width: 360px !important;
     height: 300px !important;
     border-radius: inherit !important;
   }
 
-  .card {
+  .cardProduct {
     top: 265px !important;
     left: 16px !important;
     width: 328px !important;
@@ -20,35 +20,39 @@
   }
 
   .cardPenjual {
-    margin-top: 396px !important;
+    margin-top: 430px !important;
     margin-left: 16px !important;
     width: 328px !important;
   }
 
-  .cardContainer {
+  .cardDesc {
+    margin-top: 44px !important;
     top: 478px !important;
     left: 16px !important;
     width: 328px !important;
-    height: 560px !important;
+    height: auto !important;
+    padding-bottom: 100px !important;
   }
 
-  .cardContainer .descCard {
-    width: 296px !important;
-    height: 530px !important;
-  }
-
-  .sob {
+  .btnProduct {
     bottom: 28px !important;
     position: fixed !important;
-    z-index: 99;
+    z-index: 1 !important;
+  }
+
+  .overlay {
+    z-index: -1;
+  }
+
+  .modalTawar {
+    z-index: 2;
   }
 }
 
-.cardContainer {
+.cardDesc {
   position: absolute;
   width: 600px;
-  height: 350px;
-  margin-bottom: 50px;
+  height: auto;
   top: 584px;
   left: 236px;
   background: #ffffff;
@@ -56,35 +60,29 @@
   border-radius: 16px;
 }
 
-.cardContainer .titleCard {
-  width: 64px;
-  height: 20px;
+.cardDesc .titleDesc {
   margin-top: 16px;
   margin-left: 16px;
-  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
 }
 
-.cardContainer .descCard {
-  width: 568px;
-  height: auto;
-  margin-bottom: 27px;
+.cardDesc .textDesc {
   margin-left: 16px;
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #8a8a8a;
 }
 
-.card {
+.cardProduct {
   position: absolute;
   display: flex;
   flex-direction: column;
   width: 336px;
-  height: 204px;
+  height: auto;
+  padding-bottom: 16px;
   top: 124px;
   left: 868px;
   background: #ffffff;
@@ -92,19 +90,20 @@
   border-radius: 16px;
 }
 
-.tha {
-  width: 296px;
-  height: 24px;
-  margin-top: 16px;
-  margin-left: 24px;
-  font-style: normal;
-  font-weight: 500;
+.cardProduct h1 {
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
 }
 
-.tri {
-  margin-top: 24px;
+.cardProduct .titleProduct {
+  margin-top: 16px;
+  margin-left: 24px;
+  font-weight: 500;
+}
+
+.cardProduct .categoryProduct {
+  margin-top: 4px;
   margin-bottom: 0;
   margin-left: 24px;
   font-style: normal;
@@ -114,18 +113,12 @@
   color: #8a8a8a;
 }
 
-.pro {
-  width: 295px;
-  height: 24px;
+.cardProduct .priceProduct {
   margin-top: 8px;
   margin-left: 24px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
 }
 
-.sob {
+.btnProduct {
   width: 304px;
   height: 48px;
   align-items: center;
@@ -139,27 +132,13 @@
   margin-left: 16px;
 }
 
-.man {
-  width: 304px;
-  height: 48px;
-  align-items: center;
-  padding: 12px 24px;
-  gap: 4px;
-  background: #ffffff;
-  border: 1px solid #7126b5;
-  border-radius: 16px;
-  margin-left: 16px;
-  margin-top: 16px;
-}
-
 .cardPenjual {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 336px;
   height: 80px;
-  margin-top: 272px;
+  margin-top: 264px;
   margin-left: 868px;
-  align-items: flex-start;
   padding: 16px 0px 16px 16px;
   gap: 10px;
   background: #ffffff;
@@ -167,58 +146,40 @@
   border-radius: 16px;
 }
 
-.par {
+.cardPenjual .penjualContent:first-child {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  padding: 0px;
   gap: 16px;
-  width: 320px;
-  height: 48px;
 }
 
-.par img {
+.cardPenjual .penjualContent img {
   width: 48px;
   height: 48px;
   border-radius: 12px;
 }
 
-.tup {
+.cardPenjual .penjualContent:last-child {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
   gap: 4px;
-  width: 256px;
-  height: 38px;
 }
 
-.dea {
-  margin-top: 0px;
-  font-style: normal;
+.cardPenjual .namePenjual {
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
+  margin-top: 4px;
+  margin-bottom: 0;
 }
 
-.sun {
-  margin-top: -6px;
-  font-style: normal;
+.cardPenjual .addressPenjual {
   font-weight: 400;
   font-size: 10px;
   line-height: 14px;
   color: #8a8a8a;
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
 }
 
-.use {
+.carouselContainer {
   position: absolute;
   width: 600px;
   height: 436px;
@@ -226,13 +187,14 @@
   left: 236px;
 }
 
-.use img {
+.carouselContainer img {
   width: 600px;
   height: 436px;
   border-radius: 16px;
 }
 
-.modalTawar, .overlay {
+.modalTawar,
+.overlay {
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -242,21 +204,106 @@
   position: fixed;
 }
 
+.modalTawar {
+  z-index: 2;
+}
+
 .overlay {
-  background: rgba(49,49,49,0.8);
+  background: rgba(49, 49, 49, 0.8);
 }
 
 .modalTawarContent {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background: #f1f1f1;
-  padding: 14px 28px;
-  border-radius: 3px;
-  max-width: 600px;
-  min-width: 300px;
+  background: #FFFFFF;
+  padding: 56px 32px 24px 32px;
+  border-radius: 16px;
+  max-width: 360px;
+  min-width: 360px;
+}
+
+.modalTawarContent .titleModalTawar {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.modalTawarContent .textModalTawar {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8a8a8a;
+}
+
+.modalTawarContent .textModalTawar2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #000000;
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+
+.modalTawarContent .inputModalCard {
+  width: 296px;
+  height: 48px;
+  padding: 12px 16px;
+  border: 1px solid #d0d0d0;
+  border-radius: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8a8a8a;
+}
+
+.modalTawarContent .btnModalCard {
+  width: 296px;
+  height: 48px;
+  padding: 12px 24px;
+  background: #7126b5;
+  border: 1px solid #7126b5;
+  border-radius: 16px;
+  margin-top: 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.modalTawarContent .modalCard {
+  display: inline-flex;
+  width: 296px;
+  height: auto;
+  padding: 16px;
+  border-radius: 16px;
+  background: #eeeeee;
+}
+
+.modalTawarContent .modalCard .modalCardContent:first-child {
+  margin-right: 16px;
+}
+
+.modalTawarContent .modalCard .modalCardContent img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.modalTawarContent .modalCard .modalCardContent .titleModalCard {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.modalTawarContent .modalCard .modalCardContent .priceModalCard {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 0;
 }
 
 .closeModalTawar {
