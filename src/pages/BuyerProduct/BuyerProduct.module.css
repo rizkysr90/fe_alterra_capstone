@@ -4,6 +4,7 @@
     height: 300px !important;
     left: 0px !important;
     top: 0px !important;
+    z-index: -1000 !important;
   }
 
   .use img {
@@ -224,6 +225,7 @@
   height: 436px;
   top: 124px;
   left: 236px;
+  z-index: -1000 !important;
 }
 
 .use img {

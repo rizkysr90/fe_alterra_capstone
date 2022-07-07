@@ -37,18 +37,26 @@ const Home = () => {
 					</div>
 					<div className={style.rightBox}></div>
 				</div>
-				<div className={style.heroContainerMobile}>
-					<Sidebar />
-					<div className={style.heroDescMobile}>
-						<h1>Bulan Ramadhan Banyak diskon!</h1>
-						<h5>Diskon Hingga</h5>
-						<h3>60%</h3>
+				<div className={style.containerMobile}>
+					<form>
+						<Sidebar />
+						<div className={style.inputContainer}>
+							<input type="search" placeholder="Cari di sini ..." />
+							<img src="/icons/fi_search.svg" alt="search" />
+						</div>
+					</form>
+					<div className={style.heroContainerMobile}>
+						<div className={style.heroDescMobile}>
+							<h1>Bulan Ramadhan Banyak diskon!</h1>
+							<h5>Diskon Hingga</h5>
+							<h3>60%</h3>
+						</div>
+						<img
+							src="images/png_gift_88837.png"
+							alt="gift mobile"
+							className={style.giftImageMobile}
+						/>
 					</div>
-					<img
-						src="images/png_gift_88837.png"
-						alt="gift mobile"
-						className={style.giftImageMobile}
-					/>
 				</div>
 			</div>
 			<Category />
