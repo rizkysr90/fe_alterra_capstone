@@ -201,18 +201,6 @@
 	margin-right: 91.33px;
 }
 
-.container .boxMain .mainContent .inputBox .inputImage {
-	color: transparent;
-}
-.container
-	.boxMain
-	.mainContent
-	.inputBox
-	.inputImage::-webkit-file-upload-button {
-	visibility: hidden;
-	position: absolute;
-}
-
 .cardContainer {
 	display: flex;
 	flex-direction: column;
