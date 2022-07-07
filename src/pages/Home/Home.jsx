@@ -4,10 +4,19 @@ import Category from "../../components/Category/Category";
 import { useSelector } from "react-redux";
 import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import Sidebar from "../../components/Sidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Home = () => {
 	const { dataLogin } = useSelector((state) => state.auth);
+	const [search, setSearch] = useState("");
+	const navigate = useNavigate();
+
+	const handleOnSubmit = (e) => {
+		e.preventDefault();
+		navigate(`/search/${search}`);
+		console.log(search);
+	};
 
 	return (
 		<>
@@ -38,11 +47,20 @@ const Home = () => {
 					<div className={style.rightBox}></div>
 				</div>
 				<div className={style.containerMobile}>
-					<form>
+					<form onSubmit={(e) => handleOnSubmit(e)}>
 						<Sidebar />
 						<div className={style.inputContainer}>
-							<input type="search" placeholder="Cari di sini ..." />
-							<img src="/icons/fi_search.svg" alt="search" />
+							<input
+								value={search}
+								onChange={(e) => setSearch(e.target.value)}
+								type="search"
+								placeholder="Cari di sini ..."
+							/>
+							<img
+								onClick={(e) => handleOnSubmit(e)}
+								src="/icons/fi_search.svg"
+								alt="search"
+							/>
 						</div>
 					</form>
 					<div className={style.heroContainerMobile}>

@@ -5,7 +5,6 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
 
 const SearchResult = () => {
 	const { searchResult } = useParams();
@@ -67,7 +66,7 @@ const SearchResult = () => {
 						<h3>60%</h3>
 					</div>
 					<img
-						src="images/png_gift_88837.png"
+						src="/images/png_gift_88837.png"
 						alt="gift mobile"
 						className={style.giftImageMobile}
 					/>
