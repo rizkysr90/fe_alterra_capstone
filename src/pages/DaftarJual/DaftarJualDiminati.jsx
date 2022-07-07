@@ -4,7 +4,7 @@ import CategoryMenu from "../../components/CardCategory/CardCategory";
 import CardCategoryStyle from "../../components/CardCategory/CardCategory.module.css";
 import Sidebar from "../../components/Sidebar/";
 import { useSelector, useDispatch } from "react-redux";
-import { orderSeller } from "../../config/redux/actions/sellerAction";
+import { orderSellerDiminati } from "../../config/redux/actions/sellerAction";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -41,7 +41,7 @@ const DaftarJualDiminati = () => {
 
   useEffect(() => {
     getUserDetail();
-    dispatch(orderSeller(token));
+    dispatch(orderSellerDiminati(token));
     document.getElementsByClassName(CardCategoryStyle.pText)[1].style.cssText =
       "color: #7126B5; font-weight: 500";
     document.getElementsByClassName(
@@ -68,7 +68,9 @@ const DaftarJualDiminati = () => {
             <p>{userDetail.City?.name}</p>
           </div>
           <div className={style.profileContent}>
-            <button className={style.btnEdit}>Edit</button>
+            <Link to={`/profile`} style={{ textDecoration: "none" }}>
+              <button className={style.btnEdit}>Edit</button>
+            </Link>
           </div>
         </div>
         <div className={style.boxCategory}>

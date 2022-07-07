@@ -67,7 +67,9 @@ const DaftarJual = () => {
             <p>{userDetail.City?.name}</p>
           </div>
           <div className={style.profileContent}>
-            <button className={style.btnEdit}>Edit</button>
+            <Link to={`/profile`} style={{ textDecoration: "none" }}>
+              <button className={style.btnEdit}>Edit</button>
+            </Link>
           </div>
         </div>
         <div className={style.boxCategory}>

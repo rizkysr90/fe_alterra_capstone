@@ -4,15 +4,17 @@ import CategoryMenu from "../../components/CardCategory/CardCategory";
 import CardCategoryStyle from "../../components/CardCategory/CardCategory.module.css";
 import Sidebar from "../../components/Sidebar/";
 import { useSelector, useDispatch } from "react-redux";
-import { sellerAction } from "../../config/redux/actions/sellerAction";
-import { useEffect } from "react";
+import { orderSellerTerjual } from "../../config/redux/actions/sellerAction";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const DaftarJualTerjual = () => {
-  const { dataProductSeller } = useSelector(
+  const [userDetail, setUserDetail] = useState({});
+  const { dataSellerTerjual } = useSelector(
     (globalStore) => globalStore.sellerReducer
   );
-  console.log(dataProductSeller);
+  console.log(dataSellerTerjual);
 
   const dispatch = useDispatch();
   const { dataLogin } = useSelector((state) => state.auth);
@@ -25,8 +27,20 @@ const DaftarJualTerjual = () => {
     }).format(number);
   };
 
+  const getUserDetail = async () => {
+    const { data } = await axios.get(
+      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
+      {
+        headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
+      }
+    );
+    setUserDetail(data.data);
+  };
+  console.log(userDetail);
+
   useEffect(() => {
-    dispatch(sellerAction(token));
+    getUserDetail();
+    dispatch(orderSellerTerjual(token));
     document.getElementsByClassName(CardCategoryStyle.pText)[2].style.cssText =
       "color: #7126B5; font-weight: 500";
     document.getElementsByClassName(
@@ -46,14 +60,16 @@ const DaftarJualTerjual = () => {
         <h1 className={style.titlePage}>Daftar Jual Saya</h1>
         <div className={style.boxProfile}>
           <div className={style.profileContent}>
-            <img src="/images/profilPenjual.png" alt="Foto Profil" />
+            <img src={userDetail?.profile_picture} alt="Foto Profil" />
           </div>
           <div className={style.profileContent}>
-            <h1 className={style.nameProfile}>Nama Penjual</h1>
-            <p>Kota</p>
+            <h1 className={style.nameProfile}>{userDetail?.name}</h1>
+            <p>{userDetail.City?.name}</p>
           </div>
           <div className={style.profileContent}>
-            <button className={style.btnEdit}>Edit</button>
+            <Link to={`/profile`} style={{ textDecoration: "none" }}>
+              <button className={style.btnEdit}>Edit</button>
+            </Link>
           </div>
         </div>
         <div className={style.boxCategory}>
@@ -102,15 +118,16 @@ const DaftarJualTerjual = () => {
             <CategoryMenu />
           </div>
           <div className={style.mainContent}>
-            {dataProductSeller?.map((products) => (
-              <div key={products.id} className={style.cardContainer}>
-                <Link to={`/seller-product/${products.id}`}>
-                  <img src={products.Product_images[0].url_image} alt="card" />
-                </Link>
+            {dataSellerTerjual?.map((products) => (
+              <div key={products.Product.id} className={style.cardContainer}>
+                <img
+                  src={products.Product.Product_images[0].url_image}
+                  alt="card"
+                />
                 <div className={style.cardDesc}>
-                  <h5>{`${products.name.slice(0, 15)}...`}</h5>
-                  <p>{products.Category.name}</p>
-                  <h5>{`${rupiah(products.price)}`}</h5>
+                  <h5>{`${products.Product.name.slice(0, 15)}...`}</h5>
+                  <p>{products.Product.Category.name}</p>
+                  <h5>{`${rupiah(products.Product.price)}`}</h5>
                 </div>
               </div>
             ))}

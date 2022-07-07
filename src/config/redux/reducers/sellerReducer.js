@@ -1,6 +1,7 @@
 const initialState = {
     dataProductSeller: null,
     dataOrderSeller: null,
+    dataSellerTerjual: null,
 };
 
 const sellerReducer = (state = initialState, action) => {
@@ -14,6 +15,11 @@ const sellerReducer = (state = initialState, action) => {
             return {
                 ...state,
                 dataOrderSeller: action.payload
+            };
+        case "SET_SELLER_TERJUAL":
+            return {
+                ...state,
+                dataSellerTerjual: action.payload
             };
         default:
             return state;
