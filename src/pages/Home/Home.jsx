@@ -4,10 +4,19 @@ import Category from "../../components/Category/Category";
 import { useSelector } from "react-redux";
 import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import Sidebar from "../../components/Sidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Home = () => {
 	const { dataLogin } = useSelector((state) => state.auth);
+	const [search, setSearch] = useState("");
+	const navigate = useNavigate();
+
+	const handleOnSubmit = (e) => {
+		e.preventDefault();
+		navigate(`/search/${search}`);
+		console.log(search);
+	};
 
 	return (
 		<>
@@ -37,18 +46,35 @@ const Home = () => {
 					</div>
 					<div className={style.rightBox}></div>
 				</div>
-				<div className={style.heroContainerMobile}>
-					<Sidebar />
-					<div className={style.heroDescMobile}>
-						<h1>Bulan Ramadhan Banyak diskon!</h1>
-						<h5>Diskon Hingga</h5>
-						<h3>60%</h3>
+				<div className={style.containerMobile}>
+					<form onSubmit={(e) => handleOnSubmit(e)}>
+						<Sidebar />
+						<div className={style.inputContainer}>
+							<input
+								value={search}
+								onChange={(e) => setSearch(e.target.value)}
+								type="search"
+								placeholder="Cari di sini ..."
+							/>
+							<img
+								onClick={(e) => handleOnSubmit(e)}
+								src="/icons/fi_search.svg"
+								alt="search"
+							/>
+						</div>
+					</form>
+					<div className={style.heroContainerMobile}>
+						<div className={style.heroDescMobile}>
+							<h1>Bulan Ramadhan Banyak diskon!</h1>
+							<h5>Diskon Hingga</h5>
+							<h3>60%</h3>
+						</div>
+						<img
+							src="images/png_gift_88837.png"
+							alt="gift mobile"
+							className={style.giftImageMobile}
+						/>
 					</div>
-					<img
-						src="images/png_gift_88837.png"
-						alt="gift mobile"
-						className={style.giftImageMobile}
-					/>
 				</div>
 			</div>
 			<Category />

@@ -1,8 +1,7 @@
 import Logo from "../Logo/logo";
 import style from "./NavbarHome.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const NavbarHome = () => {
 	const [search, setSearch] = useState("");
