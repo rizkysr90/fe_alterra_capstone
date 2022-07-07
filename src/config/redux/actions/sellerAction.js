@@ -21,7 +21,7 @@ export const orderSellerDiminati = (token) => (dispatch) => {
 }
 
 export const orderSellerTerjual = (token) => (dispatch) => {
-  axios.get("https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales?page=1&status=1",
+  axios.get("https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts?page=1&row=10&status=false",
     { headers: { Authorization: `Bearer ${token}` } }
   ).then((res) => {
     dispatch({ type: "SET_SELLER_TERJUAL", payload: res.data.data });

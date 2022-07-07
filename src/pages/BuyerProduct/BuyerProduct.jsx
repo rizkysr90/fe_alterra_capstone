@@ -3,12 +3,19 @@ import style from "./BuyerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 
 const BuyerProduct = () => {
+  const [modalTawar, setModalTawar] = useState(false);
   const { dataLogin } = useSelector((state) => state.auth);
   const { idProductBuyer } = useParams();
   const { dataProductBuyer } = useSelector((globalStore) => globalStore.buyerReducer);
+
+  const toggleModalTawar = () => {
+    setModalTawar(!modalTawar)
+  }
+
   const rupiah = (number) => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
@@ -63,7 +70,7 @@ const BuyerProduct = () => {
         <h5 className={style.tha}>{dataProductBuyer[i].name}</h5>
         <p className={style.tri}>{dataProductBuyer[i].Category.name}</p>
         <h5 className={style.pro}>{`${rupiah(dataProductBuyer[i].price)}`}</h5>
-        <button className={style.sob}>Saya tertarik dan ingin nego</button>
+        <button onClick={toggleModalTawar} className={style.sob}>Saya tertarik dan ingin nego</button>
       </div>
 
       <div className={style.cardPenjual}>
@@ -82,6 +89,16 @@ const BuyerProduct = () => {
           <p>{dataProductBuyer[i].description}</p>
         </div>
       </div>
+
+      {modalTawar && (
+        <div className={style.modalTawar}>
+          <div className={style.overlay} onClick={toggleModalTawar}></div>
+          <div className={style.modalTawarContent}>
+            <h2>Hello Modal Tawar</h2>
+            <p>Ini adalah Modal Tawar</p>
+          </div>
+        </div>
+      )}
     </>
   )
 }

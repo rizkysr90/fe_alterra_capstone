@@ -119,15 +119,15 @@ const DaftarJualTerjual = () => {
           </div>
           <div className={style.mainContent}>
             {dataSellerTerjual?.map((products) => (
-              <div key={products.Product.id} className={style.cardContainer}>
+              <div key={products.id} className={style.cardContainer}>
                 <img
-                  src={products.Product.Product_images[0].url_image}
+                  src={products.Product_images[0].url_image}
                   alt="card"
                 />
                 <div className={style.cardDesc}>
-                  <h5>{`${products.Product.name.slice(0, 15)}...`}</h5>
-                  <p>{products.Product.Category.name}</p>
-                  <h5>{`${rupiah(products.Product.price)}`}</h5>
+                  <h5>{`${products.name.slice(0, 15)}...`}</h5>
+                  <p>{products.Category.name}</p>
+                  <h5>{`${rupiah(products.price)}`}</h5>
                 </div>
               </div>
             ))}
