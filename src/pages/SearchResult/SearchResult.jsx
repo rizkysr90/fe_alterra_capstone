@@ -1,5 +1,7 @@
 import NavbarHome from "../../components/NavbarHome/NavbarHome";
+import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./SearchResult.module.css";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
@@ -7,6 +9,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SearchResult = () => {
+	const { dataLogin } = useSelector((state) => state.auth);
 	const { searchResult } = useParams();
 
 	const [searchData, setSearchData] = useState();
@@ -34,7 +37,7 @@ const SearchResult = () => {
 	return (
 		<>
 			<div className={style.homeContainer}>
-				<NavbarHome />
+			{dataLogin?.dataLogin.token ? <NavbarAfterLogin /> : <NavbarHome />}
 				<div className={style.heroContainer}>
 					<div className={style.leftBox}></div>
 					<div className={style.middleBox}>
