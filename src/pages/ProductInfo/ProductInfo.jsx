@@ -2,12 +2,64 @@ import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import style from "./ProductInfo.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Select from "react-select";
 
 const ProductInfo = () => {
   const { dataLogin } = useSelector((state) => state.auth);
+
+  const [category, setCategory] = useState([]);
+
+  const navigate = useNavigate()
+
+  const getCategory = async () => {
+    const { data } = await axios.get(
+      "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/categories?page=1"
+    );
+    setCategory(data.data);
+  };
+
+  const [ProductPicture, setProductPicture] = useState('')
+
+  const handleFile = (e) => {
+    let file = e.target.files[0];
+    setProductPicture(file);
+  }
+
+  const handleChange = (e) => {
+    setProduct({...product, id_category: e.target.value})
+  }
+
+  const handlePreview = async (e) => {
+    e.preventDefault();
+    product.isActive = false
+    product.status = false
+    product.id_user = dataLogin.dataLogin.id
+    const formdata = new FormData();
+    formdata.append("gambar", ProductPicture)
+    formdata.append("name", product.name);
+    formdata.append("price", product.price);
+    formdata.append("description", product.description);
+    formdata.append("isActive", product.isActive);
+    formdata.append("status", product.status);
+    formdata.append("id_user", product.id_user);
+    formdata.append("id_category", product.id_category);
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
+        data: formdata,
+        headers: {
+          Authorization: `Bearer ${dataLogin.dataLogin.token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(data);
+      navigate(`/seller-product/${data.data.id}`)
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const [product, setProduct] = useState({
     name: "",
@@ -17,11 +69,16 @@ const ProductInfo = () => {
     status: "",
     id_user: "",
     id_category: "",
+    gambar: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    product.isActive = true
+    product.status = true
+    product.id_user = dataLogin.dataLogin.id
     const formdata = new FormData();
+    formdata.append("gambar", ProductPicture)
     formdata.append("name", product.name);
     formdata.append("price", product.price);
     formdata.append("description", product.description);
@@ -43,14 +100,16 @@ const ProductInfo = () => {
     } catch (err) {
       console.log(err);
     }
+    
   };
 
   useEffect(() => {
+    getCategory();
     // eslint-disable-next-line
   }, []);
 
   return (
-    <>
+    <>   
       <Navbar title="Lengkapi Detail Produk" />
       <div className={style.container}>
         <div className={style.content}>
@@ -90,7 +149,16 @@ const ProductInfo = () => {
             <div className={style.inputForm}>
               <label htmlFor="kategori">Kategori</label>
               <div className={style.row}>
-                <Select className={style.colLeft} />
+                <select className={style.inputBox} onChange={(e) => handleChange(e)}>
+                  <option value='' disabled selected>
+                    Pilih Kategori
+                  </option>
+                  {category?.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
             <div className={style.inputForm}>
@@ -118,15 +186,13 @@ const ProductInfo = () => {
                   className={style.inputImage}
                   type="file"
                   alt="Box Tambah Gambar"
+                  onChange={(e) => handleFile(e)}
                 />
               </label>
             </div>
             <div className={style.btn}>
-              <button className={style.btnForm}>Preview</button>
-              <button
-                className={style.btnForm}
-                onClick={(e) => handleSubmit(e)}
-              >
+              <button className={style.btnForm} onClick={(e) => handlePreview(e)}>Preview</button>
+              <button className={style.btnForm} onClick={(e) => handleSubmit(e)}>
                 Terbitkan
               </button>
             </div>
