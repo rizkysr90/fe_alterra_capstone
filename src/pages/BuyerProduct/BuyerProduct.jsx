@@ -44,7 +44,7 @@ const BuyerProduct = () => {
 						<Carousel.Item>
 							<img
 								src={data?.url_image}
-								alt="First slide"
+								alt="Foto Produk"
 							/>
 						</Carousel.Item>
 					);
