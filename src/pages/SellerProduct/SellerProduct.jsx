@@ -3,11 +3,24 @@ import style from "./SellerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from "react";
+import axios from "axios"
 
 const SellerProduct = () => {
   const { idProductSeller } = useParams();
-  const { dataProductSeller } = useSelector((state) => state.sellerReducer);
+
+  const [Product, setProduct] = useState({})
+
+  const { dataProductSeller } = useSelector((globalStore) => globalStore.sellerReducer);
   console.log(dataProductSeller)
+
+  const getAllProduct = async () => {
+    const { data } = await axios.get(
+      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts/${idProductSeller}`
+    );
+    console.log(data);
+    setProduct(data.data);
+  };
 
   let i = -1;
   for(let j = 0; j < dataProductSeller.length; j++) {
@@ -24,6 +37,12 @@ const SellerProduct = () => {
     }).format(number);
   }
 
+  useEffect(() => {
+    getAllProduct()
+
+    //eslint-disable-next-line
+  }, [])
+
   return (
     <>
       <Navbar />
@@ -31,23 +50,23 @@ const SellerProduct = () => {
         <Carousel.Item>
           <img
             className="" 
-            src={dataProductSeller[i].Product_images[0].url_image}
+            src={Product.Product_images[0].url_image}
             alt="First slide"
           />
         </Carousel.Item> 
         <Carousel.Item>
           <img
             className=""
-            src={dataProductSeller[i].Product_images[1].url_image}
+            src={Product.Product_images[1].url_image}
             alt="Second slide"
           />
         </Carousel.Item>
       </Carousel> 
 
       <div className={style.card}>
-        <h5 className={style.tha}>{dataProductSeller[i].name}</h5>
-        <p className={style.tri}>{dataProductSeller[i].Category.name}</p>
-        <h5 className={style.pro}>{`${rupiah(dataProductSeller[i].price)}`}</h5>
+        <h5 className={style.tha}>{Product.name}</h5>
+        <p className={style.tri}>{Product.Category.name}</p>
+        <h5 className={style.pro}>{`${rupiah(Product.price)}`}</h5>
         <button className={style.sob}>Terbitkan</button>
         <button className={style.man}>Edit</button>
       </div>
@@ -56,7 +75,7 @@ const SellerProduct = () => {
 
       <div className={style.cardPenjual}>
         <div className={style.par}>
-          <img src={dataProductSeller[i].User.profile_picture} alt="Foto Penjual" />
+          <img src={Product.User.profile_picture} alt="Foto Penjual" />
           <div className={style.tup}>
             <h5 className={style.dea}>{dataProductSeller[i].User.name}</h5>
             <p className={style.sun}>{dataProductSeller[i].User.address}</p>
