@@ -2,13 +2,16 @@ import style from "./InfoPenawar.module.css";
 import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const InfoPenawar = () => {
+  const [modalTerima, setModalTerima] = useState(false);
   const { idOrderSeller } = useParams();
   const { dataOrderSeller } = useSelector(
     (globalStore) => globalStore.sellerReducer
   );
   console.log(dataOrderSeller);
+
   let i = -1;
   for (let j = 0; j < dataOrderSeller.length; j++) {
     //eslint-disable-next-line
@@ -16,6 +19,10 @@ const InfoPenawar = () => {
       i = j;
     }
   }
+
+  const toggleModalTerima = () => {
+    setModalTerima(!modalTerima);
+  };
 
   const rupiah = (number) => {
     return new Intl.NumberFormat("id-ID", {
@@ -73,11 +80,68 @@ const InfoPenawar = () => {
           </div>
           <div className={style.btnContainer}>
             <button className={style.btn}>Tolak</button>
-            <button className={style.btn}>Terima</button>
+            <button className={style.btn} onClick={toggleModalTerima}>
+              Terima
+            </button>
           </div>
           <hr />
         </div>
       </div>
+
+      {modalTerima && (
+        <div className={style.modalTerima}>
+          <div className={style.overlay} onClick={toggleModalTerima}></div>
+          <div className={style.modalTerimaContent}>
+            <h1 className={style.titleModalTerima}>
+              Yeay kamu berhasil mendapat harga yang sesuai
+            </h1>
+            <p className={style.textModalTerima}>
+              Segera hubungi pembeli melalui whatsapp untuk transaksi
+              selanjutnya
+            </p>
+            <div className={style.modalCard}>
+              <h1 className={style.titleModalCard}>Product Match</h1>
+              <div className={style.modalCardContent}>
+                <div className={style.cardContent}>
+                  <img
+                    src={dataOrderSeller[i].Buyers.profile_picture}
+                    alt="Foto Pembeli"
+                  />
+                </div>
+                <div className={style.cardContent}>
+                  <h1 className={style.namePembeli}>
+                    {dataOrderSeller[i].Buyers.name}
+                  </h1>
+                  <p className={style.cityPembeli}>
+                    {dataOrderSeller[i].Buyers.City.name}
+                  </p>
+                </div>
+              </div>
+              <div className={style.modalCardContent}>
+                <div className={style.cardContent}>
+                  <img
+                    src={dataOrderSeller[i].Product.Product_images[0].url_image}
+                    alt="Foto Produk"
+                  />
+                </div>
+                <div className={style.cardContent}>
+                  <h2>{dataOrderSeller[i].Product.name}</h2>
+                  <h2>
+                    <s>{`${rupiah(dataOrderSeller[i].Product.price)}`}</s>
+                  </h2>
+                  <h2>Ditawar {`${rupiah(dataOrderSeller[i].price)}`}</h2>
+                </div>
+              </div>
+            </div>
+            <a href="https://wa.me/08123456789/" style={{ textDecoration: "none" }}>
+              <button className={style.btnModalCard}>
+                Hubungi via WhatsApp
+                <img src="/icons/fi_whatsapp.svg" alt="Icon WhatsApp" />
+              </button>
+            </a>
+          </div>
+        </div>
+      )}
     </>
   );
 };

@@ -17,7 +17,7 @@ const DaftarJual = () => {
   );
 
   const dispatch = useDispatch();
-  const { dataLogin } = useSelector((state) => state.auth);
+  const { dataLogin } = useSelector((globalStore) => globalStore.auth);
   const token = `${dataLogin.dataLogin.token}`;
 
   const rupiah = (number) => {
