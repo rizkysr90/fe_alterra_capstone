@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { LoginEmail } from "../../config/redux/actions/authAction";
 
 const Login = () => {
-  const { dataLogin } = useSelector((state) => state.auth);
+  const { dataLogin } = useSelector((globalStore) => globalStore.auth);
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();

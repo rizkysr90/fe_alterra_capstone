@@ -2,7 +2,7 @@ import style from "./InfoPenawar.module.css";
 import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const InfoPenawar = () => {
@@ -15,20 +15,13 @@ const InfoPenawar = () => {
   );
   console.log(dataOrderSeller);
 
-  const handleTerima = () => {
-    axios
-      .put(
+  const handleTerima = async () => {
+    const { data } = await axios.put(
         "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/:order_id",
-        {
-          headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
-        },
-        {
-          status: { status },
-        }
+        { headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` } },
+        { status: { status } }
       )
-      .then((response) => {
-        setStatus(response.status);
-      });
+      setStatus(data)
   };
 
   let i = -1;
@@ -49,6 +42,11 @@ const InfoPenawar = () => {
       currency: "IDR",
     }).format(number);
   };
+
+  useEffect(() => {
+    handleTerima()
+    //eslint-disable-next-line
+  }, [])
 
   return (
     <>

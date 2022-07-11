@@ -1,15 +1,21 @@
 const initialState = {
     dataProductBuyer: null,
+    dataTawar: null,
 }
 
 const productReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case "SET_PRODUCT_BUYER":
             return {
                 ...state,
                 dataProductBuyer: action.payload
             }
-            default: return state
+        case "SET_DATA_TAWAR":
+            return {
+                ...state,
+                dataTawar: action.payload
+            }
+        default: return state
     }
 }
 

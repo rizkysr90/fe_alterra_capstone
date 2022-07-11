@@ -7,3 +7,14 @@ export const  buyerAction = () => (dispatch) => {
     }) 
     .catch((err) => console.log(err)); 
 }
+
+export const tawarHarga = (token, price) => (dispatch) => {
+  let tawar = {price}
+  axios.post("https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/purchases/orders",
+    { headers: { Authorization: `Bearer ${token}` } }, tawar
+  ).then((res) => {
+    dispatch({ type: "SET_DATA_TAWAR", payload: res.data.data });
+    console.log(res)
+  })
+    .catch((err) => console.log(err));
+}
