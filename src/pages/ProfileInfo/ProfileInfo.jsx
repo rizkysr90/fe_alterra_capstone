@@ -9,7 +9,7 @@ import Select from "react-select";
 import { Link } from "react-router-dom";
 
 const ProfileInfo = () => {
-	const { dataLogin } = useSelector((state) => state.auth);
+	const { dataLogin } = useSelector((globalStore) => globalStore.auth);
 
 	const [dataUser, setDataUser] = useState({});
 	const [city, setCity] = useState([]);
