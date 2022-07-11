@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Home = () => {
-	const { dataLogin } = useSelector((state) => state.auth);
+	const { dataLogin } = useSelector((globalStore) => globalStore.auth);
 	const [search, setSearch] = useState("");
 	const navigate = useNavigate();
 
