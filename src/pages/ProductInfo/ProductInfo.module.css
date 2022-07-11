@@ -153,6 +153,28 @@
   position: absolute;
 }
 
+.container .content .inputForm .preview {
+  width: 96px;
+  height: 96px;
+  left: 560px; 
+  position: absolute;
+}
+
+.container .content .inputForm .preview img {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+}
+
+.container .content .inputForm .preview .remove {
+  width: 96px;
+  height: 28px;
+  background: red;
+  border: 1px solid;
+  border-radius: 16px;
+  color: #ffffff;
+}
+
 .container
   .content
   .inputForm

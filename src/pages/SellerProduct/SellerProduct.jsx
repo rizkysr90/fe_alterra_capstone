@@ -77,8 +77,8 @@ const SellerProduct = () => {
         <div className={style.par}>
           <img src={Product.User.profile_picture} alt="Foto Penjual" />
           <div className={style.tup}>
-            <h5 className={style.dea}>{dataProductSeller[i].User.name}</h5>
-            <p className={style.sun}>{dataProductSeller[i].User.address}</p>
+            <h5 className={style.dea}>{Product.User.name}</h5>
+            <p className={style.sun}>{Product.User.address}</p>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@ const SellerProduct = () => {
       <div className={style.cardContainer}>
         <h5 className={style.kri}>Deskripsi</h5>
         <div className={style.ips}>
-          <p>{dataProductSeller[i].description}</p>
+          <p>{Product.description}</p>
         </div>
       </div>
     </>
