@@ -71,7 +71,7 @@ const SellerProduct = () => {
         <button className={style.man}>Edit</button>
       </div>
       
-       
+      
 
       <div className={style.cardPenjual}>
         <div className={style.par}>
