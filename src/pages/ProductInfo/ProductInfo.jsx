@@ -10,6 +10,8 @@ const ProductInfo = () => {
 
   const [category, setCategory] = useState([]);
 
+  const [ProductPicture, setProductPicture] = useState('')
+
   const navigate = useNavigate()
 
   const getCategory = async () => {
@@ -19,15 +21,13 @@ const ProductInfo = () => {
     setCategory(data.data);
   };
 
-  const [ProductPicture, setProductPicture] = useState('')
-
   const handleFile = (e) => {
 		if (e.target.files && e.target.files.length > 0) {
 			setProductPicture(e.target.files[0]);
 		}
 	};
 
-  const remove = (e) => {
+  const remove = () => {
 		setProductPicture()
 	}
 
@@ -103,9 +103,9 @@ const ProductInfo = () => {
       });
       console.log(data);
     } catch (err) {
-      console.log(err);
+      console.log(err); 
     }
-    
+    navigate(`/daftar-jual`)
   };
 
   useEffect(() => {
