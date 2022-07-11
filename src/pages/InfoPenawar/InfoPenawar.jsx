@@ -3,14 +3,33 @@ import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import axios from "axios";
 
 const InfoPenawar = () => {
+  const { dataLogin } = useSelector((globalStore) => globalStore.auth);
+  const [status, setStatus] = useState("");
   const [modalTerima, setModalTerima] = useState(false);
   const { idOrderSeller } = useParams();
   const { dataOrderSeller } = useSelector(
     (globalStore) => globalStore.sellerReducer
   );
   console.log(dataOrderSeller);
+
+  const handleTerima = () => {
+    axios
+      .put(
+        "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/:order_id",
+        {
+          headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
+        },
+        {
+          status: { status },
+        }
+      )
+      .then((response) => {
+        setStatus(response.status);
+      });
+  };
 
   let i = -1;
   for (let j = 0; j < dataOrderSeller.length; j++) {
@@ -80,7 +99,7 @@ const InfoPenawar = () => {
           </div>
           <div className={style.btnContainer}>
             <button className={style.btn}>Tolak</button>
-            <button className={style.btn} onClick={toggleModalTerima}>
+            <button className={style.btn} onClick={handleTerima}>
               Terima
             </button>
           </div>
@@ -133,7 +152,10 @@ const InfoPenawar = () => {
                 </div>
               </div>
             </div>
-            <a href="https://wa.me/08123456789/" style={{ textDecoration: "none" }}>
+            <a
+              href="https://wa.me/08123456789/"
+              style={{ textDecoration: "none" }}
+            >
               <button className={style.btnModalCard}>
                 Hubungi via WhatsApp
                 <img src="/icons/fi_whatsapp.svg" alt="Icon WhatsApp" />
