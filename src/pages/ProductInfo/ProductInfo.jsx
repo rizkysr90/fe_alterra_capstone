@@ -10,6 +10,8 @@ const ProductInfo = () => {
 
   const [category, setCategory] = useState([]);
 
+  const [ProductPicture, setProductPicture] = useState('')
+
   const navigate = useNavigate()
 
   const getCategory = async () => {
@@ -19,12 +21,15 @@ const ProductInfo = () => {
     setCategory(data.data);
   };
 
-  const [ProductPicture, setProductPicture] = useState('')
-
   const handleFile = (e) => {
-    let file = e.target.files[0];
-    setProductPicture(file);
-  }
+		if (e.target.files && e.target.files.length > 0) {
+			setProductPicture(e.target.files[0]);
+		}
+	};
+
+  const remove = () => {
+		setProductPicture()
+	}
 
   const handleChange = (e) => {
     setProduct({...product, id_category: e.target.value})
@@ -98,9 +103,9 @@ const ProductInfo = () => {
       });
       console.log(data);
     } catch (err) {
-      console.log(err);
+      console.log(err); 
     }
-    
+    navigate(`/daftar-jual`)
   };
 
   useEffect(() => {
@@ -189,7 +194,20 @@ const ProductInfo = () => {
                   onChange={(e) => handleFile(e)}
                 />
               </label>
+              {/* {ProductPicture && (
+							<div className={style.preview}>
+								<img src={URL.createObjectURL(ProductPicture)} alt="Product" />
+								<button onClick={remove} className={style.remove}>Remove</button>
+							</div>
+						)} */}
+              {ProductPicture && (
+                <div className={style.preview}>
+                  <img src={URL.createObjectURL(ProductPicture)} alt="Product" />
+                  <button onClick={remove} className={style.remove}>Remove</button>
+                </div>
+              )}
             </div>
+            
             <div className={style.btn}>
               <button className={style.btnForm} onClick={(e) => handlePreview(e)}>Preview</button>
               <button className={style.btnForm} onClick={(e) => handleSubmit(e)}>
