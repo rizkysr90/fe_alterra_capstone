@@ -11,6 +11,7 @@ import DaftarJualDiminati from './pages/DaftarJual/DaftarJualDiminati';
 import DaftarJualTerjual from './pages/DaftarJual/DaftarJualTerjual';
 import InfoPenawar from './pages/InfoPenawar/InfoPenawar';
 import SearchResult from './pages/SearchResult/SearchResult';
+import Notifikasi from './pages/Notifikasi/Notifikasi';
 
 const RouteApp = () => {
     return (
@@ -20,6 +21,7 @@ const RouteApp = () => {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
                 <Route path='/profile' element={<ProfileInfo />} />
+                <Route path='/notifikasi' element={<Notifikasi />} />
                 <Route path='/product-info' element={<ProductInfo />} />
                 <Route path='/seller-product/:idProductSeller' element={<SellerProduct />} />
                 <Route path='/buyer-product/:idProductBuyer' element={<BuyerProduct />} />

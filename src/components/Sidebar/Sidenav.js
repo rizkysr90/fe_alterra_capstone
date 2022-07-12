@@ -2,15 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
-const Sidenav = ({sidenav}) => {
+const Sidenav = ({ sidenav }) => {
     // const navigate = useNavigate();
 
     return (
-        <div className={sidenav?"sidenav sidenav--open":"sidenav"}>
+        <div className={sidenav ? "sidenav sidenav--open" : "sidenav"}>
             <Link to={"/"}>
                 <p><b>Second Hand</b></p>
             </Link>
-            <li>Notifikasi</li>
+            <Link to={"/notifikasi"}>
+                <li>Notifikasi</li>
+            </Link>
             <Link to={"/daftar-jual"}>
                 <li>Daftar Jual</li>
             </Link>

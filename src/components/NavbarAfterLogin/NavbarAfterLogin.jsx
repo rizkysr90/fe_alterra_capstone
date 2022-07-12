@@ -38,7 +38,7 @@ const NavbarAfterLogin = () => {
 					<Link to={"/daftar-jual"}>
 						<img src="/icons/fi_list.svg" alt="list" />
 					</Link>
-					<Link to={"/"}>
+					<Link to={"/notifikasi"}>
 						<img src="/icons/fi_bell.svg" alt="bell" />
 					</Link>
 					<Link to={"/profile"}>
