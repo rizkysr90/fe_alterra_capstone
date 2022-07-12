@@ -5,26 +5,45 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin";
-import { tawarHarga } from "../../config/redux/actions/buyerAction";
+import axios from "axios";
+import { useEffect } from "react";
 
 const BuyerProduct = () => {
   const [modalTawar, setModalTawar] = useState(false);
   const { dataLogin } = useSelector((globalStore) => globalStore.auth);
   const [price, setPrice] = useState();
   const { idProductBuyer } = useParams();
-  const { dataProductBuyer, dataTawar } = useSelector(
-    (globalStore) => globalStore.buyerReducer
-  );
-  const dispatch = useDispatch();
+
+  const [dataProductBuyer, setDataProductBuyer] = useState({});
+  console.log(dataProductBuyer);
+  console.log(dataLogin);
+
+  const getProductById = async () => {
+    const { data } = await axios.get(
+      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products/${idProductBuyer}`
+    );
+    setDataProductBuyer(data.data);
+  };
 
   const toggleModalTawar = () => {
     setModalTawar(!modalTawar);
   };
 
-  const handleTawar = (e) => {
+  const handleTawar = async (e) => {
     e.preventDefault();
-    dispatch(tawarHarga(price));
-    console.log(dataTawar);
+    const { data } = await axios({
+      method: "post",
+      url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/purchases/orders`,
+      data: {
+        buyer_id: dataLogin.dataLogin.id,
+        seller_id: dataProductBuyer.id_user,
+        price: price,
+        product_id: dataProductBuyer.id
+      },
+      headers: {
+        Authorization: `Bearer ${dataLogin.dataLogin.token}`
+      }
+    })
   };
 
   const rupiah = (number) => {
@@ -34,35 +53,29 @@ const BuyerProduct = () => {
     }).format(number);
   };
 
-  let i = -1;
-
-  for (let j = 0; j < dataProductBuyer.length; j++) {
-    //eslint-disable-next-line
-    if (dataProductBuyer[j].id == idProductBuyer) {
-      i = j;
-    }
-    console.log(dataProductBuyer[i]);
-  }
+  useEffect(() => {
+    getProductById();
+  }, [])
 
   return (
     <>
       {dataLogin?.dataLogin.token ? <NavbarAfterLogin /> : <NavbarHome />}
       <Carousel className={style.carouselContainer}>
-        {dataProductBuyer[i].Product_images.map((data) => {
+        {dataProductBuyer.Product_images?.map((data, key) => {
           return (
-            <Carousel.Item>
+            <Carousel.Item key={key}>
               <img src={data?.url_image} alt="Foto Produk" />
             </Carousel.Item>
           );
         })}
       </Carousel>
       <div className={style.cardProduct}>
-        <h1 className={style.titleProduct}>{dataProductBuyer[i].name}</h1>
+        <h1 className={style.titleProduct}>{dataProductBuyer?.name}</h1>
         <p className={style.categoryProduct}>
-          {dataProductBuyer[i].Category.name}
+          {dataProductBuyer.Category?.name}
         </p>
         <h1 className={style.priceProduct}>{`${rupiah(
-          dataProductBuyer[i].price
+          dataProductBuyer?.price
         )}`}</h1>
         <button onClick={toggleModalTawar} className={style.btnProduct}>
           Saya tertarik dan ingin nego
@@ -72,14 +85,14 @@ const BuyerProduct = () => {
       <div className={style.cardPenjual}>
         <div className={style.penjualContent}>
           <img
-            src={dataProductBuyer[i].User.profile_picture}
+            src={dataProductBuyer.User?.profile_picture}
             alt="Foto Penjual"
           />
         </div>
         <div className={style.penjualContent}>
-          <h1 className={style.namePenjual}>{dataProductBuyer[i].User.name}</h1>
+          <h1 className={style.namePenjual}>{dataProductBuyer.User?.name}</h1>
           <p className={style.addressPenjual}>
-            {dataProductBuyer[i].User.address}
+            {dataProductBuyer.User?.address}
           </p>
         </div>
       </div>
@@ -87,7 +100,7 @@ const BuyerProduct = () => {
       <div className={style.cardDesc}>
         <h1 className={style.titleDesc}>Deskripsi</h1>
         <div className={style.textDesc}>
-          <p>{dataProductBuyer[i].description}</p>
+          <p>{dataProductBuyer?.description}</p>
         </div>
       </div>
 
@@ -103,16 +116,16 @@ const BuyerProduct = () => {
             <div className={style.modalCard}>
               <div className={style.modalCardContent}>
                 <img
-                  src={dataProductBuyer[i].Product_images[0]?.url_image}
+                  src={dataProductBuyer.Product_images[0]?.url_image}
                   alt="Foto Product"
                 ></img>
               </div>
               <div className={style.modalCardContent}>
                 <h1 className={style.titleModalCard}>
-                  {dataProductBuyer[i].name}
+                  {dataProductBuyer?.name}
                 </h1>
                 <p className={style.priceModalCard}>{`${rupiah(
-                  dataProductBuyer[i].price
+                  dataProductBuyer?.price
                 )}`}</p>
               </div>
             </div>
