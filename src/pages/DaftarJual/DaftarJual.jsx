@@ -12,9 +12,8 @@ import axios from "axios";
 const DaftarJual = () => {
   const [userDetail, setUserDetail] = useState({});
 
-  const { dataProductSeller } = useSelector(
-    (globalStore) => globalStore.sellerReducer
-  );
+  const [dataProductSeller, setDataProductSeller] = useState([]);
+  console.log(dataProductSeller);
 
   const dispatch = useDispatch();
   const { dataLogin } = useSelector((globalStore) => globalStore.auth);
@@ -27,6 +26,17 @@ const DaftarJual = () => {
     }).format(number);
   };
 
+  const getProductSeller = async () => {
+    const { data } = await axios ({
+      method: "get",
+      url: "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts?page=2&row=10&status=true&isActive=true",
+      headers: {
+        Authorization: `Bearer ${dataLogin.dataLogin.token}`
+      }
+    });
+    setDataProductSeller(data.data);
+  };
+
   const getUserDetail = async () => {
     const { data } = await axios.get(
       `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
@@ -37,10 +47,9 @@ const DaftarJual = () => {
     setUserDetail(data.data);
   };
 
-  console.log(userDetail);
-
   useEffect(() => {
     getUserDetail();
+    getProductSeller();
     dispatch(sellerAction(token));
     document.getElementsByClassName(CardCategoryStyle.pText)[0].style.cssText =
       "color: #7126B5; font-weight: 500";
