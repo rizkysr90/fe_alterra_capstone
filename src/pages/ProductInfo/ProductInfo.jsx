@@ -12,6 +12,7 @@ const ProductInfo = () => {
 
   const [ProductPicture, setProductPicture] = useState('')
 
+
   const navigate = useNavigate()
 
   const getCategory = async () => {
@@ -25,6 +26,7 @@ const ProductInfo = () => {
 		if (e.target.files && e.target.files.length > 0) {
 			setProductPicture(e.target.files[0]);
 		}
+    
 	};
 
   const remove = () => {
@@ -105,7 +107,7 @@ const ProductInfo = () => {
     } catch (err) {
       console.log(err); 
     }
-    navigate(`/daftar-jual`)
+    // navigate(`/daftar-jual`)
   };
 
   useEffect(() => {
@@ -191,15 +193,12 @@ const ProductInfo = () => {
                   className={style.inputImage}
                   type="file"
                   alt="Box Tambah Gambar"
+                  multiple
                   onChange={(e) => handleFile(e)}
                 />
               </label>
-              {/* {ProductPicture && (
-							<div className={style.preview}>
-								<img src={URL.createObjectURL(ProductPicture)} alt="Product" />
-								<button onClick={remove} className={style.remove}>Remove</button>
-							</div>
-						)} */}
+              
+
               {ProductPicture && (
                 <div className={style.preview}>
                   <img src={URL.createObjectURL(ProductPicture)} alt="Product" />

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const InfoPenawar = () => {
-  const { dataLogin } = useSelector((globalStore) => globalStore.auth);
+  const { dataLogin } = useSelector((state) => state.auth);
   const [status, setStatus] = useState("");
   const [modalTerima, setModalTerima] = useState(false);
   const { idOrderSeller } = useParams();
@@ -15,14 +15,17 @@ const InfoPenawar = () => {
   );
   console.log(dataOrderSeller);
 
+  const token = `${dataLogin.dataLogin.token}`
+
   const handleTerima = async () => {
     const { data } = await axios.put(
-        "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/:order_id",
-        { headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` } },
+        `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/${idOrderSeller}`,
+        { headers: { Authorization: `Bearer ${token}` } },
         { status: { status } }
       )
       setStatus(data)
   };
+
 
   let i = -1;
   for (let j = 0; j < dataOrderSeller.length; j++) {
