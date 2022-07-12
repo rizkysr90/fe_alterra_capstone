@@ -31,7 +31,6 @@ const SellerProduct = () => {
     Product.status = true
     Product.id_user = dataLogin.dataLogin.id
     const formdata = new FormData();
-    formdata.append("gambar", Product.ProductPicture);
     formdata.append("name", Product.name);
     formdata.append("price", Product.price);
     formdata.append("description", Product.description);
@@ -41,8 +40,8 @@ const SellerProduct = () => {
     formdata.append("id_category", Product.id_category);
     try {
       const { data } = await axios({
-        method: "post",
-        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
+        method: "put",
+        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts/${idProductSeller}`,
         data: formdata,
         headers: {
           Authorization: `Bearer ${dataLogin.dataLogin.token}`,
@@ -90,7 +89,7 @@ const SellerProduct = () => {
         <p className={style.tri}>{Product.Category?.name}</p>
         <h5 className={style.pro}>{`${rupiah(Product?.price)}`}</h5>
         <button className={style.sob} onClick={(e) => handleSubmit(e)}>Terbitkan</button>
-        <button className={style.man}>Edit</button>
+        <button className={style.man} onClick={navigate('/product-info')}>Edit</button>
       </div>
       
       
