@@ -1,7 +1,7 @@
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./SellerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from "react";
 import axios from "axios"
@@ -11,7 +11,9 @@ const SellerProduct = () => {
 
   const { idProductSeller } = useParams();
 
-  const [Product, setProduct] = useState({})
+  const [Product, setProduct] = useState({});
+
+  const navigate = useNavigate();
 
   const token = `${dataLogin.dataLogin.token}`
 
@@ -23,17 +25,48 @@ const SellerProduct = () => {
     setProduct(data.data);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    Product.isActive = true
+    Product.status = true
+    Product.id_user = dataLogin.dataLogin.id
+    const formdata = new FormData();
+    formdata.append("gambar", Product.ProductPicture);
+    formdata.append("name", Product.name);
+    formdata.append("price", Product.price);
+    formdata.append("description", Product.description);
+    formdata.append("isActive", Product.isActive);
+    formdata.append("status", Product.status);
+    formdata.append("id_user", Product.id_user);
+    formdata.append("id_category", Product.id_category);
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
+        data: formdata,
+        headers: {
+          Authorization: `Bearer ${dataLogin.dataLogin.token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(data);
+    } catch (err) {
+      console.log(err); 
+    }
+    navigate(`/daftar-jual`)
+  };
+
   const rupiah = (number) => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
       currency: "IDR"
     }).format(number);
-  }
+  };
 
   useEffect(() => {
     getDetailProduct()
     //eslint-disable-next-line
-  }, [])
+  }, []);
 
   return (
     <>
@@ -56,7 +89,7 @@ const SellerProduct = () => {
         <h5 className={style.tha}>{Product?.name}</h5>
         <p className={style.tri}>{Product.Category?.name}</p>
         <h5 className={style.pro}>{`${rupiah(Product?.price)}`}</h5>
-        <button className={style.sob}>Terbitkan</button>
+        <button className={style.sob} onClick={(e) => handleSubmit(e)}>Terbitkan</button>
         <button className={style.man}>Edit</button>
       </div>
       
