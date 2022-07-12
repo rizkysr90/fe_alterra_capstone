@@ -13,9 +13,6 @@ const SellerProduct = () => {
 
   const [Product, setProduct] = useState({})
 
-  const { dataProductSeller } = useSelector((globalStore) => globalStore.sellerReducer);
-  console.log(dataProductSeller)
-
   const token = `${dataLogin.dataLogin.token}`
 
   const getDetailProduct = async () => { 
@@ -23,17 +20,8 @@ const SellerProduct = () => {
       `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts/${idProductSeller}`, 
       { headers: { Authorization: `Bearer ${token}` } }
     );
-    setProduct(data);
+    setProduct(data.data);
   };
-
-  let i = -1;
-  for(let j = 0; j < dataProductSeller.length; j++) {
-    //eslint-disable-next-line
-    if(dataProductSeller[j].id == idProductSeller) {
-      i = j;
-    }
-    console.log(dataProductSeller[i]);
-  }
 
   const rupiah = (number) => {
     return new Intl.NumberFormat("id-ID", {
@@ -44,7 +32,6 @@ const SellerProduct = () => {
 
   useEffect(() => {
     getDetailProduct()
-
     //eslint-disable-next-line
   }, [])
 
@@ -52,9 +39,9 @@ const SellerProduct = () => {
     <>
       <Navbar /> 
       <Carousel className={style.use}>
-        {dataProductSeller[i].Product_images.map((data) => {
+        {Product.Product_images?.map((data, key) => {
           return (
-            <Carousel.Item>
+            <Carousel.Item key={key}>
               <img
                 className="" 
                 src={data?.url_image}
@@ -66,9 +53,9 @@ const SellerProduct = () => {
       </Carousel>  
 
       <div className={style.card}>
-        <h5 className={style.tha}>{dataProductSeller[i].name}</h5>
-        <p className={style.tri}>{dataProductSeller[i].Category.name}</p>
-        <h5 className={style.pro}>{`${rupiah(dataProductSeller[i].price)}`}</h5>
+        <h5 className={style.tha}>{Product?.name}</h5>
+        <p className={style.tri}>{Product.Category?.name}</p>
+        <h5 className={style.pro}>{`${rupiah(Product?.price)}`}</h5>
         <button className={style.sob}>Terbitkan</button>
         <button className={style.man}>Edit</button>
       </div>
@@ -77,10 +64,10 @@ const SellerProduct = () => {
 
       <div className={style.cardPenjual}>
         <div className={style.par}>
-          <img src={dataProductSeller[i].User?.profile_picture} alt="Foto Penjual" />
+          <img src={Product.User?.profile_picture} alt="Foto Penjual" />
           <div className={style.tup}>
-            <h5 className={style.dea}>{dataProductSeller[i].User.name}</h5>
-            <p className={style.sun}>{dataProductSeller[i].User.address}</p>
+            <h5 className={style.dea}>{Product.User?.name}</h5>
+            <p className={style.sun}>{Product.User?.address}</p>
           </div>
         </div>
       </div>
@@ -88,7 +75,7 @@ const SellerProduct = () => {
       <div className={style.cardContainer}>
         <h5 className={style.kri}>Deskripsi</h5>
         <div className={style.ips}>
-          <p>{dataProductSeller[i].description}</p>
+          <p>{Product?.description}</p>
         </div>
       </div>
     </>
