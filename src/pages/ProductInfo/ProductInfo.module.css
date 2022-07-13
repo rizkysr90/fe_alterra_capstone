@@ -173,6 +173,15 @@
   border-radius: 12px;
 }
 
+.preview .column span {
+  cursor: pointer;
+  display: flex;
+  margin-top: -115px;
+  margin-left: 80px;
+  font-size: 20px;
+  color: red;
+}
+
 .container .content .inputForm .inputPhoto {
   display: inline-flex;
 }
