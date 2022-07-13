@@ -29,8 +29,6 @@ const ProductInfo = () => {
     // console.log(e.target.files);
     if(e.target.files){
       const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
-      console.log(fileArray);
-
       setProductPicture((prevImages) => prevImages.concat(fileArray));
       Array.from(e.target.files).map(
         (file) => URL.revokeObjectURL(file)
