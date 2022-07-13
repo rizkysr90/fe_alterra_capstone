@@ -153,17 +153,28 @@
   position: absolute;
 }
 
-.container .content .inputForm .preview {
+.preview {
   width: 96px;
   height: 96px;
-  left: 560px; 
-  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
 }
 
-.container .content .inputForm .preview img {
+.column {
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.preview .column img {
   width: 96px;
   height: 96px;
   border-radius: 12px;
+  margin-top: 8px;
+}
+
+.container .inputForm {
+  display: inline-flex;
 }
 
 .container .content .inputForm .preview .remove {

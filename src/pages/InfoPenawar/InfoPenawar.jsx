@@ -131,7 +131,7 @@ const InfoPenawar = () => {
               <button className={style.btn}>Hubungi di WA</button>
             </div>
           )}{" "}
-          {dataOrderSeller.status === null && (
+          {dataOrderSeller.status === null && ( 
             <div className={style.btnContainer}>
               <button className={style.btn} onClick={handleTolak}>
                 Tolak

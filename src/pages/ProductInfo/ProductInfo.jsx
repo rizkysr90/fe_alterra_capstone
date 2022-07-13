@@ -10,8 +10,7 @@ const ProductInfo = () => {
 
   const [category, setCategory] = useState([]);
 
-  const [ProductPicture, setProductPicture] = useState('')
-
+  const [ProductPicture, setProductPicture] = useState([])
 
   const navigate = useNavigate()
 
@@ -23,15 +22,37 @@ const ProductInfo = () => {
   };
 
   const handleFile = (e) => {
-		if (e.target.files && e.target.files.length > 0) {
-			setProductPicture(e.target.files[0]);
-		}
-    
+		// if (e.target.files && e.target.files.length > 0) {
+		// 	setProductPicture(e.target.files[0]);
+		// }
+
+    // console.log(e.target.files);
+    if(e.target.files){
+      const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
+      console.log(fileArray);
+
+      setProductPicture((prevImages) => prevImages.concat(fileArray));
+      Array.from(e.target.files).map(
+        (file) => URL.revokeObjectURL(file)
+      );
+    }
 	};
 
-  const remove = () => {
-		setProductPicture()
-	}
+  const renderPhotos = (source) => {
+    return source.map((photo) => {
+      return (
+        <div className={style.preview}>
+          <div className={style.column}>
+            <img src={photo} alt="" key={photo} />
+          </div>
+        </div>
+      )
+    })
+  }
+
+  // const remove = () => {
+	// 	setProductPicture()
+	// }
 
   const handleChange = (e) => {
     setProduct({...product, id_category: e.target.value})
@@ -107,7 +128,7 @@ const ProductInfo = () => {
     } catch (err) {
       console.log(err); 
     }
-    // navigate(`/daftar-jual`)
+    navigate(`/daftar-jual`)
   };
 
   useEffect(() => {
@@ -192,19 +213,24 @@ const ProductInfo = () => {
                 <input
                   className={style.inputImage}
                   type="file"
-                  alt="Box Tambah Gambar"
                   multiple
+                  alt="Box Tambah Gambar"
                   onChange={(e) => handleFile(e)}
                 />
+              {renderPhotos(ProductPicture)}
               </label>
-              
-
-              {ProductPicture && (
+              {/* {ProductPicture && (
+							<div className={style.preview}>
+								<img src={URL.createObjectURL(ProductPicture)} alt="Product" />
+								<button onClick={remove} className={style.remove}>Remove</button>
+							</div>
+						)} */}
+              {/* {ProductPicture && (
                 <div className={style.preview}>
                   <img src={URL.createObjectURL(ProductPicture)} alt="Product" />
                   <button onClick={remove} className={style.remove}>Remove</button>
                 </div>
-              )}
+              )} */}
             </div>
             
             <div className={style.btn}>
