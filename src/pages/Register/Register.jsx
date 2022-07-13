@@ -30,13 +30,14 @@ const Register = () => {
   return (
     <>
       <div className={style.container}>
-        <div className={style.contentOne}>
-          <div className={style.linear}></div>
+      <div className={style.contentOne}>
+          <img src="/images/loginRegister.png" alt="bg"/>
           <div className={style.bigText}>
             Second
             <br />
             Hand.
           </div>
+          <div className={style.linear}></div>
         </div>
         <div className={style.contentTwo}>
           <form className={style.formRegister}>
