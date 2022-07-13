@@ -22,6 +22,7 @@
 
   .container .content .titleRes {
     display: block !important;
+    padding-left: 54px !important;
   }
 
   .container .content .cardNotifikasi {
