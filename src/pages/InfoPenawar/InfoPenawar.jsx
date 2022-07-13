@@ -7,7 +7,6 @@ import axios from "axios";
 
 const InfoPenawar = () => {
   const { dataLogin } = useSelector((globalStore) => globalStore.auth);
-  const [status, setStatus] = useState("");
   const [modalTerima, setModalTerima] = useState(false);
   const [modalVerifikasi, setModalVerifikasi] = useState(false);
   const { idOrderSeller } = useParams();
@@ -15,6 +14,7 @@ const InfoPenawar = () => {
   console.log(dataOrderSeller);
 
   const handleTerima = async () => {
+		//eslint-disable-next-line
     const { data } = await axios({
       method: "put",
       url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/${idOrderSeller}`,
@@ -30,6 +30,7 @@ const InfoPenawar = () => {
   };
 
   const handleTolak = async () => {
+		//eslint-disable-next-line
     const { data } = await axios({
       method: "put",
       url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/${idOrderSeller}`,
