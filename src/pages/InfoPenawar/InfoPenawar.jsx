@@ -14,7 +14,7 @@ const InfoPenawar = () => {
   console.log(dataOrderSeller);
 
   const handleTerima = async () => {
-		//eslint-disable-next-line
+    //eslint-disable-next-line
     const { data } = await axios({
       method: "put",
       url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/${idOrderSeller}`,
@@ -30,7 +30,7 @@ const InfoPenawar = () => {
   };
 
   const handleTolak = async () => {
-		//eslint-disable-next-line
+    //eslint-disable-next-line
     const { data } = await axios({
       method: "put",
       url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/${idOrderSeller}`,
@@ -128,10 +128,13 @@ const InfoPenawar = () => {
               <button className={style.btn} onClick={toggleModalVerifikasi}>
                 Status
               </button>
-              <button className={style.btn}>Hubungi di WA</button>
+              <button className={style.btn}>
+                Hubungi di
+                <img src="/icons/fi_whatsapp.svg" alt="Icon WhatsApp" />
+              </button>
             </div>
           )}{" "}
-          {dataOrderSeller.status === null && ( 
+          {dataOrderSeller.status === null && (
             <div className={style.btnContainer}>
               <button className={style.btn} onClick={handleTolak}>
                 Tolak
@@ -217,7 +220,11 @@ const InfoPenawar = () => {
             </h1>
             <div className={style.optContainer}>
               <div className={style.optContent}>
-                <input type="radio" name="verifikasi" value="Berhasil terjual" />
+                <input
+                  type="radio"
+                  name="verifikasi"
+                  value="Berhasil terjual"
+                />
               </div>
               <div className={style.optContent}>
                 <label for="berhasil">Berhasil terjual</label>

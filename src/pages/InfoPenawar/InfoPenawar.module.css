@@ -161,6 +161,10 @@
   background: #ffffff;
 }
 
+.container .content .btnContainer .btn img {
+  margin-left: 8px;
+}
+
 .modalTerima,
 .modalVerifikasi,
 .overlay {

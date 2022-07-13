@@ -118,12 +118,15 @@ const DaftarJualTerjual = () => {
             <CategoryMenu />
           </div>
           <div className={style.mainContent}>
+            {dataSellerTerjual?.length === 0 && (
+              <div className={style.dataEmpty}>
+                <img src="/images/dataEmpty.png" alt="Data Empty" />
+                <p>Belum ada produkmu yang terjual nih, sabar ya rejeki nggak kemana kok</p>
+              </div>
+            )}
             {dataSellerTerjual?.map((products) => (
               <div key={products.id} className={style.cardContainer}>
-                <img
-                  src={products.Product_images[0].url_image}
-                  alt="card"
-                />
+                <img src={products.Product_images[0].url_image} alt="card" />
                 <div className={style.cardDesc}>
                   <h5>{`${products.name.slice(0, 15)}...`}</h5>
                   <p>{products.Category.name}</p>

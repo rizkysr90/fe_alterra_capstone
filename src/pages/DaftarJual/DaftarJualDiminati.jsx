@@ -119,6 +119,15 @@ const DaftarJualDiminati = () => {
             <CategoryMenu />
           </div>
           <div className={style.mainContent}>
+            {dataOrderSeller?.length === 0 && (
+              <div className={style.dataEmpty}>
+                <img src="/images/dataEmpty.png" alt="Data Empty" />
+                <p>
+                  Belum ada produkmu yang diminati nih, sabar ya rejeki nggak
+                  kemana kok
+                </p>
+              </div>
+            )}
             {dataOrderSeller?.map((products) => (
               <div key={products.id} className={style.cardContainer}>
                 <Link to={`/info-penawar/${products.id}`}>

@@ -2,7 +2,7 @@ import NavbarHome from "../../components/NavbarHome/NavbarHome";
 import style from "./BuyerProduct.module.css";
 import { Carousel } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState } from "react";
 import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import axios from "axios";
@@ -31,6 +31,7 @@ const BuyerProduct = () => {
 
   const handleTawar = async (e) => {
     e.preventDefault();
+    //eslint-disable-next-line
     const { data } = await axios({
       method: "post",
       url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/purchases/orders`,
@@ -55,6 +56,7 @@ const BuyerProduct = () => {
 
   useEffect(() => {
     getProductById();
+    //eslint-disable-next-line
   }, [])
 
   return (
