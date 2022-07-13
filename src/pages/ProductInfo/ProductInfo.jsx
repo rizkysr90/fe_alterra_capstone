@@ -10,9 +10,9 @@ const ProductInfo = () => {
 
   const [category, setCategory] = useState([]);
 
-  const [ProductPicture, setProductPicture] = useState([])
+  const [ProductPicture, setProductPicture] = useState([]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getCategory = async () => {
     const { data } = await axios.get(
@@ -22,19 +22,21 @@ const ProductInfo = () => {
   };
 
   const handleFile = (e) => {
-		// if (e.target.files && e.target.files.length > 0) {
-		// 	setProductPicture(e.target.files[0]);
-		// }
+    // if (e.target.files && e.target.files.length > 0) {
+    // 	setProductPicture(e.target.files[0]);
+    // }
 
     // console.log(e.target.files);
-    if(e.target.files){
-      const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file));
-      setProductPicture((prevImages) => prevImages.concat(fileArray));
-      Array.from(e.target.files).map(
-        (file) => URL.revokeObjectURL(file)
+    if (e.target.files) {
+      const fileArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
       );
+      console.log(fileArray);
+
+      setProductPicture((prevImages) => prevImages.concat(fileArray));
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
     }
-	};
+  };
 
   const renderPhotos = (source) => {
     return source.map((photo) => {
@@ -44,25 +46,25 @@ const ProductInfo = () => {
             <img src={photo} alt="" key={photo} />
           </div>
         </div>
-      )
-    })
-  }
+      );
+    });
+  };
 
   // const remove = () => {
-	// 	setProductPicture()
-	// }
+  // 	setProductPicture()
+  // }
 
   const handleChange = (e) => {
-    setProduct({...product, id_category: e.target.value})
-  }
+    setProduct({ ...product, id_category: e.target.value });
+  };
 
   const handlePreview = async (e) => {
     e.preventDefault();
-    product.isActive = false
-    product.status = false
-    product.id_user = dataLogin.dataLogin.id
+    product.isActive = false;
+    product.status = false;
+    product.id_user = dataLogin.dataLogin.id;
     const formdata = new FormData();
-    formdata.append("gambar", ProductPicture)
+    formdata.append("gambar", ProductPicture);
     formdata.append("name", product.name);
     formdata.append("price", product.price);
     formdata.append("description", product.description);
@@ -81,11 +83,11 @@ const ProductInfo = () => {
         },
       });
       console.log(data);
-      navigate(`/seller-product/${data.data.id}`)
+      navigate(`/seller-product/${data.data.id}`);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const [product, setProduct] = useState({
     name: "",
@@ -100,11 +102,11 @@ const ProductInfo = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    product.isActive = true
-    product.status = true
-    product.id_user = dataLogin.dataLogin.id
+    product.isActive = true;
+    product.status = true;
+    product.id_user = dataLogin.dataLogin.id;
     const formdata = new FormData();
-    formdata.append("gambar", ProductPicture)
+    formdata.append("gambar", ProductPicture);
     formdata.append("name", product.name);
     formdata.append("price", product.price);
     formdata.append("description", product.description);
@@ -124,9 +126,9 @@ const ProductInfo = () => {
       });
       console.log(data);
     } catch (err) {
-      console.log(err); 
+      console.log(err);
     }
-    navigate(`/daftar-jual`)
+    navigate(`/daftar-jual`);
   };
 
   useEffect(() => {
@@ -135,7 +137,7 @@ const ProductInfo = () => {
   }, []);
 
   return (
-    <>   
+    <>
       <Navbar title="Lengkapi Detail Produk" />
       <div className={style.container}>
         <div className={style.content}>
@@ -175,8 +177,11 @@ const ProductInfo = () => {
             <div className={style.inputForm}>
               <label htmlFor="kategori">Kategori</label>
               <div className={style.row}>
-                <select className={style.inputBox} onChange={(e) => handleChange(e)}>
-                  <option value='' disabled selected>
+                <select
+                  className={style.inputBox}
+                  onChange={(e) => handleChange(e)}
+                >
+                  <option value="" disabled selected>
                     Pilih Kategori
                   </option>
                   {category?.map((category) => (
@@ -215,7 +220,7 @@ const ProductInfo = () => {
                   alt="Box Tambah Gambar"
                   onChange={(e) => handleFile(e)}
                 />
-              {renderPhotos(ProductPicture)}
+                {renderPhotos(ProductPicture)}
               </label>
               {/* {ProductPicture && (
 							<div className={style.preview}>
@@ -230,10 +235,18 @@ const ProductInfo = () => {
                 </div>
               )} */}
             </div>
-            
+
             <div className={style.btn}>
-              <button className={style.btnForm} onClick={(e) => handlePreview(e)}>Preview</button>
-              <button className={style.btnForm} onClick={(e) => handleSubmit(e)}>
+              <button
+                className={style.btnForm}
+                onClick={(e) => handlePreview(e)}
+              >
+                Preview
+              </button>
+              <button
+                className={style.btnForm}
+                onClick={(e) => handleSubmit(e)}
+              >
                 Terbitkan
               </button>
             </div>

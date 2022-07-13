@@ -149,7 +149,7 @@
   color: transparent;
   width: 96px;
   height: 70px;
-  margin-top: -90px;
+  /* margin-top: -90px; */
   position: absolute;
 }
 
@@ -159,6 +159,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0 4px;
+  margin-right: 8px;
 }
 
 .column {
@@ -170,10 +171,9 @@
   width: 96px;
   height: 96px;
   border-radius: 12px;
-  margin-top: 8px;
 }
 
-.container .inputForm {
+.container .content .inputForm .inputPhoto {
   display: inline-flex;
 }
 
