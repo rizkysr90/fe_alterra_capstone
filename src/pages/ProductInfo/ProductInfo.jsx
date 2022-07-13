@@ -39,19 +39,26 @@ const ProductInfo = () => {
   };
 
   const renderPhotos = (source) => {
-    return source.map((photo) => {
+    return source.map((photo, index) => {
       return (
         <div className={style.preview}>
           <div className={style.column}>
             <img src={photo} alt="" key={photo} />
+            <span onClick={() => delImage(index)}>&times;</span>
           </div>
         </div>
       );
     });
   };
 
+  const delImage = (e) => {
+    const s = ProductPicture.filter((photo, index) => index !== e)
+    setProductPicture(s)
+    console.log(s)
+  }
+
   // const remove = () => {
-  // 	setProductPicture()
+  //   setProductPicture()
   // }
 
   const handleChange = (e) => {
