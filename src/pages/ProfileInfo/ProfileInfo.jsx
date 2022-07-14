@@ -66,8 +66,8 @@ const ProfileInfo = () => {
 		// let file = e.target.files[0];
 		// setProfilePicture(file);
 		if (e.target.files && e.target.files.length > 0) {
-    	setProfilePicture(e.target.files[0]);
-    }
+			setProfilePicture(e.target.files[0]);
+		}
 	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -123,10 +123,23 @@ const ProfileInfo = () => {
 									onChange={(e) => handleFile(e)}
 								/>
 							</label>
-							{newProfilePicture && (
+							{newProfilePicture !== "" && (
 								<div className={style.preview}>
 									<div className={style.column}>
-										<img src={URL.createObjectURL(newProfilePicture)} alt="Product" />
+										<img
+											src={URL.createObjectURL(newProfilePicture)}
+											alt="Product"
+										/>
+									</div>
+								</div>
+							)}
+							{newProfilePicture === "" && (
+								<div className={style.preview}>
+									<div className={style.column}>
+										<img
+											src={dataUser?.profile_picture}
+											alt="Product"
+										/>
 									</div>
 								</div>
 							)}
