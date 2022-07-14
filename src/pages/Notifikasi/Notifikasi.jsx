@@ -1,8 +1,14 @@
 import style from "./Notifikasi.module.css";
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
+import NavbarStyle from "../../components/NavbarAfterLogin/NavbarAfterLogin.module.css";
 import Sidebar from "../../components/Sidebar/";
+import { useEffect } from "react";
 
 const Notifikasi = () => {
+  useEffect(() => {
+    document.getElementsByClassName(NavbarStyle.iconBell)[0].style.stroke = "#7126B5";
+    //eslint-disable-next-line
+  }, [])
   return (
     <>
       <Navbar />

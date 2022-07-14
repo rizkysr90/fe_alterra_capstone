@@ -1,4 +1,5 @@
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
+import NavbarStyle from "../../components/NavbarAfterLogin/NavbarAfterLogin.module.css";
 import style from "./DaftarJual.module.css";
 import CategoryMenu from "../../components/CardCategory/CardCategory";
 import CardCategoryStyle from "../../components/CardCategory/CardCategory.module.css";
@@ -41,14 +42,10 @@ const DaftarJualTerjual = () => {
   useEffect(() => {
     getUserDetail();
     dispatch(orderSellerTerjual(token));
-    document.getElementsByClassName(CardCategoryStyle.pText)[2].style.cssText =
-      "color: #7126B5; font-weight: 500";
-    document.getElementsByClassName(
-      CardCategoryStyle.iconDollar
-    )[0].style.stroke = "#7126B5";
-    document.getElementsByClassName(
-      CardCategoryStyle.iconArrow
-    )[2].style.stroke = "#7126B5";
+    document.getElementsByClassName(CardCategoryStyle.pText)[2].style.cssText = "color: #7126B5; font-weight: 500";
+    document.getElementsByClassName(CardCategoryStyle.iconDollar)[0].style.stroke = "#7126B5";
+    document.getElementsByClassName(CardCategoryStyle.iconArrow)[2].style.stroke = "#7126B5";
+    document.getElementsByClassName(NavbarStyle.iconList)[0].style.stroke = "#7126B5";
     //eslint-disable-next-line
   }, []);
 

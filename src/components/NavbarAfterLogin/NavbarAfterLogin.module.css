@@ -79,6 +79,8 @@ nav {
   fill: none;
 }
 
-.iconList:active {
-  stroke: #7126b5;
+.iconList:hover,
+.iconBell:hover,
+.iconUser:hover {
+  stroke: #7126B5;
 }
