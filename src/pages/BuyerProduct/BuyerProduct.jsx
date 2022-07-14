@@ -68,7 +68,7 @@ const BuyerProduct = () => {
 
 	useEffect(() => {
 		getProductById();
-		if (dataLogin.dataLogin.token !== null) {
+		if (dataLogin !== null) {
 			getProcessPenawaran();
 		}
 		//eslint-disable-next-line
