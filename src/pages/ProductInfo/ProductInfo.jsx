@@ -3,6 +3,7 @@ import style from "./ProductInfo.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AlertSuccess from "../../components/Alert/AlertSuccess";
 import axios from "axios";
 
 const ProductInfo = () => {
@@ -12,6 +13,9 @@ const ProductInfo = () => {
 
   const [ProductPicture, setProductPicture] = useState([]);
 
+  const [alertSuccess, setAlertSuccess] = useState(false);
+
+
   const navigate = useNavigate();
 
   const getCategory = async () => {
@@ -20,6 +24,8 @@ const ProductInfo = () => {
     );
     setCategory(data.data);
   };
+
+  
 
   const handleFile = (e) => {
     // if (e.target.files && e.target.files.length > 0) {
@@ -135,7 +141,10 @@ const ProductInfo = () => {
     } catch (err) {
       console.log(err);
     }
-    navigate(`/daftar-jual`);
+    setAlertSuccess(!alertSuccess)
+    setTimeout(() => {
+      navigate(`/daftar-jual`);
+    }, 3000)
   };
 
   useEffect(() => {
@@ -153,6 +162,7 @@ const ProductInfo = () => {
           </Link>
           <h1 className={style.titleRes}>Lengkapi Detail Produk</h1>
         </div>
+        
         <div className={style.content}>
           <form>
             <div className={style.inputForm}>
@@ -259,6 +269,13 @@ const ProductInfo = () => {
             </div>
           </form>
         </div>
+        
+
+        {alertSuccess && (
+          <div className={style.alertCon}>
+            <AlertSuccess text="Produk berhasil diterbitkan"/>
+          </div>
+        )}
       </div>
     </>
   );

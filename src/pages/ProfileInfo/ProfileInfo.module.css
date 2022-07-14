@@ -27,6 +27,26 @@
 	border-radius: 0px 16px 16px 0px;
 }
 
+.preview {
+	width: 96px;
+	height: 96px;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: -105px;
+	margin-right: 8px;
+}
+
+.column {
+	flex: 50%;
+	padding: 0 4px;
+}
+
+.preview .column img {
+	width: 96px;
+	height: 96px;
+	border-radius: 12px;
+}
+
 @media only screen and (max-width: 600px) {
 	.content:first-child {
 		position: absolute;
