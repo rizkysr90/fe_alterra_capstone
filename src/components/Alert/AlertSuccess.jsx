@@ -1,4 +1,4 @@
-import style from "./Alert.module.css";
+import style from "./AlertSuccess.module.css";
 
 const AlertSuccess = (props) => {
   return (
