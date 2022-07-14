@@ -97,6 +97,7 @@ const ProfileInfo = () => {
 		getUserDetail();
 		//eslint-disable-next-line
 	}, []);
+	console.log(dataUser);
 	return (
 		<>
 			<Navbar title="Lengkapi Info Akun" />
