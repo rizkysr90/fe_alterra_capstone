@@ -137,7 +137,7 @@ const InfoPenawar = () => {
               <h2>Ditawar {`${rupiah(dataOrderSeller?.price)}`}</h2>
             </div>
             <div className={style.cardContent}>
-              <p>20 April</p>
+              <p>{dataOrderSeller?.createdAt}</p>
             </div>
           </div>
           {dataOrderSeller.status === 1 && (
