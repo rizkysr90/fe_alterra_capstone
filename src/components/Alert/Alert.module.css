@@ -1,0 +1,19 @@
+.alertContainer {
+  max-width: 500px;
+  min-width: 500px;
+  height: 52px;
+  background: #73ca5c;
+  border-radius: 12px;
+  padding: 16px 24px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.alertContainer p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}

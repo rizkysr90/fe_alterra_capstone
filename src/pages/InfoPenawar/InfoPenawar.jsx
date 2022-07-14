@@ -3,12 +3,14 @@ import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import AlertSuccess from "../../components/Alert/AlertSuccess";
 import axios from "axios";
 
 const InfoPenawar = () => {
   const { dataLogin } = useSelector((globalStore) => globalStore.auth);
   const [modalTerima, setModalTerima] = useState(false);
   const [modalVerifikasi, setModalVerifikasi] = useState(false);
+  const [alertSuccess, setAlertSuccess] = useState(false);
   const { idOrderSeller } = useParams();
   const [dataOrderSeller, setDataOrderSeller] = useState({});
   console.log(dataOrderSeller);
@@ -63,6 +65,17 @@ const InfoPenawar = () => {
   const toggleModalVerifikasi = () => {
     setModalVerifikasi(!modalVerifikasi);
   };
+
+  const toggleAlertSuccess = () => {
+    toggleModalVerifikasi();
+    setTimeout(() => {
+      setAlertSuccess(!alertSuccess);
+    }, 500);
+  };
+
+  const toggleStopAlert = () => {
+    setAlertSuccess(!alertSuccess);
+  }
 
   const rupiah = (number) => {
     return new Intl.NumberFormat("id-ID", {
@@ -217,7 +230,7 @@ const InfoPenawar = () => {
 
       {modalVerifikasi && (
         <div className={style.modalVerifikasi}>
-          <div className={style.overlay} onClick={toggleModalVerifikasi}></div>
+          <div className={style.overlay}></div>
           <div className={style.modalVerifikasiContent}>
             <h1 className={style.titleModalVerifikasi}>
               Perbarui status penjualan produkmu
@@ -248,8 +261,19 @@ const InfoPenawar = () => {
               </div>
               <p>Kamu membatalkan transaksi produk ini dengan pembeli</p>
             </div>
-            <button className={style.btnVerifikasi}>Kirim</button>
+            <button
+              className={style.btnVerifikasi}
+              onClick={toggleAlertSuccess}
+            >
+              Kirim
+            </button>
           </div>
+        </div>
+      )}
+
+      {alertSuccess && (
+        <div className={style.alertCon} onClick={toggleStopAlert}>
+          <AlertSuccess text="Status produk berhasil diperbarui"/>
         </div>
       )}
     </>
