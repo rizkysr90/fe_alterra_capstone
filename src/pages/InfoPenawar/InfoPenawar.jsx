@@ -71,6 +71,10 @@ const InfoPenawar = () => {
     }).format(number);
   };
 
+  // const tanggal = (date) => {
+  //   return new Intl.DateTimeFormat("id-ID").format(date);
+  // };
+
   useEffect(() => {
     getOrderById();
     //eslint-disable-next-line
@@ -120,7 +124,7 @@ const InfoPenawar = () => {
               <h2>Ditawar {`${rupiah(dataOrderSeller?.price)}`}</h2>
             </div>
             <div className={style.cardContent}>
-              <p>20 Apr, 14:04</p>
+              <p>20 April</p>
             </div>
           </div>
           {dataOrderSeller.status === 1 && (
