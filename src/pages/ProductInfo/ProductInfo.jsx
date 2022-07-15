@@ -3,7 +3,6 @@ import style from "./ProductInfo.module.css";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AlertSuccess from "../../components/Alert/AlertSuccess";
 import axios from "axios";
 
 const ProductInfo = () => {
@@ -141,10 +140,7 @@ const ProductInfo = () => {
     } catch (err) {
       console.log(err);
     }
-    setAlertSuccess(!alertSuccess)
-    setTimeout(() => {
-      navigate(`/daftar-jual`);
-    }, 3000)
+    navigate(`/daftar-jual`);
   };
 
   useEffect(() => {
@@ -269,13 +265,7 @@ const ProductInfo = () => {
             </div>
           </form>
         </div>
-        
-
-        {alertSuccess && (
-          <div className={style.alertCon}>
-            <AlertSuccess text="Produk berhasil diterbitkan"/>
-          </div>
-        )}
+  
       </div>
     </>
   );

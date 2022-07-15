@@ -9,9 +9,16 @@ import { sellerAction } from "../../config/redux/actions/sellerAction";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import AlertSuccess from "../../components/Alert/AlertSuccess";
 
 const DaftarJual = () => {
   const [userDetail, setUserDetail] = useState({});
+
+  const [alertSuccess, setAlertSuccess] = useState(false);
+
+  const toggleStopAlert = () => {
+		setAlertSuccess(!alertSuccess);
+	};
 
   const [dataProductSeller, setDataProductSeller] = useState([]);
   console.log(dataProductSeller);
@@ -36,6 +43,9 @@ const DaftarJual = () => {
       }
     });
     setDataProductSeller(data.data);
+    setTimeout(() => {
+			setAlertSuccess(!alertSuccess);
+		}, 2000);
   };
 
   const getUserDetail = async () => {
@@ -147,6 +157,11 @@ const DaftarJual = () => {
                 </div>
               </div>
             ))}
+            {alertSuccess && (
+              <div className={style.alertCon} onClick={toggleStopAlert}>
+                <AlertSuccess text="Produk berhasil diterbitkan" />
+              </div>
+            )}
           </div>
         </div>
       </div>
