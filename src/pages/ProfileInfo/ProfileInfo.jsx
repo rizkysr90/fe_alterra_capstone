@@ -128,7 +128,7 @@ const ProfileInfo = () => {
 									<div className={style.column}>
 										<img
 											src={URL.createObjectURL(newProfilePicture)}
-											alt="Product"
+											alt=""
 										/>
 									</div>
 								</div>
@@ -138,7 +138,7 @@ const ProfileInfo = () => {
 									<div className={style.column}>
 										<img
 											src={dataUser?.profile_picture}
-											alt="Product"
+											alt=""
 										/>
 									</div>
 								</div>
