@@ -21,7 +21,7 @@ const Login = () => {
 
   useEffect(() => {
     if (dataLogin?.email === dataLogin && dataLogin?.password === dataLogin) navigate('/');
-    if (dataLogin?.email !== dataLogin && dataLogin?.password !== dataLogin && dataLogin !== null) navigate('/register');
+    if (dataLogin?.email !== dataLogin && dataLogin?.password !== dataLogin && dataLogin !== null) navigate('/login');
     console.log(dataLogin);
     //eslint-disable-next-line
   }, []);
