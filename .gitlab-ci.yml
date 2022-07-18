@@ -16,7 +16,7 @@ build job:
     - yarn build
 artifacts:
   paths:
-    - node_modules
+    - /node_modules
     - build/
 
 test artifacts:
