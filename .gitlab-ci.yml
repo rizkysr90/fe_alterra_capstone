@@ -5,9 +5,9 @@ stages:
 
 image: node:lts
 
-.template test: &script_test
-  script:
-    - yarn test
+# .template test: &script_test
+#   script:
+#     - yarn test
 
 build job:
   stage: build
@@ -21,4 +21,5 @@ artifacts:
 
 test artifacts:
   stage: test
-  <<: *script_test
+  script:
+    - yarn test
