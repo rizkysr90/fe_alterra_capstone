@@ -37,7 +37,7 @@
   }
 
   .container .content .cardProduct .cardContent:nth-child(2) {
-    width: 190px !important;
+    width: 210px !important;
   }
 
   .container .content .btnContainer {
@@ -130,12 +130,8 @@
 }
 
 .container .content .cardProduct .cardContent:nth-child(2) {
-  width: 430px;
+  width: 450px;
   margin-left: 16px;
-}
-
-.container .content .cardProduct .cardContent:nth-child(3) {
-  width: 60px;
 }
 
 .container .content .cardProduct .cardContent .imgProduct {
