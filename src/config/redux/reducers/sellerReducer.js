@@ -2,6 +2,7 @@ const initialState = {
     dataProductSeller: null,
     dataOrderSeller: null,
     dataSellerTerjual: null,
+    isAlert: false,
 };
 
 const sellerReducer = (state = initialState, action) => {
@@ -21,6 +22,11 @@ const sellerReducer = (state = initialState, action) => {
                 ...state,
                 dataSellerTerjual: action.payload
             };
+        case "SET_ALERT":
+            return {
+                ...state,
+                isAlert: action.payload
+            }
         default:
             return state;
     }

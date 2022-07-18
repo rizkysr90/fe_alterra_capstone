@@ -10,21 +10,21 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import AlertSuccess from "../../components/Alert/AlertSuccess";
+import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
 const DaftarJual = () => {
   const [userDetail, setUserDetail] = useState({});
 
-  const [alertSuccess, setAlertSuccess] = useState(false);
-
   const toggleStopAlert = () => {
-		setAlertSuccess(!alertSuccess);
+		dispatch(orderSellerAlert(false));
 	};
 
   const [dataProductSeller, setDataProductSeller] = useState([]);
-  console.log(dataProductSeller);
 
   const dispatch = useDispatch();
-  const { dataLogin } = useSelector((globalStore) => globalStore.auth);
+  const { auth, sellerReducer } = useSelector((globalStore) => globalStore);
+  const { dataLogin } = auth;
+  const { isAlert } = sellerReducer;
   const token = `${dataLogin.dataLogin.token}`;
 
   const rupiah = (number) => {
@@ -43,9 +43,6 @@ const DaftarJual = () => {
       }
     });
     setDataProductSeller(data.data);
-    setTimeout(() => {
-      setAlertSuccess(!alertSuccess);
-    }, 500)
   };
 
   const getUserDetail = async () => {
@@ -62,6 +59,9 @@ const DaftarJual = () => {
     getUserDetail();
     getProductSeller();
     dispatch(sellerAction(token));
+    setTimeout(() => {
+      dispatch(orderSellerAlert(false));
+    }, 3000);
     document.getElementsByClassName(CardCategoryStyle.pText)[0].style.cssText = "color: #7126B5; font-weight: 500";
     document.getElementsByClassName(CardCategoryStyle.iconBox)[0].style.stroke = "#7126B5";
     document.getElementsByClassName(CardCategoryStyle.iconArrow)[0].style.stroke = "#7126B5";
@@ -171,7 +171,7 @@ const DaftarJual = () => {
                 </div>
               </div>
             ))}
-            {alertSuccess && (
+            {isAlert && (
               <div className={style.alertCon} onClick={toggleStopAlert}>
                 <AlertSuccess text="Produk berhasil diterbitkan" />
               </div>
