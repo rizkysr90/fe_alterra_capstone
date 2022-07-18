@@ -59,6 +59,7 @@
   margin-top: 24px;
   display: flex;
   flex-direction: column;
+  padding-bottom: 50px;
 }
 
 .container .content .titleRes {
@@ -91,13 +92,10 @@
   margin-bottom: 4px;
 }
 
-.container .content .cardNotifikasi h2:last-child {
-  margin-bottom: 16px;
-}
-
 .container .content .cardNotifikasi .cardContent:nth-child(2) {
   width: 435px;
   margin-left: 16px;
+  padding-bottom: 16px;
 }
 
 .container .content .cardNotifikasi .cardContent:nth-child(3) {
