@@ -1,25 +1,24 @@
 stages:
   - build
   - test
-  - desploy
+  - deploy
 
 image: node:lts
 
-# .template test: &script_test
-#   script:
-#     - yarn test
+.template test: &script_test
+  script:
+    - yarn test
 
 build job:
   stage: build
   script:
     - yarn install
     - yarn build
-artifacts:
-  paths:
-    - /node_modules
-    - build/
+  artifacts:
+    paths:
+      - build/
+      - node_modules
 
 test artifacts:
   stage: test
-  script:
-    - yarn test
+  <<: *script_test
