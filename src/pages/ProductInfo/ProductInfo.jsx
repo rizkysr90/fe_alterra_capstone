@@ -12,6 +12,11 @@ const ProductInfo = () => {
 
   const [ProductPicture, setProductPicture] = useState([]);
 
+  const [pictureSubmit, setPictureSubmit] = useState([]);
+
+  const [alertSuccess, setAlertSuccess] = useState(false);
+
+
   const navigate = useNavigate();
 
   const getCategory = async () => {
@@ -37,8 +42,12 @@ const ProductInfo = () => {
 
       setProductPicture((prevImages) => prevImages.concat(fileArray));
       Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+
+      setPictureSubmit([...pictureSubmit, e.target.files[0]]);
     }
   };
+
+  console.log(pictureSubmit);
 
   const renderPhotos = (source) => {
     return source.map((photo, index) => {
@@ -73,7 +82,7 @@ const ProductInfo = () => {
     product.status = false;
     product.id_user = dataLogin.dataLogin.id;
     const formdata = new FormData();
-    formdata.append("gambar", ProductPicture);
+    pictureSubmit.map((data) => formdata.append("gambar", data));
     formdata.append("name", product.name);
     formdata.append("price", product.price);
     formdata.append("description", product.description);
@@ -115,7 +124,7 @@ const ProductInfo = () => {
     product.status = true;
     product.id_user = dataLogin.dataLogin.id;
     const formdata = new FormData();
-    formdata.append("gambar", ProductPicture);
+    pictureSubmit.map((data) => formdata.append("gambar", data));
     formdata.append("name", product.name);
     formdata.append("price", product.price);
     formdata.append("description", product.description);
