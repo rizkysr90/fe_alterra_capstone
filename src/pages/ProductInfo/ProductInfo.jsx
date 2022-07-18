@@ -1,9 +1,10 @@
 import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import style from "./ProductInfo.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
 const ProductInfo = () => {
   const { dataLogin } = useSelector((state) => state.auth);
@@ -14,10 +15,9 @@ const ProductInfo = () => {
 
   const [pictureSubmit, setPictureSubmit] = useState([]);
 
-  const [alertSuccess, setAlertSuccess] = useState(false);
-
-
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const getCategory = async () => {
     const { data } = await axios.get(
@@ -25,8 +25,6 @@ const ProductInfo = () => {
     );
     setCategory(data.data);
   };
-
-  
 
   const handleFile = (e) => {
     // if (e.target.files && e.target.files.length > 0) {
@@ -38,7 +36,6 @@ const ProductInfo = () => {
       const fileArray = Array.from(e.target.files).map((file) =>
         URL.createObjectURL(file)
       );
-      console.log(fileArray);
 
       setProductPicture((prevImages) => prevImages.concat(fileArray));
       Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
@@ -46,8 +43,6 @@ const ProductInfo = () => {
       setPictureSubmit([...pictureSubmit, e.target.files[0]]);
     }
   };
-
-  console.log(pictureSubmit);
 
   const renderPhotos = (source) => {
     return source.map((photo, index) => {
@@ -65,7 +60,6 @@ const ProductInfo = () => {
   const delImage = (e) => {
     const s = ProductPicture.filter((photo, index) => index !== e)
     setProductPicture(s)
-    console.log(s)
   }
 
   // const remove = () => {
@@ -100,7 +94,6 @@ const ProductInfo = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(data);
       navigate(`/seller-product/${data.data.id}`);
     } catch (err) {
       console.log(err);
@@ -133,6 +126,7 @@ const ProductInfo = () => {
     formdata.append("id_user", product.id_user);
     formdata.append("id_category", product.id_category);
     try {
+      // eslint-disable-next-line
       const { data } = await axios({
         method: "post",
         url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
@@ -142,9 +136,8 @@ const ProductInfo = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log(data);
+      dispatch(orderSellerAlert(true));
     } catch (err) {
-      console.log(err);
     }
     navigate(`/daftar-jual`);
   };

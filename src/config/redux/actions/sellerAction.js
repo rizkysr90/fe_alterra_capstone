@@ -30,4 +30,6 @@ export const orderSellerTerjual = (token) => (dispatch) => {
     .catch((err) => console.log(err));
 }
 
-
+export const orderSellerAlert = (statusAlert) => (dispatch) => {
+  dispatch({ type: "SET_ALERT", payload: statusAlert });
+};
