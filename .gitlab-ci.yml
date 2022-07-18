@@ -5,6 +5,10 @@ stages:
 
 image: node:lts
 
+cache:
+  paths:
+    - node_modules
+
 .template test: &script_test
   script:
     - yarn test
@@ -17,7 +21,6 @@ build job:
   artifacts:
     paths:
       - build/
-      - node_modules
 
 test artifacts:
   stage: test
