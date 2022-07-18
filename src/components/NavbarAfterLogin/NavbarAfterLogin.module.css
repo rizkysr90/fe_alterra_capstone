@@ -63,13 +63,14 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 120px;
+  width: 160px;
   height: 24px;
 }
 
 .iconList,
 .iconBell,
-.iconUser {
+.iconUser,
+.iconCart {
   stroke: #151515;
   stroke-width: 2px;
   stroke-linecap: round;
@@ -81,6 +82,7 @@ nav {
 
 .iconList:hover,
 .iconBell:hover,
-.iconUser:hover {
+.iconUser:hover,
+.iconCart:hover {
   stroke: #7126B5;
 }

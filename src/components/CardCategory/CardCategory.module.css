@@ -4,7 +4,7 @@
   padding: 24px;
   margin-top: 24px; 
   width: 268px;
-  height: 248px;
+  height: 288px;
   background: #ffffff;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
   border-radius: 16px;
@@ -57,7 +57,9 @@
 
 .iconBox,
 .iconHeart,
-.iconDollar {
+.iconDollar,
+.iconCart,
+.iconBag {
   stroke: #8a8a8a;
   stroke-width: 2px;
   stroke-linecap: round;

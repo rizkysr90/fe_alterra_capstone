@@ -12,6 +12,8 @@ import DaftarJualTerjual from './pages/DaftarJual/DaftarJualTerjual';
 import InfoPenawar from './pages/InfoPenawar/InfoPenawar';
 import SearchResult from './pages/SearchResult/SearchResult';
 import Notifikasi from './pages/Notifikasi/Notifikasi';
+import RiwayatPenjualan from './pages/Riwayat/RiwayatPenjualan';
+import RiwayatPembelian from './pages/Riwayat/RiwayatPembelian';
 
 const RouteApp = () => {
     return (
@@ -28,6 +30,8 @@ const RouteApp = () => {
                 <Route path='/daftar-jual' element={<DaftarJual />} />
                 <Route path='/daftar-jual-diminati' element={<DaftarJualDiminati />} />
                 <Route path='/daftar-jual-terjual' element={<DaftarJualTerjual />} />
+                <Route path='/riwayat-penjualan' element={<RiwayatPenjualan />} />
+                <Route path='/riwayat-pembelian' element={<RiwayatPembelian />} />
                 <Route path='/info-penawar/:idOrderSeller' element={<InfoPenawar />} />
                 <Route path='/search/:searchResult' element={<SearchResult />} />
             </Routes>
