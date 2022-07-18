@@ -1,23 +1,24 @@
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import NavbarStyle from "../../components/NavbarAfterLogin/NavbarAfterLogin.module.css";
-import style from "./DaftarJual.module.css";
+import style from "./RiwayatPenjualan.module.css";
 import CategoryMenu from "../../components/CardCategory/CardCategory";
 import CardCategoryStyle from "../../components/CardCategory/CardCategory.module.css";
 import Sidebar from "../../components/Sidebar/";
 import { useSelector, useDispatch } from "react-redux";
-import { sellerAction } from "../../config/redux/actions/sellerAction";
+import { orderSellerDiminati } from "../../config/redux/actions/sellerAction";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const DaftarJual = () => {
+const RiwayatPenjualan = () => {
   const [userDetail, setUserDetail] = useState({});
-
-  const [dataProductSeller, setDataProductSeller] = useState([]);
-  console.log(dataProductSeller);
+  const { dataOrderSeller } = useSelector(
+    (globalStore) => globalStore.sellerReducer
+  );
+  console.log(dataOrderSeller);
 
   const dispatch = useDispatch();
-  const { dataLogin } = useSelector((globalStore) => globalStore.auth);
+  const { dataLogin } = useSelector((state) => state.auth);
   const token = `${dataLogin.dataLogin.token}`;
 
   const rupiah = (number) => {
@@ -25,17 +26,6 @@ const DaftarJual = () => {
       style: "currency",
       currency: "IDR",
     }).format(number);
-  };
-
-  const getProductSeller = async () => {
-    const { data } = await axios ({
-      method: "get",
-      url: "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts?page=2&row=10&status=true&isActive=true",
-      headers: {
-        Authorization: `Bearer ${dataLogin.dataLogin.token}`
-      }
-    });
-    setDataProductSeller(data.data);
   };
 
   const getUserDetail = async () => {
@@ -48,14 +38,20 @@ const DaftarJual = () => {
     setUserDetail(data.data);
   };
 
+  console.log(userDetail);
+
   useEffect(() => {
     getUserDetail();
-    getProductSeller();
-    dispatch(sellerAction(token));
-    document.getElementsByClassName(CardCategoryStyle.pText)[0].style.cssText = "color: #7126B5; font-weight: 500";
-    document.getElementsByClassName(CardCategoryStyle.iconBox)[0].style.stroke = "#7126B5";
-    document.getElementsByClassName(CardCategoryStyle.iconArrow)[0].style.stroke = "#7126B5";
-    document.getElementsByClassName(NavbarStyle.iconList)[0].style.stroke = "#7126B5";
+    dispatch(orderSellerDiminati(token));
+    document.getElementsByClassName(CardCategoryStyle.pText)[3].style.cssText =
+      "color: #7126B5; font-weight: 500";
+    document.getElementsByClassName(CardCategoryStyle.iconBag)[0].style.stroke =
+      "#7126B5";
+    document.getElementsByClassName(
+      CardCategoryStyle.iconArrow
+    )[3].style.stroke = "#7126B5";
+    document.getElementsByClassName(NavbarStyle.iconList)[0].style.stroke =
+      "#7126B5";
     //eslint-disable-next-line
   }, []);
 
@@ -139,25 +135,24 @@ const DaftarJual = () => {
             <CategoryMenu />
           </div>
           <div className={style.mainContent}>
-            <Link to={`/product-info`} style={{ textDecoration: "none" }}>
-              <div className={style.inputBox} htmlFor="inputImage">
-                <img
-                  className={style.inputIcon}
-                  src="/icons/fi_plus.svg"
-                  alt="Icon Plus"
-                />
-                Tambah Produk
+            {dataOrderSeller?.length === 0 && (
+              <div className={style.dataEmpty}>
+                <img src="/images/dataEmpty.png" alt="Data Empty" />
+                <p>Wah, kamu belum pernah melakukan transaksi penjualan nih.</p>
               </div>
-            </Link>
-            {dataProductSeller?.map((products) => (
+            )}
+            {dataOrderSeller?.map((products) => (
               <div key={products.id} className={style.cardContainer}>
-                <Link to={`/seller-product/${products.id}`}>
-                  <img src={products.Product_images[0].url_image} alt="card" />
+                <Link to={`/info-penawar/${products.id}`}>
+                  <img
+                    src={products.Product.Product_images[0].url_image}
+                    alt="card"
+                  />
                 </Link>
                 <div className={style.cardDesc}>
-                  <h5>{`${products.name.slice(0, 15)}...`}</h5>
-                  <p>{products.Category.name}</p>
-                  <h5>{`${rupiah(products.price)}`}</h5>
+                  <h5>{`${products.Product.name.slice(0, 15)}...`}</h5>
+                  <p>{products.Buyers.name}</p>
+                  <h5>{`${rupiah(products?.price)}`}</h5>
                 </div>
               </div>
             ))}
@@ -168,4 +163,4 @@ const DaftarJual = () => {
   );
 };
 
-export default DaftarJual;
+export default RiwayatPenjualan;
