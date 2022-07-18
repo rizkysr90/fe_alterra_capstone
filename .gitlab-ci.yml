@@ -19,7 +19,7 @@ artifacts:
     - /node_modules
     - build/
 
-# test job:
-#   stage: test
-#   script:
-#     - yarn test
+test artifacts:
+  stage: test
+  script:
+    - yarn test
