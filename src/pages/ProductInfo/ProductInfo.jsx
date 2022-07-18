@@ -12,9 +12,6 @@ const ProductInfo = () => {
 
   const [ProductPicture, setProductPicture] = useState([]);
 
-  const [alertSuccess, setAlertSuccess] = useState(false);
-
-
   const navigate = useNavigate();
 
   const getCategory = async () => {

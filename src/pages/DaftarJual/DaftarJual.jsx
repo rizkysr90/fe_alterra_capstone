@@ -44,8 +44,8 @@ const DaftarJual = () => {
     });
     setDataProductSeller(data.data);
     setTimeout(() => {
-			setAlertSuccess(!alertSuccess);
-		}, 2000);
+      setAlertSuccess(!alertSuccess);
+    }, 500)
   };
 
   const getUserDetail = async () => {
