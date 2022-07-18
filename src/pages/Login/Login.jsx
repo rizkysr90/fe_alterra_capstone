@@ -47,7 +47,7 @@ const Login = () => {
               src="/icons/fi_arrow-left.svg"
               alt="Icon Back"
             />
-            <h1 className={style.title}>Masuk</h1>
+            <h1 data-testid="title" className={style.title}>Masuk</h1>
             <label htmlFor="email">Email</label>
             <input
               className={style.inputForm}
