@@ -13,6 +13,9 @@ const Sidenav = ({ sidenav }) => {
             <Link to={"/notifikasi"}>
                 <li>Notifikasi</li>
             </Link>
+            <Link to={"/riwayat-pembelian"}>
+                <li>Riwayat Pembelian</li>
+            </Link>
             <Link to={"/daftar-jual"}>
                 <li>Daftar Jual</li>
             </Link>
