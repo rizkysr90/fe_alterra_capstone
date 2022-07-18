@@ -70,7 +70,7 @@ nav {
 .iconList,
 .iconBell,
 .iconUser,
-.iconCart {
+.iconClock {
   stroke: #151515;
   stroke-width: 2px;
   stroke-linecap: round;
@@ -83,6 +83,6 @@ nav {
 .iconList:hover,
 .iconBell:hover,
 .iconUser:hover,
-.iconCart:hover {
+.iconClock:hover {
   stroke: #7126B5;
 }

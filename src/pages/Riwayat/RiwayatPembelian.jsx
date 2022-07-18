@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const RiwayatPembelian = () => {
   useEffect(() => {
-    document.getElementsByClassName(NavbarStyle.iconCart)[0].style.stroke =
+    document.getElementsByClassName(NavbarStyle.iconClock)[0].style.stroke =
       "#7126B5";
     //eslint-disable-next-line
   }, []);
