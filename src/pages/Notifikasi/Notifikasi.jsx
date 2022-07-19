@@ -23,28 +23,27 @@ const Notifikasi = () => {
 		setDataNotif(data.data);
 	};
 
-	const checkPenawaran = (data) => {
-		return data.Notification_object.Notification_type.id === 2;
-	};
-
-	const checkPenawaranDiterima = (data) => {
-		return data.Notification_object.Notification_type.id === 3;
-	};
-
-	const checkTerbit = (data) => {
-		return data.Notification_object.Notification_type.id === 1;
-	};
-
-	const dataPenawaran = dataNotif.filter(checkPenawaran);
-	const dataPenawaranDiterima = dataNotif.filter(checkPenawaranDiterima);
-	const dataTerbit = dataNotif.filter(checkTerbit);
-	console.log(dataTerbit);
-
 	const rupiah = (number) => {
 		return new Intl.NumberFormat("id-ID", {
 			style: "currency",
 			currency: "IDR",
 		}).format(number);
+	};
+
+	const formatDateTime = (createdAt) => {
+		const date = new Date(createdAt);
+		const time = new Date(createdAt);
+		const formattedDate = time.toLocaleDateString("id-ID", {
+			day: "numeric",
+			month: "short",
+		});
+
+		const formattedTime = date.toLocaleTimeString("id-ID", {
+			hour: "2-digit",
+			minute: "2-digit",
+		});
+
+    return (formattedDate + ', ' + formattedTime);
 	};
 
 	useEffect(() => {
@@ -61,71 +60,73 @@ const Notifikasi = () => {
 			<div className={style.container}>
 				<div className={style.content}>
 					<h1 className={style.titleRes}>Notifikasi</h1>
-					{dataPenawaran.map((data) => (
+					{dataNotif.map((data, key) => (
 						<div className={style.cardNotifikasi}>
 							<div className={style.cardContent}>
-								<img
-									className={style.imgNotifikasi}
-									src={data.Notification_object.Order.Product.Product_images[0].url_image}
-									alt="Foto Produk"
-								/>
+								{data.Notification_object.Notification_type.id === 1 && (
+									<img
+										className={style.imgNotifikasi}
+										src={
+											data?.Notification_object?.Product.Product_images[0]
+												.url_image
+										}
+										alt="Foto Produk"
+									/>
+								)}
+								{(data.Notification_object.Notification_type.id === 2 ||
+									data.Notification_object.Notification_type.id === 3) && (
+									<img
+										className={style.imgNotifikasi}
+										src={
+											data?.Notification_object?.Order.Product.Product_images[0]
+												.url_image
+										}
+										alt="Foto Produk"
+									/>
+								)}
 							</div>
 							<div className={style.cardContent}>
-								<p>Penawaran produk</p>
-								<h2>{data.Notification_object.Order.Product.name}</h2>
-								<h2>{`${rupiah(data.Notification_object.Order.price)}`}</h2>
-								<h2>
-									Ditawar{" "}
-									{`${rupiah(data.Notification_object.Order.Product.price)}`}
-								</h2>
+								{data.Notification_object.Notification_type.id === 1 && (
+									<>
+										<p>Berhasil diterbitkan</p>
+										<h2>{data?.Notification_object?.Product.name}</h2>
+										<h2>{`${rupiah(
+											data?.Notification_object?.Product.price
+										)}`}</h2>
+									</>
+								)}
+								{data.Notification_object.Notification_type.id === 2 && (
+									<>
+										<p>Penawaran produk</p>
+										<h2>{data.Notification_object.Order.Product.name}</h2>
+										<h2>{`${rupiah(data.Notification_object.Order.price)}`}</h2>
+										<h2>
+											Ditawar{" "}
+											{`${rupiah(
+												data.Notification_object.Order.Product.price
+											)}`}
+										</h2>
+									</>
+								)}
+								{data.Notification_object.Notification_type.id === 3 && (
+									<>
+										<p>Penawaran produk</p>
+										<h2>{data.Notification_object.Order.Product.name}</h2>
+										<h2>{`${rupiah(data.Notification_object.Order.price)}`}</h2>
+										<h2>
+											Berhasil Ditawar{" "}
+											{`${rupiah(
+												data.Notification_object.Order.Product.price
+											)}`}
+										</h2>
+										<p>Kamu akan segera dihubungi penjual via whatsapp</p>
+									</>
+								)}
 							</div>
 							<div className={style.cardContent}>
-								<p>{data.createdAt}</p>
-								<div className={style.elipse}></div>
-							</div>
-						</div>
-					))}
-					{dataPenawaranDiterima.map((data) => (
-						<div className={style.cardNotifikasi}>
-							<div className={style.cardContent}>
-								<img
-									className={style.imgNotifikasi}
-									src={data.Notification_object.Order.Product.Product_images[0].url_image}
-									alt="Foto Produk"
-								/>
-							</div>
-							<div className={style.cardContent}>
-								<p>Penawaran produk</p>
-								<h2>{data.Notification_object.Order.Product.name}</h2>
-								<h2>{`${rupiah(data.Notification_object.Order.price)}`}</h2>
-								<h2>
-									Berhasil Ditawar{" "}
-									{`${rupiah(data.Notification_object.Order.Product.price)}`}
-								</h2>
-								<p>Kamu akan segera dihubungi penjual via whatsapp</p>
-							</div>
-							<div className={style.cardContent}>
-								<p>{data.createdAt}</p>
-								<div className={style.elipse}></div>
-							</div>
-						</div>
-					))}
-					{dataTerbit.map((data) => (
-						<div className={style.cardNotifikasi}>
-							<div className={style.cardContent}>
-								<img
-									className={style.imgNotifikasi}
-									src={data.Notification_object.Product.Product_images[0].url_image}
-									alt="Foto Produk"
-								/>
-							</div>
-							<div className={style.cardContent}>
-								<p>Berhasil diterbitkan</p>
-								<h2>{data.Notification_object.Product.name}</h2>
-								<h2>{`${rupiah(data.Notification_object.Product.price)}`}</h2>
-							</div>
-							<div className={style.cardContent}>
-								<p>{data.createdAt}</p>
+								<p>
+                  {formatDateTime(data.createdAt)}
+                </p>
 								<div className={style.elipse}></div>
 							</div>
 						</div>
