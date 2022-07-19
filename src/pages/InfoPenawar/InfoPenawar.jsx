@@ -105,8 +105,8 @@ const InfoPenawar = () => {
     }).format(number);
   };
 
-  const date = new Date(dataOrderSeller?.updatedAt);
-  const time = new Date(dataOrderSeller?.updatedAt);
+  const date = new Date(dataOrderSeller?.createdAt);
+  const time = new Date(dataOrderSeller?.createdAt);
   const formattedDate = time.toLocaleDateString("id-ID", {
     day: "numeric",
     month: "short",
