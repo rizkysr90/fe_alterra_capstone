@@ -155,7 +155,7 @@ const ProductInfo = () => {
           <Link to={`/daftar-jual`} style={{ textDecoration: "none" }}>
             <img src="/icons/arrow-left.svg" alt="Icon Back" />
           </Link>
-          <h1 className={style.titleRes}>Lengkapi Detail Produk</h1>
+          <h1 data-testid="produk" className={style.titleRes}>Lengkapi Detail Produk</h1>
         </div>
         
         <div className={style.content}>
