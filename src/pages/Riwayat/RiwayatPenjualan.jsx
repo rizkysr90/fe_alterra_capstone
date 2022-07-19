@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   orderSellerBerhasil,
   orderSellerDibatalkan,
+  orderSellerDiproses,
 } from "../../config/redux/actions/sellerAction";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -15,11 +16,11 @@ import axios from "axios";
 
 const RiwayatPenjualan = () => {
   const [userDetail, setUserDetail] = useState({});
-  const { dataSellerDibatalkan, dataSellerBerhasil } = useSelector(
-    (globalStore) => globalStore.sellerReducer
-  );
+  const { dataSellerDibatalkan, dataSellerBerhasil, dataSellerDiproses } =
+    useSelector((globalStore) => globalStore.sellerReducer);
   console.log(dataSellerDibatalkan);
   console.log(dataSellerBerhasil);
+  console.log(dataSellerDiproses);
 
   const dispatch = useDispatch();
   const { dataLogin } = useSelector((state) => state.auth);
@@ -48,6 +49,7 @@ const RiwayatPenjualan = () => {
     getUserDetail();
     dispatch(orderSellerDibatalkan(token));
     dispatch(orderSellerBerhasil(token));
+    dispatch(orderSellerDiproses(token));
     document.getElementsByClassName(CardCategoryStyle.pText)[3].style.cssText =
       "color: #7126B5; font-weight: 500";
     document.getElementsByClassName(CardCategoryStyle.iconBag)[0].style.stroke =
@@ -141,7 +143,8 @@ const RiwayatPenjualan = () => {
           </div>
           <div className={style.mainContent}>
             {dataSellerDibatalkan?.length === 0 &&
-              dataSellerBerhasil?.length === 0 && (
+              dataSellerBerhasil?.length === 0 &&
+              dataSellerDiproses?.length === 0 && (
                 <div className={style.dataEmpty}>
                   <img src="/images/dataEmpty.png" alt="Data Empty" />
                   <p>
@@ -161,7 +164,9 @@ const RiwayatPenjualan = () => {
                   <h5>{`${products.Product.name.slice(0, 15)}...`}</h5>
                   <div className={style.textCon}>
                     <p>{products.Buyers.name}</p>
-                    <p style={{ color: "red", paddingLeft: "8px" }}>Dibatalkan</p>
+                    <p style={{ color: "red", paddingLeft: "8px" }}>
+                      Dibatalkan
+                    </p>
                   </div>
                   <h5>{`${rupiah(products?.price)}`}</h5>
                 </div>
@@ -180,7 +185,30 @@ const RiwayatPenjualan = () => {
                   <h5>{`${products.Product.name.slice(0, 15)}...`}</h5>
                   <div className={style.textCon}>
                     <p>{products.Buyers.name}</p>
-                    <p style={{ color: "green", paddingLeft: "8px" }}>Berhasil</p>
+                    <p style={{ color: "green", paddingLeft: "8px" }}>
+                      Berhasil
+                    </p>
+                  </div>
+                  <h5>{`${rupiah(products?.price)}`}</h5>
+                </div>
+              </div>
+            ))}
+
+            {dataSellerDiproses?.map((products) => (
+              <div key={products.id} className={style.cardContainer}>
+                <Link to={`/info-penawar/${products.id}`}>
+                  <img
+                    src={products.Product.Product_images[0].url_image}
+                    alt="card"
+                  />
+                </Link>
+                <div className={style.cardDesc}>
+                  <h5>{`${products.Product.name.slice(0, 15)}...`}</h5>
+                  <div className={style.textCon}>
+                    <p>{products.Buyers.name}</p>
+                    <p style={{ color: "purple", paddingLeft: "8px" }}>
+                      Dalam Proses
+                    </p>
                   </div>
                   <h5>{`${rupiah(products?.price)}`}</h5>
                 </div>

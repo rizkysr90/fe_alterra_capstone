@@ -4,6 +4,7 @@ const initialState = {
     dataSellerTerjual: null,
     dataSellerDibatalkan: null,
     dataSellerBerhasil: null,
+    dataSellerDiproses: null,
     isAlert: false,
 };
 
@@ -33,6 +34,11 @@ const sellerReducer = (state = initialState, action) => {
             return {
                 ...state,
                 dataSellerBerhasil: action.payload
+            };
+        case "SET_SELLER_DIPROSES":
+            return {
+                ...state,
+                dataSellerDiproses: action.payload
             };
         case "SET_ALERT":
             return {
