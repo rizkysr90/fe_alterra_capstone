@@ -266,6 +266,11 @@
   margin: 0;
 }
 
+.cardDesc .textCon {
+  display: inline-flex;
+  width: 200px;
+}
+
 .iconBox,
 .iconHeart,
 .iconDollar,

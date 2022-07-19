@@ -37,7 +37,7 @@ const DaftarJual = () => {
   const getProductSeller = async () => {
     const { data } = await axios ({
       method: "get",
-      url: "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts?page=2&row=10&status=true&isActive=true",
+      url: "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts?page=1&row=10&status=true&isActive=true",
       headers: {
         Authorization: `Bearer ${dataLogin.dataLogin.token}`
       }

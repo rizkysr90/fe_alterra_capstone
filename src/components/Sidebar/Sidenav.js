@@ -1,9 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidenav = ({ sidenav }) => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.clear();
+        setTimeout(() => {
+            navigate("/")
+        }, 1000)
+    }
 
     return (
         <div className={sidenav ? "sidenav sidenav--open" : "sidenav"}>
@@ -22,6 +28,7 @@ const Sidenav = ({ sidenav }) => {
             <Link to={"/profile"}>
                 <li>Akun Saya</li>
             </Link>
+            <li onClick={handleLogout}>Keluar</li>
         </div>
     )
 }

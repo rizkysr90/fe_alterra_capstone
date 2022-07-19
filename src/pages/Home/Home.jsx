@@ -4,6 +4,7 @@ import Category from "../../components/Category/Category";
 import { useSelector } from "react-redux";
 import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import Sidebar from "../../components/Sidebar";
+import SidebarBeforeLogin from "../../components/SidebarBeforeLogin";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -48,7 +49,7 @@ const Home = () => {
 				</div>
 				<div className={style.containerMobile}>
 					<form onSubmit={(e) => handleOnSubmit(e)}>
-						<Sidebar />
+					{dataLogin?.dataLogin.token ? <Sidebar /> : <SidebarBeforeLogin />}
 						<div className={style.inputContainer}>
 							<input
 								value={search}
