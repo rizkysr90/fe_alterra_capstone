@@ -1,6 +1,9 @@
 const initialState = {
     dataProductBuyer: null,
     dataTawar: null,
+    dataHistoryBerhasil: null,
+    dataHistoryDiproses: null,
+    dataHistoryDibatalkan: null,
 }
 
 const productReducer = (state = initialState, action) => {
@@ -14,6 +17,21 @@ const productReducer = (state = initialState, action) => {
             return {
                 ...state,
                 dataTawar: action.payload
+            }
+        case "SET_HISTORY_BERHASIL":
+            return {
+                ...state,
+                dataHistoryBerhasil: action.payload
+            }
+        case "SET_HISTORY_DIPROSES":
+            return {
+                ...state,
+                dataHistoryDiproses: action.payload
+            }
+        case "SET_HISTORY_DIBATALKAN":
+            return {
+                ...state,
+                dataHistoryDibatalkan: action.payload
             }
         default: return state
     }

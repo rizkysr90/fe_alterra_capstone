@@ -2,10 +2,9 @@ import style from "./Notifikasi.module.css";
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import NavbarStyle from "../../components/NavbarAfterLogin/NavbarAfterLogin.module.css";
 import Sidebar from "../../components/Sidebar/";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 
 const Notifikasi = () => {
 	const { dataLogin } = useSelector((globalStore) => globalStore.auth);

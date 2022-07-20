@@ -17,6 +17,9 @@ import RiwayatPembelian from './pages/Riwayat/RiwayatPembelian';
 import PenjualanBerhasil from './components/CategoryRiwayatPenjualan/PenjualanBerhasil';
 import PenjualanDalamProses from './components/CategoryRiwayatPenjualan/PenjualanDalamProses';
 import PenjualanDibatalkan from './components/CategoryRiwayatPenjualan/PenjualanDibatalkan';
+import PembelianBerhasil from './components/CategoryRiwayatPembelian/PembelianBerhasil';
+import PembelianDalamProses from './components/CategoryRiwayatPembelian/PembelianDalamProses';
+import PembelianDibatalkan from './components/CategoryRiwayatPembelian/PembelianDibatalkan';
 
 const RouteApp = () => {
     return (
@@ -38,7 +41,11 @@ const RouteApp = () => {
                     <Route path='/riwayat-penjualan/penjualan-dibatalkan' element={<PenjualanDibatalkan />} />
                     <Route path='/riwayat-penjualan/penjualan-dalam-proses' element={<PenjualanDalamProses />} />
                 </Route>
-                <Route path='/riwayat-pembelian' element={<RiwayatPembelian />} />
+                <Route path='/riwayat-pembelian' element={<RiwayatPembelian />}>
+                    <Route path='/riwayat-pembelian/pembelian-berhasil' element={<PembelianBerhasil />} />
+                    <Route path='/riwayat-pembelian/pembelian-dibatalkan' element={<PembelianDibatalkan />} />
+                    <Route path='/riwayat-pembelian/pembelian-dalam-proses' element={<PembelianDalamProses />} />
+                </Route>
                 <Route path='/info-penawar/:idOrderSeller' element={<InfoPenawar />} />
                 <Route path='/search/:searchResult' element={<SearchResult />} />
             </Routes>
