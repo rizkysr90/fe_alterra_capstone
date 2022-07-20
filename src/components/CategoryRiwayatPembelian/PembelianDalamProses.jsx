@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { historyBuyerDalamProses } from "../../config/redux/actions/buyerAction";
@@ -34,9 +34,9 @@ const PembelianDalamProses = () => {
       )}
       {dataHistoryDiproses?.map((history) => (
         <div key={history.id} className={style.cardContainer}>
-          {/* <Link to={`/info-penawar/${history.id}`}> */}
+          <Link to={`/buyer-product/${history?.Product?.id}`}>
             <img src={history.Product.Product_images[0].url_image} alt="card" />
-          {/* </Link> */}
+          </Link>
           <div className={style.cardDesc}>
             <h5>{`${history.Product.name.slice(0, 15)}...`}</h5>
             <div className={style.textCon}>

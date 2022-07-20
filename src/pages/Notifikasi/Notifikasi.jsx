@@ -60,7 +60,7 @@ const Notifikasi = () => {
 				<div className={style.content}>
 					<h1 className={style.titleRes}>Notifikasi</h1>
 					{dataNotif.map((data, key) => (
-						<div className={style.cardNotifikasi}>
+						<div className={style.cardNotifikasi} key={key}>
 							<div className={style.cardContent}>
 								{data.Notification_object.Notification_type.id === 1 && (
 									<img
@@ -126,7 +126,6 @@ const Notifikasi = () => {
 								<p>
                   {formatDateTime(data.createdAt)}
                 </p>
-								<div className={style.elipse}></div>
 							</div>
 						</div>
 					))}

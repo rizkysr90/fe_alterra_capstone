@@ -18,7 +18,7 @@ const NavbarAfterLogin = () => {
     setTimeout(() => {
       navigate("/")
     }, 1000)
-  }
+  };
 
   return (
     <>
