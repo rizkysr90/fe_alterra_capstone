@@ -1,7 +1,8 @@
 stages:
   - build
-  - test
-  - deploy
+  - test artifacts
+  - test react
+  - deploy staging
 
 image: node:lts
 
@@ -22,6 +23,27 @@ build job:
     paths:
       - build/
 
-test artifacts:
-  stage: test
+test artifacts job:
+  stage: test artifacts
   <<: *script_test
+
+test react job:
+  stage: test react
+  script:
+    - yarn install
+    - yarn test
+
+deploy staging job:
+  stage: deploy staging
+  only:
+    - staging
+  image: ruby
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - gem install faraday -v 1.10.0
+    - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+  environment:
+    name: staging
+    url: https://secondhandfrontend.herokuapp.com/
