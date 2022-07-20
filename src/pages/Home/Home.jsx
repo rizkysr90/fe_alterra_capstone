@@ -29,7 +29,7 @@ const Home = () => {
 						<div className={style.heroDesc}>
 							<h1>Bulan Ramadhan Banyak diskon!</h1>
 							<h5>Diskon Hingga</h5>
-							<h3>60%</h3>
+							<h3 data-testid="diskon">60%</h3>
 						</div>
 						<img
 							src="images/png_gift_88837.png"
