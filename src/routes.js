@@ -25,6 +25,7 @@ const RouteApp = () => {
     return (
         <BrowserRouter>
             <Routes>
+                <Route path='/*' element={<h1 style={{marginTop: '20%', textAlign: 'center'}}>Halaman Tidak Tersedia</h1>} />
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
