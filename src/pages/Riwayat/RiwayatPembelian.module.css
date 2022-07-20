@@ -1,120 +1,233 @@
 @media only screen and (max-width: 600px) {
-    nav {
-      display: none !important;
-    }
-  
-    .container {
-      display: flex !important;
-      flex-direction: column !important;
-      width: 100% !important;
-    }
-  
-    .container .content {
-      width: 328px !important;
-      margin: auto !important;
-    }
-  
-    .container .content {
-      margin-top: 14px !important;
-      margin-bottom: 30px !important;
-      display: inline-flex !important;
-    }
-  
-    .container .content .titleRes {
-      display: block !important;
-      padding-left: 54px !important;
-    }
-  
-    .container .content .cardRiwayat {
-      width: 328px !important;
-    }
-  
-    .container .content .cardRiwayat .cardContent:nth-child(2) {
-      width: 195px !important;
-    }
+  nav {
+    display: none !important;
   }
-  
+
   .container {
-    width: 986px;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
   }
-  
-  .container h1 {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-  }
-  
-  .container p {
-    color: #8a8a8a;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 14px;
-  }
-  
+
   .container .content {
-    margin: auto;
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
+    width: 328px !important;
+    margin: auto !important;
   }
-  
+
+  .container .content {
+    margin-top: 14px !important;
+    margin-bottom: 30px !important;
+    display: inline-flex !important;
+  }
+
   .container .content .titleRes {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 30px;
-    margin-top: -52px;
-    margin-bottom: 24px;
-    display: none;
+    display: block !important;
+    padding-left: 54px !important;
   }
-  
-  .container .content .titleContent {
-    margin-top: 24px;
-  }
-  
+
   .container .content .cardRiwayat {
-    display: inline-flex;
-    margin-top: 16px;
-    border-bottom: 1px solid #cccccc;
+    width: 328px !important;
   }
-  
-  .container .content .cardRiwayat p {
-    margin-bottom: 4px;
-  }
-  
-  .container .content .cardRiwayat h2 {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    margin-bottom: 4px;
-  }
-  
-  .container .content .cardRiwayat h2:last-child {
-    margin-bottom: 16px;
-  }
-  
+
   .container .content .cardRiwayat .cardContent:nth-child(2) {
-    width: 435px;
-    margin-left: 16px;
+    width: 195px !important;
   }
-  
-  .container .content .cardRiwayat .cardContent:nth-child(3) {
-    display: inline-flex;
+
+  .cardContainer {
+    width: 156px !important;
+    height: 206px !important;
+    margin-right: 16px !important;
   }
-  
-  .container .content .cardRiwayat .cardContent .elipse {
-    margin-left: 8px;
-    width: 8px;
-    height: 8px;
-    border-radius: 8px;
-    background: #fa2c5a;
+
+  .cardContainer img {
+    width: 140px !important;
+    height: 100px !important;
   }
-  
-  .container .content .cardRiwayat .cardContent .imgRiwayat {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
+
+  .outletContainer {
+    width: 328px !important;
   }
-  
+}
+
+.container {
+  width: 986px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.container h1 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.container p {
+  color: #8a8a8a;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.container .content {
+  margin: auto;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container .content .titleRes {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: -52px;
+  margin-bottom: 24px;
+  display: none;
+}
+
+.container .content .titleContent {
+  margin-top: 24px;
+}
+
+.container .content .cardRiwayat {
+  display: inline-flex;
+  margin-top: 16px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.container .content .cardRiwayat p {
+  margin-bottom: 4px;
+}
+
+.container .content .cardRiwayat h2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.container .content .cardRiwayat h2:last-child {
+  margin-bottom: 16px;
+}
+
+.container .content .cardRiwayat .cardContent:nth-child(2) {
+  width: 435px;
+  margin-left: 16px;
+}
+
+.container .content .cardRiwayat .cardContent:nth-child(3) {
+  display: inline-flex;
+}
+
+.container .content .cardRiwayat .cardContent .elipse {
+  margin-left: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background: #fa2c5a;
+}
+
+.container .content .cardRiwayat .cardContent .imgRiwayat {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.dataEmpty {
+  display: flex;
+  flex-direction: column;
+  width: 296px;
+  height: 258px;
+  margin: auto;
+}
+
+.dataEmpty p {
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #151515;
+}
+
+.buttonOutlet button {
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  border-bottom: 3px solid #7126b5;
+  padding: 8px;
+  margin-right: 16px;
+}
+
+.buttonOutlet button:hover {
+  font-style: bold;
+  font-weight: 700;
+}
+
+.outletContainer {
+  display: flex;
+  flex-direction: column;
+  width: 986px;
+}
+
+.outletContainer .buttonOutlet {
+  display: inline-flex;
+  margin: auto;
+}
+
+.outletContainer .outletContent {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 206.67px;
+  height: 198px;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  margin-right: 24px;
+  margin-top: 24px;
+}
+
+.cardContainer img {
+  width: 190.67px;
+  height: 100px;
+  margin: 8px;
+}
+
+.cardDesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 137.14px;
+  height: 66px;
+  margin: 0px 8px 8px 8px;
+}
+
+.cardDesc h5 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.cardDesc p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  color: #8a8a8a;
+  margin: 0;
+}
+
+.cardDesc .textCon {
+  display: inline-flex;
+  width: 200px;
+}
