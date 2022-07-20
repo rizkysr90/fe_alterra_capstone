@@ -33,22 +33,17 @@ const PembelianDibatalkan = () => {
         </div>
       )}
       {dataHistoryDibatalkan?.map((history) => (
-        <div key={history?.id} className={style.cardRiwayat}>
-          <div className={style.cardContent}>
-            <img
-              className={style.imgRiwayat}
-              src="/images/watch.png"
-              alt="Foto Produk"
-            />
-          </div>
-          <div className={style.cardContent}>
-            <p>Penawaran produk</p>
-            <h2>Jam Casio</h2>
-            <h2>Rp 250.000,00</h2>
-            <h2>Ditawar {`${rupiah(history?.price)}`}</h2>
-          </div>
-          <div className={style.cardContent}>
-            <p>20 Apr, 14:04</p>
+        <div key={history.id} className={style.cardContainer}>
+          {/* <Link to={`/info-penawar/${history.id}`}> */}
+            <img src={history.Product.Product_images[0].url_image} alt="card" />
+          {/* </Link> */}
+          <div className={style.cardDesc}>
+            <h5>{`${history.Product.name.slice(0, 15)}...`}</h5>
+            <div className={style.textCon}>
+              <p>{history.Buyers.name}</p>
+              <p style={{ color: "red", paddingLeft: "8px" }}>Ditolak</p>
+            </div>
+            <h5>{`${rupiah(history?.price)}`}</h5>
           </div>
         </div>
       ))}
