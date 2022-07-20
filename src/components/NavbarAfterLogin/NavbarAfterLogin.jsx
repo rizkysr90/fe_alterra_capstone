@@ -10,7 +10,6 @@ const NavbarAfterLogin = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     navigate(`/search/${search}`);
-    console.log(search);
   };
 
   const handleLogout = () => {
