@@ -88,3 +88,7 @@ nav {
 .iconLogout:hover {
   stroke: #7126B5;
 }
+
+.iconLogout:hover {
+  cursor: pointer;
+}
