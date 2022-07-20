@@ -46,7 +46,7 @@ const Register = () => {
               src="/icons/fi_arrow-left.svg"
               alt="Icon Back"
             />
-            <h1 className={style.title}>Daftar</h1>
+            <h1 data-testid="regis" className={style.title}>Daftar</h1>
             <label htmlFor="aname">Nama</label>
             <input
               className={style.inputForm}
