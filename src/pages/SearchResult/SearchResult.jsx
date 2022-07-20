@@ -65,7 +65,7 @@ const SearchResult = () => {
 				<div className={style.heroContainerMobile}>
 					<div className={style.heroDescMobile}>
 						<h1>Bulan Ramadhan Banyak diskon!</h1>
-						<h5>Diskon Hingga</h5>
+						<h5 data-testid="diskon">Diskon Hingga</h5>
 						<h3>60%</h3>
 					</div>
 					<img

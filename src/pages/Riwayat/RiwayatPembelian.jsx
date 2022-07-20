@@ -17,7 +17,7 @@ const RiwayatPembelian = () => {
       <Sidebar />
       <div className={style.container}>
         <div className={style.content}>
-          <h1 className={style.titleRes}>Riwayat Pembelian</h1>
+          <h1 data-testid="riwayatbeli" className={style.titleRes}>Riwayat Pembelian</h1>
           <div className={style.outletContainer}>
             <div className={style.buttonOutlet}>
               <Link
