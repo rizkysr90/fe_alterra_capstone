@@ -144,7 +144,7 @@ const InfoPenawar = () => {
               <img
                 className={style.imgProfile}
                 src={dataOrderSeller.Buyers?.profile_picture}
-                alt="profil penawar"
+                alt="profil penawar" 
               />
             </div>
             <div className={style.cardContent}>
