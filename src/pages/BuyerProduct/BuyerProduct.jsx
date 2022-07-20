@@ -129,7 +129,7 @@ const BuyerProduct = () => {
 			</div>
 
 			<div className={style.cardDesc}>
-				<h1 className={style.titleDesc}>Deskripsi</h1>
+				<h1 data-testid="buyer" className={style.titleDesc}>Deskripsi</h1>
 				<div className={style.textDesc}>
 					<p>{dataProductBuyer?.description}</p>
 				</div>
