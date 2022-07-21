@@ -1,0 +1,229 @@
+.row {
+  display:flex;
+}
+.colLeft {
+  flex: 1 0 60%;
+}
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 100% !important;
+  }
+  .content:first-child {
+    display: inline-flex;
+    position: absolute !important;
+    top: -25px !important;
+    left: -120px !important;
+  }
+
+  .content .titleRes {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    margin-left: 56px;
+    margin-top: 2px;
+    display: block !important;
+  }
+
+  .content:last-child {
+    margin-top: 70px !important;
+    margin-left: 70px !important;
+  }
+
+  .inputForm:first-child {
+    margin-top: -6px;
+  }
+
+  .inputForm {
+    margin-left: -46px;
+  }
+
+  .content:last-child .inputForm .inputBox {
+    width: 328px !important;
+  }
+
+  .content:last-child .inputForm .inputDesc {
+    width: 328px !important;
+  }
+
+  .btn {
+    margin-left: -46px;
+  }
+
+  .btn .btnForm {
+    width: 156px !important;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 968px;
+  margin: auto;
+}
+
+.container .content:first-child {
+  margin-left: 150px;
+  margin-top: 40px;
+}
+
+.container .content:last-child {
+  margin-left: 76px;
+  margin-top: 40px;
+}
+
+.container .titleRes {
+  display: none;
+}
+
+.container .content .inputForm {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.container .content .inputForm .inputBox select:-webkit-appearance {
+  margin-left: 16px;
+}
+
+.container .content .inputForm label {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.container .content .inputForm .inputIcon {
+  position: absolute;
+  right: 0;
+  padding: 24px;
+}
+
+.container .content .inputForm .inputBox {
+  width: 568px;
+  height: 48px;
+  margin-top: 4px;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 16px;
+  color: #8a8a8a;
+  padding: 12px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.container .content .inputForm .inputDesc {
+  height: 80px;
+  width: 568px;
+  margin-top: 4px;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 16px;
+  color: #8a8a8a;
+  padding: 12px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  resize: none;
+}
+
+.container .content .inputForm p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.container .content .inputForm .inputIcon {
+  position: relative;
+  padding: 36px;
+}
+
+.container .content .inputForm .inputPhoto {
+  width: 96px;
+  height: 96px;
+  border: 1px dashed #d0d0d0;
+  border-radius: 12px;
+  margin-top: 4px;
+}
+
+.container .content .inputForm .inputPhoto .inputImage {
+  color: transparent;
+  width: 96px;
+  height: 70px;
+  /* margin-top: -90px; */
+  position: absolute;
+}
+
+.preview {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+  margin-right: 8px;
+}
+
+.column {
+  flex: 50%;
+  padding: 0 4px;
+}
+
+.preview .column img {
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+}
+
+.preview .column span {
+  cursor: pointer;
+  display: flex;
+  margin-top: -115px;
+  margin-left: 80px;
+  font-size: 20px;
+  color: red;
+}
+
+.container .content .inputForm .inputPhoto {
+  display: inline-flex;
+}
+
+.container .content .inputForm .preview .remove {
+  width: 96px;
+  height: 28px;
+  background: red;
+  border: 1px solid;
+  border-radius: 16px;
+  color: #ffffff;
+}
+
+.container
+  .content
+  .inputForm
+  .inputPhoto
+  .inputImage::-webkit-file-upload-button {
+  visibility: hidden;
+  position: absolute;
+}
+
+.container .content .btn {
+  margin-bottom: 258px;
+}
+
+.container .content .btn .btnForm {
+  width: 276px;
+  height: 48px;
+  background: #ffffff;
+  border: 1px solid #7126b5;
+  border-radius: 16px;
+  padding: 12px 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #151515;
+  margin-right: 16px;
+}
+
+.container .content .btn .btnForm:last-child {
+  background-color: #7126b5;
+  color: #ffffff;
+  margin-right: 0;
+}

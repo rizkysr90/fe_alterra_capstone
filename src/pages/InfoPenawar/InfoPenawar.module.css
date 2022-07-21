@@ -1,0 +1,341 @@
+@media only screen and (max-width: 600px) {
+  nav {
+    display: none !important;
+  }
+
+  .container {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .container .content {
+    width: 328px !important;
+    margin: auto !important;
+  }
+
+  .container .content hr {
+    display: none !important;
+  }
+
+  .container .content:first-child {
+    margin-top: 14px !important;
+    margin-bottom: 30px !important;
+    display: inline-flex !important;
+  }
+
+  .container .content .titleRes {
+    display: block !important;
+  }
+
+  .container .content .cardPenawar {
+    width: 328px !important;
+  }
+
+  .container .content .cardProduct {
+    width: 328px !important;
+  }
+
+  .container .content .cardProduct .cardContent:nth-child(2) {
+    width: 210px !important;
+  }
+
+  .container .content .btnContainer {
+    display: inline-flex !important;
+    margin-left: 0 !important;
+  }
+
+  .container .content .btnContainer .btn:first-child {
+    margin-left: 0 !important;
+  }
+}
+
+.container {
+  width: 986px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.container h1 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.container p {
+  color: #8a8a8a;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.container .content:first-child {
+  margin-left: 150px;
+  margin-top: 40px;
+}
+
+.container .content .titleRes {
+  margin: auto;
+  display: none;
+}
+
+.container .content:last-child {
+  margin-left: 76px;
+  margin-top: 40px;
+}
+
+.container .content .cardPenawar {
+  display: inline-flex;
+  padding: 16px;
+  width: 568px;
+  height: 80px;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+}
+
+.container .content .cardPenawar .cardContent:last-child {
+  margin-left: 16px;
+}
+
+.container .content .cardPenawar .cardContent .imgProfile {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.container .content .cardPenawar .cardContent h1 {
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.container .content .titleContent {
+  margin-top: 24px;
+}
+
+.container .content .cardProduct {
+  display: inline-flex;
+}
+
+.container .content .cardProduct p {
+  margin-bottom: 4px;
+}
+
+.container .content .cardProduct h2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.container .content .cardProduct .cardContent:nth-child(2) {
+  width: 450px;
+  margin-left: 16px;
+}
+
+.container .content .cardProduct .cardContent .imgProduct {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.container .content .btnContainer {
+  margin-top: 16px;
+  margin-left: 220px;
+}
+
+.container .content .btnContainer .btn {
+  margin-left: 16px;
+  width: 158px;
+  height: 36px;
+  background: #7126b5;
+  border: 1px solid #7126b5;
+  border-radius: 16px;
+  color: #ffffff;
+}
+
+.container .content .btnContainer .btn:first-child {
+  color: #3a1313;
+  font-weight: 500;
+  background: #ffffff;
+}
+
+.container .content .btnContainer .btn img {
+  margin-left: 8px;
+}
+
+.modalTerima,
+.modalVerifikasi,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.modalTerimaContent,
+.modalVerifikasiContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #ffffff;
+  padding: 56px 32px 24px 32px;
+  border-radius: 16px;
+  max-width: 360px;
+  min-width: 360px;
+}
+
+.modalTerimaContent .titleModalTerima,
+.titleModalCard,
+.namePembeli {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.modalTerimaContent .titleModalCard {
+  margin: auto;
+  margin-bottom: 16px;
+}
+
+.modalTerimaContent .textModalTerima {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8a8a8a;
+}
+
+.modalTerimaContent .btnModalCard {
+  width: 296px;
+  height: 48px;
+  padding: 12px 24px;
+  background: #7126b5;
+  border: 1px solid #7126b5;
+  border-radius: 16px;
+  margin-top: 24px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.modalTerimaContent .btnModalCard img {
+  margin-left: 24px;
+}
+
+.modalTerimaContent .modalCard {
+  display: flex;
+  flex-direction: column;
+  width: 296px;
+  height: auto;
+  padding: 16px;
+  border-radius: 16px;
+  background: #eeeeee;
+}
+
+.modalTerimaContent .modalCard .modalCardContent {
+  display: inline-flex;
+  margin-bottom: 16px;
+}
+
+.modalTerimaContent .modalCard .modalCardContent:last-child {
+  margin-bottom: 0;
+}
+
+.modalTerimaContent .modalCard .modalCardContent .cardContent:first-child {
+  margin-right: 16px;
+}
+
+.modalTerimaContent .modalCard .modalCardContent .cardContent img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.modalTerimaContent .modalCard .modalCardContent .cardContent h2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.modalTerimaContent .modalCard .modalCardContent .cardContent h2:last-child {
+  margin-bottom: 0;
+}
+
+.modalTerimaContent .modalCard .modalCardContent .cardContent .namePembeli {
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.modalTerimaContent .modalCard .modalCardContent .cardContent .cityPembeli {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  color: #8a8a8a;
+  margin-bottom: 0;
+}
+
+.closemodalTerima {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+}
+
+.modalVerifikasiContent .titleModalVerifikasi {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.modalVerifikasiContent .optContainer {
+  margin-top: 24px;
+}
+
+.modalVerifikasiContent .optContainer p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8a8a8a;
+  margin-top: 8px;
+  margin-left: 29px;
+}
+
+.modalVerifikasiContent .optContainer .optContent {
+  display: inline-flex;
+}
+
+.modalVerifikasiContent .optContainer .optContent label {
+  margin-left: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #151515;
+}
+
+.modalVerifikasiContent .btnVerifikasi {
+  width: 296px;
+  height: 48px;
+  padding: 12px 24px;
+  background: #7126b5;
+  border: 1px solid #7126b5;
+  border-radius: 16px;
+  margin-top: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}

@@ -1,0 +1,282 @@
+@media only screen and (max-width: 600px) {
+  nav {
+    display: none;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 328px !important;
+  }
+
+  .container .titlePage {
+    margin-left: 54px !important;
+    margin-top: -42px !important;
+  }
+
+  .container .boxProfile .profileContent:nth-child(2) {
+    width: 200px !important;
+    margin: 0;
+  }
+
+  .container .boxCategory {
+    display: block !important;
+    display: inline-flex !important;
+    overflow: scroll !important;
+    width: 100% !important;
+  }
+
+  .container .boxCategory::-webkit-scrollbar {
+    display: none;
+  }
+
+  .container .boxMain {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container .boxMain .mainContent:nth-child(1) {
+    display: none;
+  }
+
+  .container .boxMain .mainContent:nth-child(2) {
+    margin: 0 !important;
+    flex-wrap: wrap !important;
+  }
+
+  .container .boxMain .mainContent .inputBox {
+    width: 156px !important;
+    height: 206px !important;
+    margin-right: 16px !important;
+  }
+
+  .container .boxMain .mainContent .inputBox .inputIcon {
+    margin-left: 66px !important;
+    margin-right: 66px !important;
+  }
+  .cardContainer {
+    width: 156px !important;
+    height: 206px !important;
+    margin-right: 16px !important;
+  }
+
+  .cardContainer img {
+    width: 140px !important;
+    height: 100px !important;
+  }
+
+  .container .boxMain .mainContent .dataEmpty {
+    margin: auto !important;
+    margin-top: 24px !important;
+  }
+}
+
+.container h1 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.container .profileContent img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.container .profileContent p {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  color: #8a8a8a;
+}
+
+.container {
+  width: 986px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.container .titlePage {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+.container .boxProfile {
+  display: inline-flex;
+  height: 80px;
+  align-items: center;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+}
+
+.container .boxProfile .profileContent {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.container .boxProfile .profileContent:nth-child(2) {
+  width: 809px;
+  margin: 0;
+}
+
+.container .boxProfile .profileContent .btnEdit {
+  width: 47px;
+  height: 26px;
+  padding: 0;
+  border-radius: 8px;
+  font-weight: 500;
+  background: #ffffff;
+  border: 1px solid #7126b5;
+  border-radius: 8px;
+}
+
+.container .boxProfile .profileContent p {
+  margin-top: 4px;
+}
+
+.container .boxProfile .profileContent .nameProfile {
+  font-weight: 500;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.container .boxCategory {
+  display: inline-flex;
+  margin-top: 24px;
+  display: none;
+}
+
+.container .boxCategory .btnCategory {
+  display: flex;
+  align-items: center;
+  background: #e2d4f0;
+  border: 1px solid #e2d4f0;
+  border-radius: 12px;
+  margin-right: 16px;
+  padding: 14px 24px;
+  color: #3c3c3c;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.container .boxCategory .btnCategory img {
+  margin-right: 8px;
+}
+
+.container .boxCategory .btnCategory:hover {
+  background: #7126b5;
+  color: #ffffff;
+}
+
+.container .boxMain {
+  display: inline-flex;
+}
+
+.container .boxMain .mainContent:nth-child(2) {
+  display: flex;
+  align-items: flex-start;
+  margin-left: 24px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+}
+
+.container .boxMain .mainContent .dataEmpty {
+  display: flex;
+  flex-direction: column;
+  width: 296px;
+  height: 258px;
+  margin-left: 80%;
+  margin-top: 24px;
+}
+
+.container .boxMain .mainContent .dataEmpty p {
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #151515;
+}
+
+.container .boxMain .mainContent .inputBox {
+  width: 206.67px;
+  height: 198px;
+  margin-top: 24px;
+  border: 1px dashed #d0d0d0;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #8a8a8a;
+  margin-right: 24px;
+}
+
+.container .boxMain .mainContent .inputBox .inputIcon {
+  margin-top: 70px;
+  margin-left: 91.33px;
+  margin-right: 91.33px;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 206.67px;
+  height: 198px;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  margin-right: 24px;
+  margin-top: 24px;
+}
+
+.cardContainer img {
+  width: 190.67px;
+  height: 100px;
+  margin: 8px;
+}
+
+.cardDesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 137.14px;
+  height: 66px;
+  margin: 0px 8px 8px 8px;
+}
+
+.cardDesc h5 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+}
+
+.cardDesc p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 14px;
+  color: #8a8a8a;
+  margin: 0;
+}
+
+.iconBox,
+.iconHeart,
+.iconDollar,
+.iconBag {
+  stroke: #fff;
+  stroke-width: 2px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+  fill: none;
+}
