@@ -25,7 +25,7 @@ const DaftarJualDiminati = () => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
       currency: "IDR",
-    }).format(number);
+    }).format(number); 
   };
 
   const getUserDetail = async () => {
