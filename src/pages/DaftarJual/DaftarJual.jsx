@@ -75,7 +75,7 @@ const DaftarJual = () => {
       <Navbar />
       <Sidebar />
       <div className={style.container}>
-        <h1 className={style.titlePage}>Daftar Jual Saya</h1>
+        <h1 data-testid="daftarjual"  className={style.titlePage}>Daftar Jual Saya</h1>
         <div className={style.boxProfile}>
           <div className={style.profileContent}>
             <img src={userDetail?.profile_picture} alt="Foto Profil" />

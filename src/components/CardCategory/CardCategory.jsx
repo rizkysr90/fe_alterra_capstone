@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const CardCategory = () => {
   return (
     <div className={style.card}>
-      <p className={style.titleCard}>Kategori</p>
+      <p data-testid="category" className={style.titleCard}>Kategori</p>
       <div className={style.cardContent}>
         <svg
           className={style.iconBox}
