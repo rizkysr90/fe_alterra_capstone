@@ -56,7 +56,7 @@ const Category = () => {
   return (
     <>
       <div className={style.container}>
-        <h2>Telusuri Kategori</h2>
+        <h2 data-testid="kategori-value">Telusuri Kategori</h2>
         <div className={style.btnContainer}>
           <button
             onClick={() => getAllProduct()}
