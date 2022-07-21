@@ -42,6 +42,7 @@ const DaftarJualTerjual = () => {
   useEffect(() => {
     getUserDetail();
     dispatch(orderSellerTerjual(token));
+    document.title = "SecondHand | Daftar Jual Saya";
     document.getElementsByClassName(CardCategoryStyle.pText)[2].style.cssText = "color: #7126B5; font-weight: 500";
     document.getElementsByClassName(CardCategoryStyle.iconDollar)[0].style.stroke = "#7126B5";
     document.getElementsByClassName(CardCategoryStyle.iconArrow)[2].style.stroke = "#7126B5";

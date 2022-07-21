@@ -102,14 +102,6 @@
   display: inline-flex;
 }
 
-.container .content .cardNotifikasi .cardContent .elipse {
-  margin-left: 8px;
-  width: 8px;
-  height: 8px;
-  border-radius: 8px;
-  background: #fa2c5a;
-}
-
 .container .content .cardNotifikasi .cardContent .imgNotifikasi {
   width: 48px;
   height: 48px;

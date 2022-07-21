@@ -20,6 +20,22 @@ const PembelianDibatalkan = () => {
     }).format(number);
   };
 
+  const formatDateTime = (createdAt) => {
+    const date = new Date(createdAt);
+    const time = new Date(createdAt);
+    const formattedDate = time.toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "short",
+    });
+
+    const formattedTime = date.toLocaleTimeString("id-ID", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    return formattedDate + ", " + formattedTime;
+  };
+
   useEffect(() => {
     dispatch(historyBuyerDibatalkan(token));
     //eslint-disable-next-line
@@ -32,18 +48,25 @@ const PembelianDibatalkan = () => {
           <p>Wah, belum ada transaksi pembelian kamu yang ditolak nih.</p>
         </div>
       )}
+
       {dataHistoryDibatalkan?.map((history) => (
-        <div key={history.id} className={style.cardContainer}>
-          <Link to={`/buyer-product/${history?.Product?.id}`}>
-            <img src={history.Product.Product_images[0].url_image} alt="card" />
-          </Link>
-          <div className={style.cardDesc}>
-            <h5>{`${history.Product.name.slice(0, 15)}...`}</h5>
-            <div className={style.textCon}>
-              <p>{history.Buyers.name}</p>
-              <p style={{ color: "red", paddingLeft: "8px" }}>Ditolak</p>
-            </div>
-            <h5>{`${rupiah(history?.price)}`}</h5>
+        <div className={style.cardProduct} key={history.id}>
+          <div className={style.cardContent}>
+            <Link to={`/buyer-product/${history?.Product?.id}`}>
+              <img
+                src={history.Product.Product_images[0].url_image}
+                alt="card"
+              />
+            </Link>
+          </div>
+          <div className={style.cardContent}>
+            <p>Penawaran Ditolak</p>
+            <h2>{history.Product?.name}</h2>
+            <h2>{`${rupiah(history?.Product?.price)}`}</h2>
+            <h2>Ditawar dengan harga {`${rupiah(history?.price)}`}</h2>
+          </div>
+          <div className={style.cardContent}>
+            <p>{formatDateTime(history.updatedAt)}</p>
           </div>
         </div>
       ))}

@@ -20,6 +20,22 @@ const PembelianBerhasil = () => {
     }).format(number);
   };
 
+  const formatDateTime = (createdAt) => {
+    const date = new Date(createdAt);
+    const time = new Date(createdAt);
+    const formattedDate = time.toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "short",
+    });
+
+    const formattedTime = date.toLocaleTimeString("id-ID", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    return formattedDate + ", " + formattedTime;
+  };
+
   useEffect(() => {
     dispatch(historyBuyerBerhasil(token));
     //eslint-disable-next-line
@@ -33,17 +49,22 @@ const PembelianBerhasil = () => {
         </div>
       )}
       {dataHistoryBerhasil?.map((history) => (
-        <div key={history.id} className={style.cardContainer}>
-          <Link to={`/buyer-product/${history?.Product?.id}`}>
-            <img src={history.Product.Product_images[0].url_image} alt="card" />
-          </Link>
-          <div className={style.cardDesc}>
-            <h5>{`${history.Product.name.slice(0, 15)}...`}</h5>
-            <div className={style.textCon}>
-              <p>{history.Buyers.name}</p>
-              <p style={{ color: "green", paddingLeft: "8px" }}>Berhasil</p>
-            </div>
-            <h5>{`${rupiah(history?.price)}`}</h5>
+        <div className={style.cardProduct} key={history.id}>
+          <div className={style.cardContent}>
+            <Link to={`/buyer-product/${history?.Product?.id}`}>
+              <img
+                src={history.Product.Product_images[0].url_image}
+                alt="card"
+              />
+            </Link>
+          </div>
+          <div className={style.cardContent}>
+            <p>Transaksi Pembelian Berhasil</p>
+            <h2>{history.Product?.name}</h2>
+            <h2>Dibeli dengan harga {`${rupiah(history?.price)}`}</h2>
+          </div>
+          <div className={style.cardContent}>
+            <p>{formatDateTime(history.updatedAt)}</p>
           </div>
         </div>
       ))}

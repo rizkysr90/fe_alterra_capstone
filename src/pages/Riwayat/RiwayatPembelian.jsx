@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 const RiwayatPembelian = () => {
   useEffect(() => {
+    document.title = "SecondHand | Riwayat Pembelian";
     document.getElementsByClassName(NavbarStyle.iconClock)[0].style.stroke =
       "#7126B5";
     //eslint-disable-next-line

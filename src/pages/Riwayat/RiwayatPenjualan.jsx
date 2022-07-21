@@ -27,6 +27,7 @@ const RiwayatPenjualan = () => {
 
   useEffect(() => {
     getUserDetail();
+    document.title = "SecondHand | Daftar Jual Saya";
     document.getElementsByClassName(CardCategoryStyle.pText)[3].style.cssText =
       "color: #7126B5; font-weight: 500";
     document.getElementsByClassName(CardCategoryStyle.iconBag)[0].style.stroke =

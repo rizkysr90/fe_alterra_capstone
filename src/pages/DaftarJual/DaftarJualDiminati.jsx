@@ -43,6 +43,7 @@ const DaftarJualDiminati = () => {
   useEffect(() => {
     getUserDetail();
     dispatch(orderSellerDiminati(token));
+    document.title = "SecondHand | Daftar Jual Saya";
     document.getElementsByClassName(CardCategoryStyle.pText)[1].style.cssText = "color: #7126B5; font-weight: 500";
     document.getElementsByClassName(CardCategoryStyle.iconHeart)[0].style.stroke = "#7126B5";
     document.getElementsByClassName(CardCategoryStyle.iconArrow)[1].style.stroke = "#7126B5";

@@ -6,7 +6,7 @@ import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin
 import Sidebar from "../../components/Sidebar";
 import SidebarBeforeLogin from "../../components/SidebarBeforeLogin";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Home = () => {
 	const { dataLogin } = useSelector((globalStore) => globalStore.auth);
@@ -18,6 +18,10 @@ const Home = () => {
 		navigate(`/search/${search}`);
 		console.log(search);
 	};
+
+	useEffect(() => {
+		document.title = "SecondHand";
+	})
 
 	return (
 		<>
@@ -80,7 +84,7 @@ const Home = () => {
 			</div>
 			<Category />
 			<div className={style.buttonJualContainer}>
-				<Link to={"/product-info"} style={{ textDecoration: "none" }}>
+				<Link to={dataLogin?.dataLogin.token ? `/product-info` : `/login`} style={{ textDecoration: "none" }}>
 					<button className={style.buttonJual}>
 						<img src="icons/fi_plus_white.svg" alt="plus" />
 						Jual

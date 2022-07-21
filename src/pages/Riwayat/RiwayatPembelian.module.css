@@ -25,23 +25,12 @@
     padding-left: 54px !important;
   }
 
-  .container .content .cardRiwayat {
+  .container .content .cardProduct {
     width: 328px !important;
   }
 
-  .container .content .cardRiwayat .cardContent:nth-child(2) {
+  .container .content .cardProduct .cardContent:nth-child(2) {
     width: 195px !important;
-  }
-
-  .cardContainer {
-    width: 156px !important;
-    height: 206px !important;
-    margin-right: 16px !important;
-  }
-
-  .cardContainer img {
-    width: 140px !important;
-    height: 100px !important;
   }
 
   .outletContainer {
@@ -89,7 +78,41 @@
   margin-top: 24px;
 }
 
-.container .content .cardRiwayat {
+.container .content .cardProduct {
+  margin: auto;
+  display: inline-flex;
+  margin-top: 16px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.container .content .cardProduct p {
+  margin-bottom: 4px;
+}
+
+.container .content .cardProduct h2 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.container .content .cardProduct .cardContent:nth-child(2) {
+  width: 435px;
+  margin-left: 16px;
+  padding-bottom: 16px;
+}
+
+.container .content .cardProduct .cardContent:nth-child(3) {
+  display: inline-flex;
+}
+
+.container .content .cardProduct .cardContent img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+/* .container .content .cardRiwayat {
   display: inline-flex;
   margin-top: 16px;
   border-bottom: 1px solid #cccccc;
@@ -131,7 +154,7 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-}
+} */
 
 .dataEmpty {
   display: flex;

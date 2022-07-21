@@ -62,6 +62,7 @@ const DaftarJual = () => {
     setTimeout(() => {
       dispatch(orderSellerAlert(false));
     }, 3000);
+    document.title = "SecondHand | Daftar Jual Saya";
     document.getElementsByClassName(CardCategoryStyle.pText)[0].style.cssText = "color: #7126B5; font-weight: 500";
     document.getElementsByClassName(CardCategoryStyle.iconBox)[0].style.stroke = "#7126B5";
     document.getElementsByClassName(CardCategoryStyle.iconArrow)[0].style.stroke = "#7126B5";

@@ -95,6 +95,7 @@ const ProfileInfo = () => {
 	};
 	useEffect(() => {
 		getUserDetail();
+		document.title = "SecondHand | Profil";
 		//eslint-disable-next-line
 	}, []);
 	console.log(dataUser);
