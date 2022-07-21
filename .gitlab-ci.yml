@@ -2,7 +2,7 @@ stages:
   - build
   - test artifacts
   - test react
-  - deploy staging
+  - deploy
 
 image: node:lts
 
@@ -34,7 +34,7 @@ test react job:
     - yarn test
 
 deploy staging job:
-  stage: deploy staging
+  stage: deploy
   only:
     - staging
   image: ruby
@@ -47,3 +47,14 @@ deploy staging job:
   environment:
     name: staging
     url: https://secondhandfrontend.herokuapp.com/
+
+deploy production job:
+  stage: deploy
+  only:
+    - main
+  environment:
+    name: production
+    url: https://secondhand-fejs-1-2.vercel.app/
+  script:
+    - npm i -g vercel
+    - DEPLOYMENT_URL=$(VERCEL_ORG_ID=$VERCEL_ORG_ID VERCEL_PROJECT_ID=$VERCEL_PROJECT_ID vercel --confirm -t $VERCEL_TOKEN)
