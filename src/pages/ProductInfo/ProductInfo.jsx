@@ -61,7 +61,7 @@ const ProductInfo = () => {
     e.preventDefault();
     product.isActive = false;
     product.status = false;
-    product.id_user = dataLogin.dataLogin.id;
+    product.id_user = dataLogin?.dataLogin?.id;
     const formdata = new FormData();
     pictureSubmit.map((data) => formdata.append("gambar", data));
     formdata.append("name", product.name);
@@ -77,7 +77,7 @@ const ProductInfo = () => {
         url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
         data: formdata,
         headers: {
-          Authorization: `Bearer ${dataLogin.dataLogin.token}`,
+          Authorization: `Bearer ${dataLogin?.dataLogin?.token}`,
           "Content-Type": "multipart/form-data",
         },
       });
@@ -103,7 +103,7 @@ const ProductInfo = () => {
     e.preventDefault();
     product.isActive = true;
     product.status = true;
-    product.id_user = dataLogin.dataLogin.id;
+    product.id_user = dataLogin?.dataLogin?.id;
     const formdata = new FormData();
     pictureSubmit.map((data) => formdata.append("gambar", data));
     formdata.append("name", product.name);
@@ -120,7 +120,7 @@ const ProductInfo = () => {
         url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
         data: formdata,
         headers: {
-          Authorization: `Bearer ${dataLogin.dataLogin.token}`,
+          Authorization: `Bearer ${dataLogin?.dataLogin?.token}`,
           "Content-Type": "multipart/form-data",
         },
       });
@@ -131,9 +131,9 @@ const ProductInfo = () => {
 
   const getUserDetail = async () => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
+      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin?.dataLogin?.id}`,
       {
-        headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
+        headers: { Authorization: `Bearer ${dataLogin?.dataLogin?.token}` },
       }
     );
     setUserDetail(data.data);
