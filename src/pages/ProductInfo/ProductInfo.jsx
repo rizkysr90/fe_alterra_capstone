@@ -6,10 +6,15 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
+
 const ProductInfo = () => {
   const { dataLogin } = useSelector((state) => state.auth);
 
   const [category, setCategory] = useState([]);
+
+  const [fileLimit, setFileLimit] = useState(false);
+
+  const MAX_COUNT = 4
 
   const [ProductPicture, setProductPicture] = useState([]);
 
@@ -26,36 +31,68 @@ const ProductInfo = () => {
     setCategory(data.data);
   };
 
+  const handleUpload = files => {
+    const upload = [...ProductPicture];
+    let limit = false;
+    files.some((file) => {
+      if (upload.findIndex((f) => f.name === file.name) === -1) {
+        upload.push(file);
+        if (upload.length === MAX_COUNT) setFileLimit(true)
+        if (upload.length > MAX_COUNT) {
+          alert(`Kamu hanya tambah maksimum ${MAX_COUNT} gambar`);
+          setFileLimit(false);
+          limit = true;
+          return true;
+        }
+      }
+    })
+    if (!limit) setProductPicture(upload)
+  }
+  
   const handleFile = (e) => {
     // if (e.target.files && e.target.files.length > 0) {
     // 	setProductPicture(e.target.files[0]);
     // }
 
     // console.log(e.target.files);
-    if (e.target.files) {
-      const fileArray = Array.from(e.target.files).map((file) =>
-        URL.createObjectURL(file)
-      );
+    // if (e.target.files) {
+    //   const fileArray = Array.from(e.target.files).map((file) =>
+    //     URL.createObjectURL(file)
+    //   );
 
-      setProductPicture((prevImages) => prevImages.concat(fileArray));
-      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+    //   setProductPicture((prevImages) => prevImages.concat(fileArray));
+    //   Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
 
-      setPictureSubmit([...pictureSubmit, e.target.files[0]]);
-    }
-  };
+    //   setPictureSubmit([...pictureSubmit, e.target.files[0]]);
+    // } 
+    const chosenFiles = Array.prototype.slice.call(e.target.files)
+    handleUpload(chosenFiles)
+    setPictureSubmit([...pictureSubmit, e.target.files[0]]);
+  }; 
 
   const renderPhotos = (source) => {
-    return source.map((photo, index) => {
-      return (
-        <div className={style.preview}>
+    // return source.map((photo, index) => {
+    //   return (
+    //     <div className={style.preview}>
+    //       <div className={style.column}>
+    //         <img src={photo} alt="" key={photo} />
+    //         <span onClick={() => delImage(index)}>&times;</span>
+    //       </div>
+    //     </div>
+    //   );
+    // });
+    return (
+      <div className={style.preview}>
+        {ProductPicture.map((file, index) => (
           <div className={style.column}>
-            <img src={photo} alt="" key={photo} />
+            <img src={file.name} alt="" />
             <span onClick={() => delImage(index)}>&times;</span>
           </div>
-        </div>
-      );
-    });
+        ))}
+      </div>
+    )
   };
+
 
   const delImage = (e) => {
     const s = ProductPicture.filter((photo, index) => index !== e)
@@ -231,6 +268,8 @@ const ProductInfo = () => {
                   multiple
                   alt="Box Tambah Gambar"
                   onChange={(e) => handleFile(e)}
+                  disabled={fileLimit}
+                  id="fileUpload"
                 />
                 {renderPhotos(ProductPicture)}
               </label>
