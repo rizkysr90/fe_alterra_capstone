@@ -72,6 +72,7 @@ const ProductInfo = () => {
     formdata.append("id_user", product.id_user);
     formdata.append("id_category", product.id_category);
     try {
+      //eslint-disable-next-line
       const { data } = await axios({
         method: "post",
         url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,

@@ -1,5 +1,6 @@
 stages:
   - build
+  - test artifacts
   - test react
   - deploy
 
@@ -21,6 +22,10 @@ build job:
   artifacts:
     paths:
       - build/
+
+test artifacts job:
+  stage: test artifacts
+  <<: *script_test
 
 test react job:
   stage: test react
