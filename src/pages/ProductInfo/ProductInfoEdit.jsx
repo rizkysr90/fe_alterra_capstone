@@ -2,23 +2,22 @@ import Navbar from "../../components/NavbarTitle/NavbarTitle";
 import style from "./ProductInfo.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
+const ProductInfoEdit = () => {
+  const { dataLogin } = useSelector((globalStore) => globalStore.auth);
 
-const ProductInfo = () => {
-  const { dataLogin } = useSelector((state) => state.auth);
+  const { idProductSeller } = useParams();
 
   const [category, setCategory] = useState([]);
-
-  const [fileLimit, setFileLimit] = useState(false);
-
-  const MAX_COUNT = 4
 
   const [ProductPicture, setProductPicture] = useState([]);
 
   const [pictureSubmit, setPictureSubmit] = useState([]);
+
+  const [product, setProduct] = useState([]);
 
   const navigate = useNavigate();
 
@@ -31,81 +30,74 @@ const ProductInfo = () => {
     setCategory(data.data);
   };
 
-  const handleUpload = files => {
-    const upload = [...ProductPicture];
-    let limit = false;
-    files.some((file) => {
-      if (upload.findIndex((f) => f.name === file.name) === -1) {
-        upload.push(file);
-        if (upload.length === MAX_COUNT) setFileLimit(true)
-        if (upload.length > MAX_COUNT) {
-          alert(`Kamu hanya tambah maksimum ${MAX_COUNT} gambar`);
-          setFileLimit(false);
-          limit = true;
-          return true;
-        }
-      }
-    })
-    if (!limit) setProductPicture(upload)
-  }
-  
-  const handleFile = (e) => {
-    // if (e.target.files && e.target.files.length > 0) {
-    // 	setProductPicture(e.target.files[0]);
-    // }
-
-    // console.log(e.target.files);
-    // if (e.target.files) {
-    //   const fileArray = Array.from(e.target.files).map((file) =>
-    //     URL.createObjectURL(file)
-    //   );
-
-    //   setProductPicture((prevImages) => prevImages.concat(fileArray));
-    //   Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
-
-    //   setPictureSubmit([...pictureSubmit, e.target.files[0]]);
-    // } 
-    const chosenFiles = Array.prototype.slice.call(e.target.files)
-    handleUpload(chosenFiles)
-    setPictureSubmit([...pictureSubmit, e.target.files[0]]);
-  }; 
-
-  const renderPhotos = (source) => {
-    // return source.map((photo, index) => {
-    //   return (
-    //     <div className={style.preview}>
-    //       <div className={style.column}>
-    //         <img src={photo} alt="" key={photo} />
-    //         <span onClick={() => delImage(index)}>&times;</span>
-    //       </div>
-    //     </div>
-    //   );
-    // });
-    return (
-      <div className={style.preview}>
-        {ProductPicture.map((file, index) => (
-          <div className={style.column}>
-            <img src={file.name} alt="" />
-            <span onClick={() => delImage(index)}>&times;</span>
-          </div>
-        ))}
-      </div>
-    )
+  const getDetailProduct = async () => { 
+    const { data } = await axios.get(
+      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts/${idProductSeller}`, 
+      { headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` } }
+    );
+    setProduct(data.data);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let formProduct = new FormData();
+    formProduct.append("name", product.name);
+    formProduct.append("price", product.price);
+    formProduct.append("description", product.description);
+    formProduct.append("id_category", product.id_category);
+
+    try {
+        //eslint-disable-next-line
+        const { data } = await axios({
+            method: "put",
+            url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts/${idProductSeller}`,
+            data: formProduct,
+            headers: {
+                Authorization: `Bearer ${dataLogin.dataLogin.token}`,
+                "Content-Type": "multipart/form-data",
+            },
+        });
+        dispatch(orderSellerAlert(true))
+    } catch (err) {
+
+    }
+    navigate(`/daftar-jual`);
+  };
+
+  const handleChange = (e) => {
+    setProduct({ ...product, id_category: e.target.value });
+  };
+
+  const handleFile = (e) => {
+    if (e.target.files) {
+      const fileArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
+      );
+
+      setProductPicture((prevImages) => prevImages.concat(fileArray));
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+
+      setPictureSubmit([...pictureSubmit, e.target.files[0]]);
+    }
+  };
+
+  const renderPhotos = (source) => {
+    return source.map((photo, index) => {
+      return (
+        <div className={style.preview}>
+          <div className={style.column}>
+            <img src={photo} alt="" key={photo} />
+            <span onClick={() => delImage(index)}>&times;</span>
+          </div>
+        </div>
+      );
+    });
+  };
 
   const delImage = (e) => {
     const s = ProductPicture.filter((photo, index) => index !== e)
     setProductPicture(s)
   }
-
-  // const remove = () => {
-  //   setProductPicture()
-  // }
-
-  const handleChange = (e) => {
-    setProduct({ ...product, id_category: e.target.value });
-  };
 
   const handlePreview = async (e) => {
     e.preventDefault();
@@ -122,6 +114,7 @@ const ProductInfo = () => {
     formdata.append("id_user", product.id_user);
     formdata.append("id_category", product.id_category);
     try {
+        //eslint-disable-next-line
       const { data } = await axios({
         method: "post",
         url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
@@ -131,56 +124,15 @@ const ProductInfo = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      navigate(`/seller-product/${data.data.id}`);
+      navigate(`/seller-product/${idProductSeller}`);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const [product, setProduct] = useState({
-    name: "",
-    price: "",
-    description: "",
-    isActive: "",
-    status: "",
-    id_user: "",
-    id_category: "",
-    gambar: "",
-  });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    product.isActive = true;
-    product.status = true;
-    product.id_user = dataLogin.dataLogin.id;
-    const formdata = new FormData();
-    pictureSubmit.map((data) => formdata.append("gambar", data));
-    formdata.append("name", product.name);
-    formdata.append("price", product.price);
-    formdata.append("description", product.description);
-    formdata.append("isActive", product.isActive);
-    formdata.append("status", product.status);
-    formdata.append("id_user", product.id_user);
-    formdata.append("id_category", product.id_category);
-    try {
-      // eslint-disable-next-line
-      const { data } = await axios({
-        method: "post",
-        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
-        data: formdata,
-        headers: {
-          Authorization: `Bearer ${dataLogin.dataLogin.token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      dispatch(orderSellerAlert(true));
-    } catch (err) {
-    }
-    navigate(`/daftar-jual`);
-  };
-
   useEffect(() => {
     getCategory();
+    getDetailProduct()
     // eslint-disable-next-line
   }, []);
 
@@ -268,23 +220,9 @@ const ProductInfo = () => {
                   multiple
                   alt="Box Tambah Gambar"
                   onChange={(e) => handleFile(e)}
-                  disabled={fileLimit}
-                  id="fileUpload"
                 />
                 {renderPhotos(ProductPicture)}
               </label>
-              {/* {ProductPicture && (
-							<div className={style.preview}>
-								<img src={URL.createObjectURL(ProductPicture)} alt="Product" />
-								<button onClick={remove} className={style.remove}>Remove</button>
-							</div>
-						)} */}
-              {/* {ProductPicture && (
-                <div className={style.preview}>
-                  <img src={URL.createObjectURL(ProductPicture)} alt="Product" />
-                  <button onClick={remove} className={style.remove}>Remove</button>
-                </div>
-              )} */}
             </div>
 
             <div className={style.btn}>
@@ -309,4 +247,4 @@ const ProductInfo = () => {
   );
 };
 
-export default ProductInfo;
+export default ProductInfoEdit;
