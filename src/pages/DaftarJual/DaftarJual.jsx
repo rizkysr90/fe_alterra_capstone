@@ -10,14 +10,15 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import AlertSuccess from "../../components/Alert/AlertSuccess";
+import AlertFailed from "../../components/Alert/AlertFailed";
 import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
 const DaftarJual = () => {
   const [userDetail, setUserDetail] = useState({});
 
   const toggleStopAlert = () => {
-		dispatch(orderSellerAlert(false));
-	};
+    dispatch(orderSellerAlert(false));
+  };
 
   const [dataProductSeller, setDataProductSeller] = useState([]);
 
@@ -35,12 +36,12 @@ const DaftarJual = () => {
   };
 
   const getProductSeller = async () => {
-    const { data } = await axios ({
+    const { data } = await axios({
       method: "get",
       url: "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts?page=1&row=10&status=true&isActive=true",
       headers: {
-        Authorization: `Bearer ${dataLogin.dataLogin.token}`
-      }
+        Authorization: `Bearer ${dataLogin.dataLogin.token}`,
+      },
     });
     setDataProductSeller(data.data);
   };
@@ -63,10 +64,15 @@ const DaftarJual = () => {
       dispatch(orderSellerAlert(false));
     }, 3000);
     document.title = "SecondHand | Daftar Jual Saya";
-    document.getElementsByClassName(CardCategoryStyle.pText)[0].style.cssText = "color: #7126B5; font-weight: 500";
-    document.getElementsByClassName(CardCategoryStyle.iconBox)[0].style.stroke = "#7126B5";
-    document.getElementsByClassName(CardCategoryStyle.iconArrow)[0].style.stroke = "#7126B5";
-    document.getElementsByClassName(NavbarStyle.iconList)[0].style.stroke = "#7126B5";
+    document.getElementsByClassName(CardCategoryStyle.pText)[0].style.cssText =
+      "color: #7126B5; font-weight: 500";
+    document.getElementsByClassName(CardCategoryStyle.iconBox)[0].style.stroke =
+      "#7126B5";
+    document.getElementsByClassName(
+      CardCategoryStyle.iconArrow
+    )[0].style.stroke = "#7126B5";
+    document.getElementsByClassName(NavbarStyle.iconList)[0].style.stroke =
+      "#7126B5";
     //eslint-disable-next-line
   }, []);
 
@@ -75,7 +81,9 @@ const DaftarJual = () => {
       <Navbar />
       <Sidebar />
       <div className={style.container}>
-        <h1 data-testid="daftarjual"  className={style.titlePage}>Daftar Jual Saya</h1>
+        <h1 data-testid="daftarjual" className={style.titlePage}>
+          Daftar Jual Saya
+        </h1>
         <div className={style.boxProfile}>
           <div className={style.profileContent}>
             <img src={userDetail?.profile_picture} alt="Foto Profil" />
@@ -174,7 +182,11 @@ const DaftarJual = () => {
             ))}
             {isAlert && (
               <div className={style.alertCon} onClick={toggleStopAlert}>
-                <AlertSuccess text="Produk berhasil diterbitkan" />
+                {userDetail?.City === null && userDetail?.phone_number === null ? (
+                  <AlertFailed text="Lengkapi profil terlebih dahulu" />
+                ) : (
+                  <AlertSuccess text="Produk berhasil diterbitkan" />
+                )}
               </div>
             )}
           </div>

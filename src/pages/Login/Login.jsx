@@ -3,25 +3,40 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { LoginEmail } from "../../config/redux/actions/authAction";
+import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
+import AlertSuccess from "../../components/Alert/AlertSuccess";
 
 const Login = () => {
   const { dataLogin } = useSelector((globalStore) => globalStore.auth);
+  const { sellerReducer } = useSelector((globalStore) => globalStore);
+  const { isAlert } = sellerReducer;
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const toggleStopAlert = () => {
+    dispatch(orderSellerAlert(false));
+  };
+
   const handleLoginEmail = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(LoginEmail(email, password));
     setTimeout(() => {
-      navigate('/');
+      dispatch(orderSellerAlert(true));
+      navigate("/");
     }, 1500);
-  }
+  };
 
   useEffect(() => {
-    if (dataLogin?.email === dataLogin && dataLogin?.password === dataLogin) navigate('/');
-    if (dataLogin?.email !== dataLogin && dataLogin?.password !== dataLogin && dataLogin !== null) navigate('/login');
+    if (dataLogin?.email === dataLogin && dataLogin?.password === dataLogin)
+      navigate("/");
+    if (
+      dataLogin?.email !== dataLogin &&
+      dataLogin?.password !== dataLogin &&
+      dataLogin !== null
+    )
+      navigate("/login");
     console.log(dataLogin);
     //eslint-disable-next-line
   }, []);
@@ -32,7 +47,7 @@ const Login = () => {
     <>
       <div className={style.container}>
         <div className={style.contentOne}>
-          <img src="/images/loginRegister.png" alt="bg"/>
+          <img src="/images/loginRegister.png" alt="bg" />
           <div className={style.bigText}>
             Second
             <br />
@@ -47,7 +62,9 @@ const Login = () => {
               src="/icons/fi_arrow-left.svg"
               alt="Icon Back"
             />
-            <h1 data-testid="title" className={style.title}>Masuk</h1>
+            <h1 data-testid="title" className={style.title}>
+              Masuk
+            </h1>
             <label htmlFor="email">Email</label>
             <input
               className={style.inputForm}
@@ -73,7 +90,12 @@ const Login = () => {
                 alt="Icon Password"
               /> */}
             </div>
-            <button className={style.btnLogin} onClick={(e) => handleLoginEmail(e)}>Masuk</button>
+            <button
+              className={style.btnLogin}
+              onClick={(e) => handleLoginEmail(e)}
+            >
+              Masuk
+            </button>
             <p>
               Belum punya akun?{" "}
               <Link className={style.link} to={"/register"}>
@@ -83,6 +105,11 @@ const Login = () => {
           </form>
         </div>
       </div>
+      {isAlert && (
+        <div className={style.alertCon} onClick={toggleStopAlert}>
+          <AlertSuccess text="Register berhasil. Silahkan login" />
+        </div>
+      )}
     </>
   );
 };

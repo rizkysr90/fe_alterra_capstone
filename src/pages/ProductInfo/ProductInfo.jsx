@@ -25,7 +25,7 @@ const ProductInfo = () => {
     );
     setCategory(data.data);
   };
-  
+
   const handleFile = (e) => {
     // if (e.target.files && e.target.files.length > 0) {
     // 	setProductPicture(e.target.files[0]);
@@ -41,8 +41,8 @@ const ProductInfo = () => {
       Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
 
       setPictureSubmit([...pictureSubmit, e.target.files[0]]);
-    } 
-  }; 
+    }
+  };
 
   const renderPhotos = (source) => {
     return source.map((photo, index) => {
