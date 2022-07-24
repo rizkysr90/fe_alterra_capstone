@@ -34,6 +34,7 @@ const ProductInfo = () => {
   const handleUpload = files => {
     const upload = [...ProductPicture];
     let limit = false;
+    //eslint-disable-next-line
     files.some((file) => {
       if (upload.findIndex((f) => f.name === file.name) === -1) {
         upload.push(file);
