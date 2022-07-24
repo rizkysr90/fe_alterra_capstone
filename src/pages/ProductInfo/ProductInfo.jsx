@@ -11,7 +11,6 @@ const ProductInfo = () => {
   const [category, setCategory] = useState([]);
   const [ProductPicture, setProductPicture] = useState([]);
   const [pictureSubmit, setPictureSubmit] = useState([]);
-  const [userDetail, setUserDetail] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -132,19 +131,8 @@ const ProductInfo = () => {
     navigate(`/daftar-jual`);
   };
 
-  const getUserDetail = async () => {
-    const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin?.dataLogin?.id}`,
-      {
-        headers: { Authorization: `Bearer ${dataLogin?.dataLogin?.token}` },
-      }
-    );
-    setUserDetail(data.data);
-  };
-
   useEffect(() => {
     getCategory();
-    getUserDetail();
     // eslint-disable-next-line
   }, []);
 
@@ -220,11 +208,6 @@ const ProductInfo = () => {
                 }
               />
             </div>
-            {userDetail?.City === null && userDetail?.phone_number === null && (
-              <Link to={`/profile`} style={{ color: "red" }}>
-                <p style={{ color: "red" }}>Lengkapi profil terlebih dahulu</p>
-              </Link>
-            )}
             <div className={style.inputForm}>
               <p>Foto Produk</p>
               <label className={style.inputPhoto} htmlFor="inputImage">
