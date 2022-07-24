@@ -4,6 +4,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProfileInfo from './pages/ProfileInfo/ProfileInfo';
 import ProductInfo from './pages/ProductInfo/ProductInfo';
+import ProductInfoEdit from './pages/ProductInfo/ProductInfoEdit';
 import SellerProduct from './pages/SellerProduct/SellerProduct';
 import BuyerProduct from './pages/BuyerProduct/BuyerProduct';
 import DaftarJual from './pages/DaftarJual/DaftarJual';
@@ -32,6 +33,7 @@ const RouteApp = () => {
                 <Route path='/profile' element={<ProfileInfo />} />
                 <Route path='/notifikasi' element={<Notifikasi />} />
                 <Route path='/product-info' element={<ProductInfo />} />
+                <Route path='/product-info-edit/:idProductSeller' element={<ProductInfoEdit />} />
                 <Route path='/seller-product/:idProductSeller' element={<SellerProduct />} />
                 <Route path='/buyer-product/:idProductBuyer' element={<BuyerProduct />} />
                 <Route path='/daftar-jual' element={<DaftarJual />} />
