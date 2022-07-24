@@ -7,11 +7,15 @@ import axios from "axios";
 import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
 const ProductInfo = () => {
-  const { dataLogin } = useSelector((globalStore) => globalStore.auth);
+  const { dataLogin } = useSelector((state) => state.auth);
+
   const [category, setCategory] = useState([]);
+
   const [ProductPicture, setProductPicture] = useState([]);
+
   const [pictureSubmit, setPictureSubmit] = useState([]);
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const getCategory = async () => {
@@ -22,6 +26,11 @@ const ProductInfo = () => {
   };
 
   const handleFile = (e) => {
+    // if (e.target.files && e.target.files.length > 0) {
+    // 	setProductPicture(e.target.files[0]);
+    // }
+
+    // console.log(e.target.files);
     if (e.target.files) {
       const fileArray = Array.from(e.target.files).map((file) =>
         URL.createObjectURL(file)
@@ -48,9 +57,13 @@ const ProductInfo = () => {
   };
 
   const delImage = (e) => {
-    const s = ProductPicture.filter((photo, index) => index !== e);
-    setProductPicture(s);
-  };
+    const s = ProductPicture.filter((photo, index) => index !== e)
+    setProductPicture(s)
+  }
+
+  // const remove = () => {
+  //   setProductPicture()
+  // }
 
   const handleChange = (e) => {
     setProduct({ ...product, id_category: e.target.value });
@@ -60,7 +73,7 @@ const ProductInfo = () => {
     e.preventDefault();
     product.isActive = false;
     product.status = false;
-    product.id_user = dataLogin?.dataLogin?.id;
+    product.id_user = dataLogin.dataLogin.id;
     const formdata = new FormData();
     pictureSubmit.map((data) => formdata.append("gambar", data));
     formdata.append("name", product.name);
@@ -77,11 +90,10 @@ const ProductInfo = () => {
         url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
         data: formdata,
         headers: {
-          Authorization: `Bearer ${dataLogin?.dataLogin?.token}`,
+          Authorization: `Bearer ${dataLogin.dataLogin.token}`,
           "Content-Type": "multipart/form-data",
         },
       });
-      dispatch(orderSellerAlert(true));
       navigate(`/seller-product/${data.data.id}`);
     } catch (err) {
       console.log(err);
@@ -103,7 +115,7 @@ const ProductInfo = () => {
     e.preventDefault();
     product.isActive = true;
     product.status = true;
-    product.id_user = dataLogin?.dataLogin?.id;
+    product.id_user = dataLogin.dataLogin.id;
     const formdata = new FormData();
     pictureSubmit.map((data) => formdata.append("gambar", data));
     formdata.append("name", product.name);
@@ -120,14 +132,13 @@ const ProductInfo = () => {
         url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
         data: formdata,
         headers: {
-          Authorization: `Bearer ${dataLogin?.dataLogin?.token}`,
+          Authorization: `Bearer ${dataLogin.dataLogin.token}`,
           "Content-Type": "multipart/form-data",
         },
       });
+      dispatch(orderSellerAlert(true));
     } catch (err) {
-      console.log(err);
     }
-    dispatch(orderSellerAlert(true));
     navigate(`/daftar-jual`);
   };
 
@@ -144,11 +155,9 @@ const ProductInfo = () => {
           <Link to={`/daftar-jual`} style={{ textDecoration: "none" }}>
             <img src="/icons/arrow-left.svg" alt="Icon Back" />
           </Link>
-          <h1 data-testid="produk" className={style.titleRes}>
-            Lengkapi Detail Produk
-          </h1>
+          <h1 data-testid="produk" className={style.titleRes}>Lengkapi Detail Produk</h1>
         </div>
-
+        
         <div className={style.content}>
           <form>
             <div className={style.inputForm}>
@@ -201,7 +210,7 @@ const ProductInfo = () => {
                 className={style.inputDesc}
                 type="text"
                 name="deskripsi"
-                placeholder="Contoh: Ini motor bekas"
+                placeholder="Contoh: Jalan Ikan Hiu 33"
                 value={product.description}
                 onChange={(e) =>
                   setProduct({ ...product, description: e.target.value })
@@ -225,7 +234,20 @@ const ProductInfo = () => {
                 />
                 {renderPhotos(ProductPicture)}
               </label>
+              {/* {ProductPicture && (
+							<div className={style.preview}>
+								<img src={URL.createObjectURL(ProductPicture)} alt="Product" />
+								<button onClick={remove} className={style.remove}>Remove</button>
+							</div>
+						)} */}
+              {/* {ProductPicture && (
+                <div className={style.preview}>
+                  <img src={URL.createObjectURL(ProductPicture)} alt="Product" />
+                  <button onClick={remove} className={style.remove}>Remove</button>
+                </div>
+              )} */}
             </div>
+
             <div className={style.btn}>
               <button
                 className={style.btnForm}
@@ -242,6 +264,7 @@ const ProductInfo = () => {
             </div>
           </form>
         </div>
+  
       </div>
     </>
   );
