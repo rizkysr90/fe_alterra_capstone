@@ -124,7 +124,9 @@ const ProductInfo = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
     dispatch(orderSellerAlert(true));
     navigate(`/daftar-jual`);
   };
