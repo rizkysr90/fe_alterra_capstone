@@ -89,7 +89,7 @@ const SellerProduct = () => {
         <p className={style.tri}>{Product.Category?.name}</p>
         <h5 className={style.pro}>{`${rupiah(Product?.price)}`}</h5>
         <button className={style.sob} onClick={(e) => handleSubmit(e)}>Terbitkan</button>
-        <button className={style.man} onClick={() => navigate('/product-info')}>Edit</button>
+        <button className={style.man} onClick={() => navigate(`/product-info-edit/${idProductSeller}`)}>Edit</button>
       </div>
       
       
