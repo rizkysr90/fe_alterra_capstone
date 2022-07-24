@@ -2,19 +2,17 @@ import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./SellerProduct.module.css";
 import { Carousel } from 'react-bootstrap';
 import { useParams, useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from "react";
 import axios from "axios"
+import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
 const SellerProduct = () => {
-  const { dataLogin } = useSelector((state) => state.auth);
-
+  const { dataLogin } = useSelector((globalStore) => globalStore.auth);
   const { idProductSeller } = useParams();
-
   const [Product, setProduct] = useState({});
-
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const token = `${dataLogin.dataLogin.token}`
 
   const getDetailProduct = async () => { 
@@ -48,6 +46,7 @@ const SellerProduct = () => {
           "Content-Type": "multipart/form-data",
         },
       });
+      dispatch(orderSellerAlert(true));
       console.log(data);
     } catch (err) {
       console.log(err); 

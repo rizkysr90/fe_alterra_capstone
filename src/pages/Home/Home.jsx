@@ -1,17 +1,26 @@
 import NavbarHome from "../../components/NavbarHome/NavbarHome";
 import style from "./Home.module.css";
 import Category from "../../components/Category/Category";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import NavbarAfterLogin from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import Sidebar from "../../components/Sidebar";
 import SidebarBeforeLogin from "../../components/SidebarBeforeLogin";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import AlertSuccess from "../../components/Alert/AlertSuccess";
+import AlertFailed from "../../components/Alert/AlertFailed";
+import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
 const Home = () => {
 	const { dataLogin } = useSelector((globalStore) => globalStore.auth);
+	const { sellerReducer } = useSelector((globalStore) => globalStore);
 	const [search, setSearch] = useState("");
+	const { isAlert } = sellerReducer;
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const toggleStopAlert = () => {
+		dispatch(orderSellerAlert(false));
+	};
 
 	const handleOnSubmit = (e) => {
 		e.preventDefault();
@@ -91,6 +100,11 @@ const Home = () => {
 					</button>
 				</Link>
 			</div>
+			{isAlert && (
+              <div className={style.alertCon} onClick={toggleStopAlert}>
+                {dataLogin?.dataLogin?.token ? <AlertSuccess text="Anda berhasil login" /> : <AlertFailed text="Login gagal. Data yang Anda masukkan salah, coba lagi" />}
+              </div>
+            )}
 		</>
 	);
 };
