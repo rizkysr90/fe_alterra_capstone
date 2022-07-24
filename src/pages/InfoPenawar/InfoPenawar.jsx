@@ -273,7 +273,7 @@ const InfoPenawar = () => {
 
       {modalVerifikasi && (
         <div className={style.modalVerifikasi}>
-          <div className={style.overlay}></div>
+          <div className={style.overlay} onClick={toggleModalVerifikasi}></div>
           <div className={style.modalVerifikasiContent}>
             <h1 className={style.titleModalVerifikasi}>
               Perbarui status penjualan produkmu

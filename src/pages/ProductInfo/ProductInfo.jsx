@@ -8,8 +8,7 @@ import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
 
 const ProductInfo = () => {
-  const { dataLogin } = useSelector((state) => state.auth);
-
+  const { dataLogin } = useSelector((globalStore) => globalStore.auth);
   const [category, setCategory] = useState([]);
 
   const [fileLimit, setFileLimit] = useState(false);
@@ -17,11 +16,9 @@ const ProductInfo = () => {
   const MAX_COUNT = 4
 
   const [ProductPicture, setProductPicture] = useState([]);
-
   const [pictureSubmit, setPictureSubmit] = useState([]);
-
+  const [userDetail, setUserDetail] = useState([]);
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
 
   const getCategory = async () => {
@@ -96,13 +93,9 @@ const ProductInfo = () => {
 
 
   const delImage = (e) => {
-    const s = ProductPicture.filter((photo, index) => index !== e)
-    setProductPicture(s)
-  }
-
-  // const remove = () => {
-  //   setProductPicture()
-  // }
+    const s = ProductPicture.filter((photo, index) => index !== e);
+    setProductPicture(s);
+  };
 
   const handleChange = (e) => {
     setProduct({ ...product, id_category: e.target.value });
@@ -132,6 +125,7 @@ const ProductInfo = () => {
           "Content-Type": "multipart/form-data",
         },
       });
+      dispatch(orderSellerAlert(true));
       navigate(`/seller-product/${data.data.id}`);
     } catch (err) {
       console.log(err);
@@ -174,14 +168,24 @@ const ProductInfo = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      dispatch(orderSellerAlert(true));
-    } catch (err) {
-    }
+    } catch (err) {}
+    dispatch(orderSellerAlert(true));
     navigate(`/daftar-jual`);
+  };
+
+  const getUserDetail = async () => {
+    const { data } = await axios.get(
+      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
+      {
+        headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
+      }
+    );
+    setUserDetail(data.data);
   };
 
   useEffect(() => {
     getCategory();
+    getUserDetail();
     // eslint-disable-next-line
   }, []);
 
@@ -193,9 +197,11 @@ const ProductInfo = () => {
           <Link to={`/daftar-jual`} style={{ textDecoration: "none" }}>
             <img src="/icons/arrow-left.svg" alt="Icon Back" />
           </Link>
-          <h1 data-testid="produk" className={style.titleRes}>Lengkapi Detail Produk</h1>
+          <h1 data-testid="produk" className={style.titleRes}>
+            Lengkapi Detail Produk
+          </h1>
         </div>
-        
+
         <div className={style.content}>
           <form>
             <div className={style.inputForm}>
@@ -248,13 +254,18 @@ const ProductInfo = () => {
                 className={style.inputDesc}
                 type="text"
                 name="deskripsi"
-                placeholder="Contoh: Jalan Ikan Hiu 33"
+                placeholder="Contoh: Ini motor bekas"
                 value={product.description}
                 onChange={(e) =>
                   setProduct({ ...product, description: e.target.value })
                 }
               />
             </div>
+            {userDetail?.City === null && userDetail?.phone_number === null && (
+              <Link to={`/profile`} style={{ color: "red" }}>
+                <p style={{ color: "red" }}>Lengkapi profil terlebih dahulu</p>
+              </Link>
+            )}
             <div className={style.inputForm}>
               <p>Foto Produk</p>
               <label className={style.inputPhoto} htmlFor="inputImage">
@@ -274,20 +285,7 @@ const ProductInfo = () => {
                 />
                 {renderPhotos(ProductPicture)}
               </label>
-              {/* {ProductPicture && (
-							<div className={style.preview}>
-								<img src={URL.createObjectURL(ProductPicture)} alt="Product" />
-								<button onClick={remove} className={style.remove}>Remove</button>
-							</div>
-						)} */}
-              {/* {ProductPicture && (
-                <div className={style.preview}>
-                  <img src={URL.createObjectURL(ProductPicture)} alt="Product" />
-                  <button onClick={remove} className={style.remove}>Remove</button>
-                </div>
-              )} */}
             </div>
-
             <div className={style.btn}>
               <button
                 className={style.btnForm}
@@ -304,7 +302,6 @@ const ProductInfo = () => {
             </div>
           </form>
         </div>
-  
       </div>
     </>
   );

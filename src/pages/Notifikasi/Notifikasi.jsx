@@ -122,11 +122,11 @@ const Notifikasi = () => {
                   <>
                     <p>Penawaran produk</p>
                     <h2>{data.Notification_object.Order.Product.name}</h2>
-                    <h2>{`${rupiah(data.Notification_object.Order.price)}`}</h2>
+                    <h2>{`${rupiah(data.Notification_object.Order.Product.price)}`}</h2>
                     <h2>
                       Ditawar{" "}
                       {`${rupiah(
-                        data.Notification_object.Order.Product.price
+                        data.Notification_object.Order.price
                       )}`}
                     </h2>
                   </>
@@ -135,11 +135,11 @@ const Notifikasi = () => {
                   <>
                     <p>Penawaran produk</p>
                     <h2>{data.Notification_object.Order.Product.name}</h2>
-                    <h2>{`${rupiah(data.Notification_object.Order.price)}`}</h2>
+                    <h2>{`${rupiah(data.Notification_object.Order.Product.price)}`}</h2>
                     <h2>
                       Berhasil Ditawar{" "}
                       {`${rupiah(
-                        data.Notification_object.Order.Product.price
+                        data.Notification_object.Order.price
                       )}`}
                     </h2>
                     <p>Kamu akan segera dihubungi penjual via whatsapp</p>

@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { RegisterEmail } from "../../config/redux/actions/authAction";
-
+import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
 const Register = () => {
   const { dataRegister } = useSelector((state) => state.auth);
@@ -16,7 +16,7 @@ const Register = () => {
   const handleRegisterEmail = (e) => {
     e.preventDefault()
     dispatch(RegisterEmail(email, password, name));
-    alert("Register Success");
+    dispatch(orderSellerAlert(true));
     navigate("/login");
   };
 
