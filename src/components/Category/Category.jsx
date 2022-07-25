@@ -33,7 +33,7 @@ const Category = () => {
 
   const getProductByCategory = async (idCategory) => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products?page=1&row=12&category=${idCategory}`
+      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products?page=1&row=25&category=${idCategory}`
     );
     setProduct(data.data);
     console.log(data.data);
