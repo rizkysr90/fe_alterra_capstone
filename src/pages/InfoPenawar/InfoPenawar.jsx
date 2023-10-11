@@ -24,7 +24,7 @@ const InfoPenawar = () => {
     //eslint-disable-next-line
     const { data } = await axios({
       method: "put",
-      url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/verify/${idOrderSeller}`,
+      url: `https://bealterracapstone-production.up.railway.app/api/v1/sales/verify/${idOrderSeller}`,
       data: {
         is_done: verifikasi,
       },
@@ -40,7 +40,7 @@ const InfoPenawar = () => {
     //eslint-disable-next-line
     const { data } = await axios({
       method: "put",
-      url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/${idOrderSeller}`,
+      url: `https://bealterracapstone-production.up.railway.app/api/v1/sales/orders/${idOrderSeller}`,
       data: {
         status: 1,
       },
@@ -56,7 +56,7 @@ const InfoPenawar = () => {
     //eslint-disable-next-line
     const { data } = await axios({
       method: "put",
-      url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/${idOrderSeller}`,
+      url: `https://bealterracapstone-production.up.railway.app/api/v1/sales/orders/${idOrderSeller}`,
       data: {
         status: 0,
       },
@@ -69,7 +69,7 @@ const InfoPenawar = () => {
 
   const getOrderById = async () => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/sales/orders/${idOrderSeller}`,
+      `https://bealterracapstone-production.up.railway.app/api/v1/sales/orders/${idOrderSeller}`,
       {
         headers: {
           Authorization: `Bearer ${dataLogin.dataLogin.token}`,
@@ -144,7 +144,7 @@ const InfoPenawar = () => {
               <img
                 className={style.imgProfile}
                 src={dataOrderSeller.Buyers?.profile_picture}
-                alt="profil penawar" 
+                alt="profil penawar"
               />
             </div>
             <div className={style.cardContent}>
@@ -170,7 +170,7 @@ const InfoPenawar = () => {
             <div className={style.cardContent}>
               <p>
                 {formattedDate}
-				{", "}
+                {", "}
                 {formattedTime}
               </p>
             </div>

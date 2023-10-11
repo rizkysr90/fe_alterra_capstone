@@ -15,7 +15,7 @@ const RiwayatPenjualan = () => {
 
   const getUserDetail = async () => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
+      `https://bealterracapstone-production.up.railway.app/api/v1/profile/${dataLogin.dataLogin.id}`,
       {
         headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
       }

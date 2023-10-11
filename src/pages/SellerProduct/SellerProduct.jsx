@@ -1,10 +1,10 @@
 import Navbar from "../../components/NavbarAfterLogin/NavbarAfterLogin";
 import style from "./SellerProduct.module.css";
-import { Carousel } from 'react-bootstrap';
+import { Carousel } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import axios from "axios"
+import axios from "axios";
 import { orderSellerAlert } from "../../config/redux/actions/sellerAction";
 
 const SellerProduct = () => {
@@ -13,11 +13,11 @@ const SellerProduct = () => {
   const [Product, setProduct] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token = `${dataLogin.dataLogin.token}`
+  const token = `${dataLogin.dataLogin.token}`;
 
-  const getDetailProduct = async () => { 
+  const getDetailProduct = async () => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts/${idProductSeller}`, 
+      `https://bealterracapstone-production.up.railway.app/api/v1/myproducts/${idProductSeller}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
     setProduct(data.data);
@@ -25,9 +25,9 @@ const SellerProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    Product.isActive = true
-    Product.status = true
-    Product.id_user = dataLogin.dataLogin.id
+    Product.isActive = true;
+    Product.status = true;
+    Product.id_user = dataLogin.dataLogin.id;
     const formdata = new FormData();
     formdata.append("name", Product.name);
     formdata.append("price", Product.price);
@@ -39,7 +39,7 @@ const SellerProduct = () => {
     try {
       const { data } = await axios({
         method: "put",
-        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts/${idProductSeller}`,
+        url: `https://bealterracapstone-production.up.railway.app/api/v1/myproducts/${idProductSeller}`,
         data: formdata,
         headers: {
           Authorization: `Bearer ${dataLogin.dataLogin.token}`,
@@ -49,49 +49,50 @@ const SellerProduct = () => {
       dispatch(orderSellerAlert(true));
       console.log(data);
     } catch (err) {
-      console.log(err); 
+      console.log(err);
     }
-    navigate(`/daftar-jual`)
+    navigate(`/daftar-jual`);
   };
 
   const rupiah = (number) => {
     return new Intl.NumberFormat("id-ID", {
       style: "currency",
-      currency: "IDR"
+      currency: "IDR",
     }).format(number);
   };
 
   useEffect(() => {
-    getDetailProduct()
+    getDetailProduct();
     //eslint-disable-next-line
   }, []);
 
   return (
     <>
-      <Navbar /> 
+      <Navbar />
       <Carousel className={style.use}>
         {Product.Product_images?.map((data, key) => {
           return (
             <Carousel.Item key={key}>
-              <img
-                className="" 
-                src={data?.url_image}
-                alt="First slide"
-              /> 
-            </Carousel.Item> 
-          )
+              <img className="" src={data?.url_image} alt="First slide" />
+            </Carousel.Item>
+          );
         })}
-      </Carousel>  
+      </Carousel>
 
       <div className={style.card}>
         <h5 className={style.tha}>{Product?.name}</h5>
         <p className={style.tri}>{Product.Category?.name}</p>
         <h5 className={style.pro}>{`${rupiah(Product?.price)}`}</h5>
-        <button className={style.sob} onClick={(e) => handleSubmit(e)}>Terbitkan</button>
-        <button className={style.man} onClick={() => navigate(`/product-info-edit/${idProductSeller}`)}>Edit</button>
+        <button className={style.sob} onClick={(e) => handleSubmit(e)}>
+          Terbitkan
+        </button>
+        <button
+          className={style.man}
+          onClick={() => navigate(`/product-info-edit/${idProductSeller}`)}
+        >
+          Edit
+        </button>
       </div>
-      
-      
 
       <div className={style.cardPenjual}>
         <div className={style.par}>
@@ -110,7 +111,7 @@ const SellerProduct = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default SellerProduct;

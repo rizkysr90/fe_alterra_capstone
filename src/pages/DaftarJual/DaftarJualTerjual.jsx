@@ -30,7 +30,7 @@ const DaftarJualTerjual = () => {
 
   const getUserDetail = async () => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
+      `https://bealterracapstone-production.up.railway.app/api/v1/profile/${dataLogin.dataLogin.id}`,
       {
         headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
       }
@@ -43,10 +43,16 @@ const DaftarJualTerjual = () => {
     getUserDetail();
     dispatch(orderSellerTerjual(token));
     document.title = "SecondHand | Daftar Jual Saya";
-    document.getElementsByClassName(CardCategoryStyle.pText)[2].style.cssText = "color: #7126B5; font-weight: 500";
-    document.getElementsByClassName(CardCategoryStyle.iconDollar)[0].style.stroke = "#7126B5";
-    document.getElementsByClassName(CardCategoryStyle.iconArrow)[2].style.stroke = "#7126B5";
-    document.getElementsByClassName(NavbarStyle.iconList)[0].style.stroke = "#7126B5";
+    document.getElementsByClassName(CardCategoryStyle.pText)[2].style.cssText =
+      "color: #7126B5; font-weight: 500";
+    document.getElementsByClassName(
+      CardCategoryStyle.iconDollar
+    )[0].style.stroke = "#7126B5";
+    document.getElementsByClassName(
+      CardCategoryStyle.iconArrow
+    )[2].style.stroke = "#7126B5";
+    document.getElementsByClassName(NavbarStyle.iconList)[0].style.stroke =
+      "#7126B5";
     //eslint-disable-next-line
   }, []);
 
@@ -133,7 +139,10 @@ const DaftarJualTerjual = () => {
             {dataSellerTerjual?.length === 0 && (
               <div className={style.dataEmpty}>
                 <img src="/images/dataEmpty.png" alt="Data Empty" />
-                <p>Belum ada produkmu yang terjual nih, sabar ya rejeki nggak kemana kok</p>
+                <p>
+                  Belum ada produkmu yang terjual nih, sabar ya rejeki nggak
+                  kemana kok
+                </p>
               </div>
             )}
             {dataSellerTerjual?.map((products) => (

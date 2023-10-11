@@ -20,7 +20,7 @@ const ProductInfo = () => {
 
   const getCategory = async () => {
     const { data } = await axios.get(
-      "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/categories?page=1"
+      "https://bealterracapstone-production.up.railway.app/api/v1/categories?page=1"
     );
     setCategory(data.data);
   };
@@ -57,9 +57,9 @@ const ProductInfo = () => {
   };
 
   const delImage = (e) => {
-    const s = ProductPicture.filter((photo, index) => index !== e)
-    setProductPicture(s)
-  }
+    const s = ProductPicture.filter((photo, index) => index !== e);
+    setProductPicture(s);
+  };
 
   // const remove = () => {
   //   setProductPicture()
@@ -87,7 +87,7 @@ const ProductInfo = () => {
       //eslint-disable-next-line
       const { data } = await axios({
         method: "post",
-        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
+        url: `https://bealterracapstone-production.up.railway.app/api/v1/myproducts`,
         data: formdata,
         headers: {
           Authorization: `Bearer ${dataLogin.dataLogin.token}`,
@@ -129,7 +129,7 @@ const ProductInfo = () => {
       // eslint-disable-next-line
       const { data } = await axios({
         method: "post",
-        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
+        url: `https://bealterracapstone-production.up.railway.app/api/v1/myproducts`,
         data: formdata,
         headers: {
           Authorization: `Bearer ${dataLogin.dataLogin.token}`,
@@ -137,8 +137,7 @@ const ProductInfo = () => {
         },
       });
       dispatch(orderSellerAlert(true));
-    } catch (err) {
-    }
+    } catch (err) {}
     navigate(`/daftar-jual`);
   };
 
@@ -155,9 +154,11 @@ const ProductInfo = () => {
           <Link to={`/daftar-jual`} style={{ textDecoration: "none" }}>
             <img src="/icons/arrow-left.svg" alt="Icon Back" />
           </Link>
-          <h1 data-testid="produk" className={style.titleRes}>Lengkapi Detail Produk</h1>
+          <h1 data-testid="produk" className={style.titleRes}>
+            Lengkapi Detail Produk
+          </h1>
         </div>
-        
+
         <div className={style.content}>
           <form>
             <div className={style.inputForm}>
@@ -264,7 +265,6 @@ const ProductInfo = () => {
             </div>
           </form>
         </div>
-  
       </div>
     </>
   );

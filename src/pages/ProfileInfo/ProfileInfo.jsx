@@ -28,14 +28,14 @@ const ProfileInfo = () => {
 
   const getUserDetail = async () => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
+      `https://bealterracapstone-production.up.railway.app/api/v1/profile/${dataLogin.dataLogin.id}`,
       {
         headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
       }
     );
     if (!data.data.City) {
       const { data: dataCity } = await axios.get(
-        `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/cities?page=1&row=10&name=`,
+        `https://bealterracapstone-production.up.railway.app/api/v1/cities?page=1&row=10&name=`,
         {
           headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
         }
@@ -51,7 +51,7 @@ const ProfileInfo = () => {
   const getCityDetail = async () => {
     if (inputValue !== "") {
       const { data } = await axios.get(
-        `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/cities?page=1&row=10&name=${inputValue}`,
+        `https://bealterracapstone-production.up.railway.app/api/v1/cities?page=1&row=10&name=${inputValue}`,
         {
           headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
         }
@@ -91,7 +91,7 @@ const ProfileInfo = () => {
     try {
       const { data } = await axios({
         method: "put",
-        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataUser.id}`,
+        url: `https://bealterracapstone-production.up.railway.app/api/v1/profile/${dataUser.id}`,
         data: formData,
         headers: {
           Authorization: `Bearer ${dataLogin.dataLogin.token}`,

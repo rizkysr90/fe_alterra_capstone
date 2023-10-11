@@ -15,7 +15,7 @@ const Notifikasi = () => {
     //eslint-disable-next-line
     const { data } = await axios({
       method: "get",
-      url: "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/notifications",
+      url: "https://bealterracapstone-production.up.railway.app/api/v1/notifications",
       headers: {
         Authorization: `Bearer ${dataLogin.dataLogin.token}`,
       },
@@ -80,9 +80,7 @@ const Notifikasi = () => {
                   </Link>
                 )}
                 {data.Notification_object.Notification_type.id === 2 && (
-                  <Link
-                    to={`/daftar-jual-diminati`}
-                  >
+                  <Link to={`/daftar-jual-diminati`}>
                     <img
                       className={style.imgNotifikasi}
                       src={
@@ -122,12 +120,12 @@ const Notifikasi = () => {
                   <>
                     <p>Penawaran produk</p>
                     <h2>{data.Notification_object.Order.Product.name}</h2>
-                    <h2>{`${rupiah(data.Notification_object.Order.Product.price)}`}</h2>
+                    <h2>{`${rupiah(
+                      data.Notification_object.Order.Product.price
+                    )}`}</h2>
                     <h2>
                       Ditawar{" "}
-                      {`${rupiah(
-                        data.Notification_object.Order.price
-                      )}`}
+                      {`${rupiah(data.Notification_object.Order.price)}`}
                     </h2>
                   </>
                 )}
@@ -135,12 +133,12 @@ const Notifikasi = () => {
                   <>
                     <p>Penawaran produk</p>
                     <h2>{data.Notification_object.Order.Product.name}</h2>
-                    <h2>{`${rupiah(data.Notification_object.Order.Product.price)}`}</h2>
+                    <h2>{`${rupiah(
+                      data.Notification_object.Order.Product.price
+                    )}`}</h2>
                     <h2>
                       Berhasil Ditawar{" "}
-                      {`${rupiah(
-                        data.Notification_object.Order.price
-                      )}`}
+                      {`${rupiah(data.Notification_object.Order.price)}`}
                     </h2>
                     <p>Kamu akan segera dihubungi penjual via whatsapp</p>
                   </>

@@ -25,14 +25,14 @@ const ProductInfoEdit = () => {
 
   const getCategory = async () => {
     const { data } = await axios.get(
-      "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/categories?page=1"
+      "https://bealterracapstone-production.up.railway.app/api/v1/categories?page=1"
     );
     setCategory(data.data);
   };
 
-  const getDetailProduct = async () => { 
+  const getDetailProduct = async () => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts/${idProductSeller}`, 
+      `https://bealterracapstone-production.up.railway.app/api/v1/myproducts/${idProductSeller}`,
       { headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` } }
     );
     setProduct(data.data);
@@ -47,20 +47,18 @@ const ProductInfoEdit = () => {
     formProduct.append("id_category", product.id_category);
 
     try {
-        //eslint-disable-next-line
-        const { data } = await axios({
-            method: "put",
-            url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts/${idProductSeller}`,
-            data: formProduct,
-            headers: {
-                Authorization: `Bearer ${dataLogin.dataLogin.token}`,
-                "Content-Type": "multipart/form-data",
-            },
-        });
-        dispatch(orderSellerAlert(true))
-    } catch (err) {
-
-    }
+      //eslint-disable-next-line
+      const { data } = await axios({
+        method: "put",
+        url: `https://bealterracapstone-production.up.railway.app/api/v1/myproducts/${idProductSeller}`,
+        data: formProduct,
+        headers: {
+          Authorization: `Bearer ${dataLogin.dataLogin.token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      dispatch(orderSellerAlert(true));
+    } catch (err) {}
     navigate(`/daftar-jual`);
   };
 
@@ -95,9 +93,9 @@ const ProductInfoEdit = () => {
   };
 
   const delImage = (e) => {
-    const s = ProductPicture.filter((photo, index) => index !== e)
-    setProductPicture(s)
-  }
+    const s = ProductPicture.filter((photo, index) => index !== e);
+    setProductPicture(s);
+  };
 
   const handlePreview = async (e) => {
     e.preventDefault();
@@ -114,10 +112,10 @@ const ProductInfoEdit = () => {
     formdata.append("id_user", product.id_user);
     formdata.append("id_category", product.id_category);
     try {
-        //eslint-disable-next-line
+      //eslint-disable-next-line
       const { data } = await axios({
         method: "post",
-        url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts`,
+        url: `https://bealterracapstone-production.up.railway.app/api/v1/myproducts`,
         data: formdata,
         headers: {
           Authorization: `Bearer ${dataLogin.dataLogin.token}`,
@@ -132,7 +130,7 @@ const ProductInfoEdit = () => {
 
   useEffect(() => {
     getCategory();
-    getDetailProduct()
+    getDetailProduct();
     // eslint-disable-next-line
   }, []);
 
@@ -144,9 +142,11 @@ const ProductInfoEdit = () => {
           <Link to={`/daftar-jual`} style={{ textDecoration: "none" }}>
             <img src="/icons/arrow-left.svg" alt="Icon Back" />
           </Link>
-          <h1 data-testid="produk" className={style.titleRes}>Lengkapi Detail Produk</h1>
+          <h1 data-testid="produk" className={style.titleRes}>
+            Lengkapi Detail Produk
+          </h1>
         </div>
-        
+
         <div className={style.content}>
           <form>
             <div className={style.inputForm}>
@@ -241,7 +241,6 @@ const ProductInfoEdit = () => {
             </div>
           </form>
         </div>
-  
       </div>
     </>
   );

@@ -19,21 +19,21 @@ const Category = () => {
 
   const getAllProduct = async () => {
     const { data } = await axios.get(
-      "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products?page=1&row=12"
+      "https://bealterracapstone-production.up.railway.app/api/v1/products?page=1&row=12"
     );
     setProduct(data.data);
   };
 
   const getCategory = async () => {
     const { data } = await axios.get(
-      "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/categories?page=1"
+      "https://bealterracapstone-production.up.railway.app/api/v1/categories?page=1"
     );
     setCategory(data.data);
   };
 
   const getProductByCategory = async (idCategory) => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products?page=1&row=25&category=${idCategory}`
+      `https://bealterracapstone-production.up.railway.app/api/v1/products?page=1&row=25&category=${idCategory}`
     );
     setProduct(data.data);
     console.log(data.data);
@@ -58,9 +58,7 @@ const Category = () => {
       <div className={style.container}>
         <h2 data-testid="kategori-value">Telusuri Kategori</h2>
         <div className={style.btnContainer}>
-          <button
-            onClick={() => getAllProduct()}
-            className={style.btnCategory}>
+          <button onClick={() => getAllProduct()} className={style.btnCategory}>
             <img src="/icons/fi_search_white.svg" alt="search" />
             semua
           </button>
@@ -79,7 +77,7 @@ const Category = () => {
           {product?.map((products) => (
             <div key={products.id} className={style.boxCard}>
               <Link to={`/buyer-product/${products.id}`}>
-                <img src={products.Product_images[0].url_image} alt="card" />
+                <img src={products?.Product_images[0]?.url_image} alt="card" />
               </Link>
               <div className={style.cardDesc}>
                 <h5>{`${products.name.slice(0, 15)}...`}</h5>

@@ -24,7 +24,7 @@ const BuyerProduct = () => {
   const getProcessPenawaran = async () => {
     const { data } = await axios({
       method: "get",
-      url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products/onProcess/${idProductBuyer}`,
+      url: `https://bealterracapstone-production.up.railway.app/api/v1/products/onProcess/${idProductBuyer}`,
       headers: {
         Authorization: `Bearer ${dataLogin.dataLogin.token}`,
       },
@@ -34,7 +34,7 @@ const BuyerProduct = () => {
 
   const getProductById = async () => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/products/${idProductBuyer}`
+      `https://bealterracapstone-production.up.railway.app/api/v1/products/${idProductBuyer}`
     );
     setDataProductBuyer(data.data);
   };
@@ -48,7 +48,7 @@ const BuyerProduct = () => {
     //eslint-disable-next-line
     const { data } = await axios({
       method: "post",
-      url: `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/purchases/orders`,
+      url: `https://bealterracapstone-production.up.railway.app/api/v1/purchases/orders`,
       data: {
         buyer_id: dataLogin.dataLogin.id,
         seller_id: dataProductBuyer.id_user,
@@ -59,7 +59,7 @@ const BuyerProduct = () => {
         Authorization: `Bearer ${dataLogin.dataLogin.token}`,
       },
     });
-	toggleAlertSuccess();
+    toggleAlertSuccess();
   };
 
   const rupiah = (number) => {
@@ -110,11 +110,12 @@ const BuyerProduct = () => {
         <h1 className={style.priceProduct}>{`${rupiah(
           dataProductBuyer?.price
         )}`}</h1>
-        {prosesPenawaran === 0 && dataLogin?.dataLogin?.id !== dataProductBuyer?.User?.id && (
-          <button onClick={toggleModalTawar} className={style.btnProduct}>
-            Saya tertarik dan ingin nego
-          </button>
-        )}
+        {prosesPenawaran === 0 &&
+          dataLogin?.dataLogin?.id !== dataProductBuyer?.User?.id && (
+            <button onClick={toggleModalTawar} className={style.btnProduct}>
+              Saya tertarik dan ingin nego
+            </button>
+          )}
         {prosesPenawaran === 1 && (
           <button
             className={style.btnProduct}
@@ -194,7 +195,7 @@ const BuyerProduct = () => {
           </div>
         </div>
       )}
-	  {alertSuccess && (
+      {alertSuccess && (
         <div className={style.alertCon} onClick={toggleStopAlert}>
           <AlertSuccess text="Penawaran produk terkirim" />
         </div>

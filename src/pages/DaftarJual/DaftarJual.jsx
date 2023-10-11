@@ -38,7 +38,7 @@ const DaftarJual = () => {
   const getProductSeller = async () => {
     const { data } = await axios({
       method: "get",
-      url: "https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/myproducts?page=1&row=10&status=true&isActive=true",
+      url: "https://bealterracapstone-production.up.railway.app/api/v1/myproducts?page=1&row=10&status=true&isActive=true",
       headers: {
         Authorization: `Bearer ${dataLogin.dataLogin.token}`,
       },
@@ -48,7 +48,7 @@ const DaftarJual = () => {
 
   const getUserDetail = async () => {
     const { data } = await axios.get(
-      `https://secondhand-apibejs2-staging.herokuapp.com/api/v1.0/profile/${dataLogin.dataLogin.id}`,
+      `https://bealterracapstone-production.up.railway.app/api/v1/profile/${dataLogin.dataLogin.id}`,
       {
         headers: { Authorization: `Bearer ${dataLogin.dataLogin.token}` },
       }
@@ -182,7 +182,8 @@ const DaftarJual = () => {
             ))}
             {isAlert && (
               <div className={style.alertCon} onClick={toggleStopAlert}>
-                {userDetail?.City === null && userDetail?.phone_number === null ? (
+                {userDetail?.City === null &&
+                userDetail?.phone_number === null ? (
                   <AlertFailed text="Lengkapi profil terlebih dahulu" />
                 ) : (
                   <AlertSuccess text="Produk berhasil diterbitkan" />
